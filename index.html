@@ -38,7 +38,10 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .header-badge{font-size:0.6rem;letter-spacing:0.2em;color:var(--text3);text-transform:uppercase;margin-bottom:0.4rem}
 .header-title{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,var(--maroon-bright),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;letter-spacing:-0.02em}
 .header-sub{font-size:0.7rem;color:var(--text3);margin-top:0.5rem;letter-spacing:0.05em}
-.header-right{display:flex;gap:1rem;flex-wrap:wrap}
+.header-right{display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-start}
+.hdr-link{display:inline-flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.62rem 0.9rem;color:var(--text2);text-decoration:none;font-size:0.6rem;letter-spacing:0.09em;text-transform:uppercase;transition:color .2s,border-color .2s,background .2s;white-space:nowrap}
+.hdr-link:hover{color:var(--gold-bright);border-color:var(--gold-dim);background:var(--surface2)}
+.hdr-link svg{flex-shrink:0}
 .stat-pill{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.6rem 1rem;text-align:center;min-width:80px}
 .stat-pill .num{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;color:var(--gold);display:block}
 .stat-pill .lbl{font-size:0.58rem;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase}
@@ -348,6 +351,10 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <div class="header-sub">B.S. Computer Science (Planned Business Minor) · Pranav Appecharla · Current Semester: Fall 2026</div>
       </div>
       <div class="header-right">
+        <a class="hdr-link" href="https://pranavappecharla.github.io/" target="_blank" rel="noopener" title="Portfolio — pranavappecharla.github.io">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          Portfolio
+        </a>
         <div class="stat-pill maroon"><span class="num" id="hdrTotal">120</span><span class="lbl">Total Cr</span></div>
         <div class="stat-pill"><span class="num" id="hdrCompleted">0</span><span class="lbl">Done Cr</span></div>
         <div class="stat-pill green"><span class="num" id="hdrDone">0</span><span class="lbl">Done</span></div>
@@ -595,6 +602,49 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
       <div style="margin-top:0.8rem;font-size:0.65rem;color:var(--text3)">A placement exam gives placement, not credit. Passing both moves the whole plan up by roughly one semester and frees space later — but it also removes 8 credits from your total, so the free-elective slots at the end matter more, not less.</div>
     </div>
 
+    <div class="section-label">Business Minor — 15 credits, plus a statistics prerequisite</div>
+    <div class="two-col" style="margin-bottom:1.5rem">
+      <div class="info-box">
+        <div class="ib-title">The Five Required Courses</div>
+        <table class="req-table">
+          <thead><tr><th>Code</th><th>Course</th><th>Cr</th><th>Prerequisite</th></tr></thead>
+          <tbody>
+            <tr><td>ACCOUNTNG 233</td><td>Financial &amp; Managerial Accounting Principles</td><td>3</td><td>None — take it first</td></tr>
+            <tr><td>FINANCE 301</td><td>Fundamentals of Finance</td><td>3</td><td>ACCOUNTNG 233, done or concurrent</td></tr>
+            <tr><td>MANAGMNT 301</td><td>Principles of Management</td><td>3</td><td>None stated</td></tr>
+            <tr><td>MARKETNG 301</td><td>Fundamentals of Marketing</td><td>3</td><td>None stated</td></tr>
+            <tr><td>OIM 301</td><td>Introduction to Operations Management</td><td>3</td><td>⚑ A qualifying statistics course</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:0.8rem;font-size:0.65rem;color:var(--text3)">Covers accounting, finance, management, marketing and operations — decision-making, organisational behaviour, strategy, project management and supply chain. Courses run on campus in fall and spring, and are meant to be spread across several semesters.</div>
+      </div>
+      <div class="info-box">
+        <div class="ib-title">Getting In — the Lottery</div>
+        <ul style="padding-left:1rem;line-height:1.9;font-size:0.7rem">
+          <li>On-campus places are <strong>capacity limited</strong> and awarded by lottery</li>
+          <li>Fall lottery: opens <strong>Mon 21 Sept, 9am</strong>, closes <strong>Fri 2 Oct, 5pm</strong></li>
+          <li>Decisions go out the <strong>week of 12 Oct</strong></li>
+          <li>Selected students get enrolment help for <strong>Spring 2027</strong> courses</li>
+          <li>New minors are told to take <strong>ACCOUNTNG 233 in Spring 2027</strong> — which is exactly where this plan puts it</li>
+          <li>There is also a <strong>University+ online</strong> version with no capacity limit, and you can declare intent for it at any time</li>
+          <li>Not selected? Isenberg points you to their online undergraduate certificates instead</li>
+        </ul>
+        <div style="margin-top:0.8rem;font-size:0.65rem;color:var(--text3)"><strong>Restrictions:</strong> business minors do not get access to Isenberg academic advisors, the Isenberg Office of Career Success, or IConnect. Your advising stays with CICS.</div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-bottom:1.5rem">
+      <div class="ib-title">The Statistics Prerequisite — worth solving early</div>
+      <div style="font-size:0.7rem;line-height:1.8;color:var(--text2)">
+        OIM 301 will not let you enrol without a qualifying statistics course, and that course sits <em>outside</em> the 15 credits. You already have two candidates inside the CS degree:
+        <ul style="padding-left:1rem;margin-top:0.5rem">
+          <li><strong>STATISTC 315</strong> — the ARR accepts this in place of MATH 233 for your fourth math course. If it also qualifies for OIM 301, one course covers both. Check the credit count first; swapping MATH 233 for it may cost you a credit against the 120 total.</li>
+          <li><strong>COMPSCI 240 — Reasoning Under Uncertainty</strong> — a probability and statistics course in all but name. It may or may not appear on Isenberg's qualifying list.</li>
+        </ul>
+        Neither is confirmed. Get the qualifying list from Isenberg <em>before</em> you finalise the Spring 2028 math choice — that is the decision point, not senior year.
+      </div>
+    </div>
+
     <div class="section-label">Lab Science — pick any two</div>
     <div class="info-box">
       <table class="req-table">
@@ -818,14 +868,14 @@ var REQ_GROUPS = [
 var SEMESTERS = [
   {id:'s1',name:'Fall 2026',year:1,targetCr:17,courses:[
     {id:'c-cics110',code:'CICS 110',name:'Foundations of Programming',cr:4,tags:['t-cs'],note:'Enrolled. Satisfies Gen Ed R2 (Analytical Reasoning).',done:false,grade:'',placement:'Aiming to place out via the CICS exemption exam → CICS 160 instead (also R2)'},
-    {id:'c-math131',code:'MATH 131',name:'Calculus I',cr:4,tags:['t-math'],note:'Enrolled. Satisfies Gen Ed R1 (Basic Math).',done:false,grade:'',placement:'Aiming to place out via the math placement test → MATH 132 instead — confirm R1 still clears'},
+    {id:'c-math132',code:'MATH 132',name:'Calculus II',cr:4,tags:['t-math'],note:'Enrolled — placed out of MATH 131 via the math placement test. Confirm Gen Ed R1 still clears through this.',done:false,grade:''},
     {id:'c-phys151',code:'PHYSICS 151',name:'General Physics I',cr:4,tags:['t-gen'],note:'Enrolled. Lab science 1 of 2, and satisfies Gen Ed PS.',done:false,grade:''},
     {id:'c-pubhlth160',code:'PUBHLTH 160',name:'My Body, My Health',cr:4,tags:['t-gen'],note:'Enrolled. Clears Social World (SI), Diversity DU, and the first-year DG/DU rule in one go.',done:false,grade:''},
     {id:'c-fys191',code:'FYS 191MCS26',name:'FYS — Topics in CICS: Bits, Bytes & Modern Computing',cr:1,tags:['t-elec'],note:'Enrolled. Counts as free credit, not toward the major.',done:false,grade:''},
   ]},
-  {id:'s2',name:'Spring 2027',year:1,targetCr:15,courses:[
+  {id:'s2',name:'Spring 2027',year:1,targetCr:14,courses:[
     {id:'c-cics160',code:'CICS 160',name:'Object-Oriented Programming',cr:4,tags:['t-cs'],note:'Prereq: CICS 110 with C or better.',done:false,grade:''},
-    {id:'c-math132',code:'MATH 132',name:'Calculus II',cr:4,tags:['t-math'],note:'Gates COMPSCI 240 and 250 — do not let this slip.',done:false,grade:''},
+    {id:'c-acct233',code:'ACCOUNTNG 233',name:'Financial and Managerial Accounting Principles',cr:3,tags:['t-elec'],note:'Business minor 1 of 5. Isenberg tells new minors to take this in Spring 2027 — and FINANCE 301 needs it done or concurrent.',done:false,grade:''},
     {id:'c-phys152',code:'PHYSICS 152',name:'General Physics II',cr:4,tags:['t-gen'],note:'Lab science 2 of 2 — closes the CNS science requirement.',done:false,grade:''},
     {id:'c-englwrit112',code:'ENGLWRIT 112',name:'College Writing',cr:3,tags:['t-gen'],note:'Gen Ed CW. Also a prereq for CICS 305 later.',done:false,grade:''},
   ]},
@@ -853,20 +903,19 @@ var SEMESTERS = [
     {id:'c-cs383',code:'COMPSCI 383',name:'Artificial Intelligence',cr:3,tags:['t-elec'],note:'Prereq: CICS 210 + COMPSCI 240. 300+ elective.',done:false,grade:''},
     {id:'c-cs389',code:'COMPSCI 389',name:'Intro to Machine Learning',cr:3,tags:['t-elec'],note:'Prereq: CICS 210 + COMPSCI 240 + MATH 132. 300+ elective.',done:false,grade:''},
     {id:'c-math545',code:'MATH 545',name:'Linear Algebra for Applied Mathematics',cr:3,tags:['t-elec'],note:'Approved outside elective (fills slot 12b) and the stated prereq for COMPSCI 589. Two birds.',done:false,grade:''},
-    {id:'c-bmin1',code:'BUSINESS 1',name:'Business minor course 1',cr:3,tags:['t-elec'],note:'Free elective. Check the Isenberg minor course list before locking this in.',done:false,grade:''},
+    {id:'c-mgmt301',code:'MANAGMNT 301',name:'Principles of Management',cr:3,tags:['t-elec'],note:'Business minor 2 of 5. No stated prereq — safe to slot anywhere after admission.',done:false,grade:''},
   ]},
   {id:'s7',name:'Fall 2029',year:4,targetCr:15,courses:[
     {id:'c-cics305',code:'CICS 305',name:'Social Issues in Computing (JYW)',cr:3,tags:['t-gen'],note:'Prereq: ENGLWRIT 112 + COMPSCI 220, 230 and 240. Must be taken at UMass. Does NOT count as an elective.',done:false,grade:''},
     {id:'c-cs485',code:'COMPSCI 485',name:'Applications of NLP',cr:3,tags:['t-elec'],note:'Prereq: COMPSCI 220 + 240. 400+ elective.',done:false,grade:''},
     {id:'c-cs514',code:'COMPSCI 514',name:'Algorithms for Data Science',cr:3,tags:['t-elec'],note:'Prereq: COMPSCI 240 + 311, both B+ or better. 400+ elective.',done:false,grade:''},
-    {id:'c-bmin2',code:'BUSINESS 2',name:'Business minor course 2',cr:3,tags:['t-elec'],note:'Free elective.',done:false,grade:''},
-    {id:'c-bmin3',code:'BUSINESS 3',name:'Business minor course 3',cr:3,tags:['t-elec'],note:'Free elective.',done:false,grade:''},
+    {id:'c-fin301',code:'FINANCE 301',name:'Fundamentals of Finance',cr:3,tags:['t-elec'],note:'Business minor 3 of 5. Prereq: ACCOUNTNG 233 completed or taken concurrently.',done:false,grade:''},
+    {id:'c-mkt301',code:'MARKETNG 301',name:'Fundamentals of Marketing',cr:3,tags:['t-elec'],note:'Business minor 4 of 5.',done:false,grade:''},
   ]},
-  {id:'s8',name:'Spring 2030',year:4,targetCr:12,courses:[
+  {id:'s8',name:'Spring 2030',year:4,targetCr:10,courses:[
     {id:'c-cs589',code:'COMPSCI 589',name:'Machine Learning',cr:3,tags:['t-elec'],note:'Prereq: MATH 545 + COMPSCI 240 + STATISTC 315. The 315 half is waived with a B+ in 240. 400+ elective.',done:false,grade:''},
-    {id:'c-bmin4',code:'BUSINESS 4',name:'Business minor course 4',cr:3,tags:['t-elec'],note:'Free elective.',done:false,grade:''},
-    {id:'c-bmin5',code:'BUSINESS 5',name:'Business minor course 5',cr:3,tags:['t-elec'],note:'Free elective.',done:false,grade:''},
-    {id:'c-free1',code:'FREE ELECTIVE',name:'Open elective',cr:3,tags:['t-elec'],note:'Buffer to clear 120 cr. Swap for a graduate AI course if the prereqs are there.',done:false,grade:''},
+    {id:'c-oim301',code:'OIM 301',name:'Introduction to Operations Management',cr:3,tags:['t-elec'],note:'Business minor 5 of 5. Needs a qualifying statistics course FIRST — that is the one prereq that can derail the minor.',done:false,grade:''},
+    {id:'c-free1',code:'FREE ELECTIVE',name:'Open elective',cr:4,tags:['t-elec'],note:'The only slack in the whole plan. Swap for a graduate AI course, a thesis, or leave it as insurance.',done:false,grade:''},
   ]},
 ];
 
@@ -939,10 +988,15 @@ var CREDIT_BREAKDOWN = [
   },
   {
     key:'cb-free',cls:'cb-free',title:'Free Electives / Business Minor',
-    required:16,note:'Whatever it takes to clear 120 cr — the planned business minor lives here',
+    required:20,note:'Business Minor is 15 cr across 5 courses, plus a statistics prereq for OIM 301',
     items:[
+      {name:'ACCOUNTNG 233 — Financial & Managerial Accounting',cr:3,tag:'t-elec'},
+      {name:'FINANCE 301 — Fundamentals of Finance',cr:3,tag:'t-elec'},
+      {name:'MANAGMNT 301 — Principles of Management',cr:3,tag:'t-elec'},
+      {name:'MARKETNG 301 — Fundamentals of Marketing',cr:3,tag:'t-elec'},
+      {name:'OIM 301 — Introduction to Operations Management',cr:3,tag:'t-elec'},
       {name:'FYS 191MCS26 — Topics in CICS',cr:1,tag:'t-elec'},
-      {name:'Business minor — 5 courses',cr:15,tag:'t-elec'},
+      {name:'Open elective — the plan\'s only slack',cr:4,tag:'t-elec'},
     ]
   },
 ];
@@ -954,10 +1008,10 @@ var ROADMAP = [
     label:'Foundations',
     status:'active',
     courses:{
-      fall:['CICS 110 — Foundations of Programming','MATH 131 — Calculus I','PHYSICS 151 — General Physics I','PUBHLTH 160 — My Body, My Health','FYS 191MCS26 — Topics in CICS'],
-      spring:['CICS 160 — Object-Oriented Programming','MATH 132 — Calculus II','PHYSICS 152 — General Physics II','ENGLWRIT 112 — College Writing'],
+      fall:['CICS 110 — Foundations of Programming','MATH 132 — Calculus II (placed out of 131)','PHYSICS 151 — General Physics I','PUBHLTH 160 — My Body, My Health','FYS 191MCS26 — Topics in CICS'],
+      spring:['CICS 160 — Object-Oriented Programming','PHYSICS 152 — General Physics II','ENGLWRIT 112 — College Writing','ACCOUNTNG 233 — Accounting Principles'],
     },
-    priorities:['Sit the CICS exemption exam and the math placement test, then confirm the result on SPIRE before add/drop closes','If you place out of CICS 110, CICS 160 still carries the R2 Gen Ed — check that R1 is covered if MATH 131 drops off','PHYSICS 152 in spring closes the whole lab science requirement in year one','MATH 132 is the single most load-bearing course of the year — COMPSCI 240 and 250 both wait on it'],
+    priorities:['⚑ The Business Minor lottery opens 21 September and closes 2 October — that is this semester, and it is the single hardest deadline in year one','Sit the CICS exemption exam, then confirm the result on SPIRE before add/drop closes','With MATH 131 placed out, check that Gen Ed R1 is still covered by MATH 132','PHYSICS 152 in spring closes the whole lab science requirement in year one'],
     gpaGoal:'Year 1 is the lightest it gets — bank a high GPA now',
     crTarget:'32 cr across the year',
     tags:['foundation','gen-ed','math'],
@@ -981,7 +1035,7 @@ var ROADMAP = [
     status:'future',
     courses:{
       fall:['COMPSCI 240 — Reasoning Under Uncertainty','COMPSCI 250 — Introduction to Computation','COMPSCI 320 — Software Engineering (IE)','Social & Behavioural Science Gen Ed'],
-      spring:['COMPSCI 311 — Algorithms','COMPSCI 383 — Artificial Intelligence','COMPSCI 389 — Intro to Machine Learning','MATH 545 — outside elective','Business minor course'],
+      spring:['COMPSCI 311 — Algorithms','COMPSCI 383 — Artificial Intelligence','COMPSCI 389 — Intro to Machine Learning','MATH 545 — outside elective','MANAGMNT 301 — Principles of Management'],
     },
     priorities:['A B+ in COMPSCI 240 waives the STATISTC 315 prereq on COMPSCI 589 — worth chasing','A B+ in COMPSCI 311 is a hard gate for COMPSCI 514 next year','COMPSCI 320 pulls double duty: Integrative Experience and a 300+ elective','MATH 545 is both the outside elective slot and the COMPSCI 589 prereq','This is the year to find an AI/ML professor and ask about research'],
     gpaGoal:'The heaviest CS stretch — protect the GPA here above all',
@@ -993,10 +1047,10 @@ var ROADMAP = [
     label:'Advanced AI + Graduation',
     status:'future',
     courses:{
-      fall:['CICS 305 — Social Issues in Computing (JYW)','COMPSCI 485 — Applications of NLP','COMPSCI 514 — Algorithms for Data Science','Business minor courses'],
-      spring:['COMPSCI 589 — Machine Learning','Business minor courses','Open elective'],
+      fall:['CICS 305 — Social Issues in Computing (JYW)','COMPSCI 485 — Applications of NLP','COMPSCI 514 — Algorithms for Data Science','FINANCE 301','MARKETNG 301'],
+      spring:['COMPSCI 589 — Machine Learning','OIM 301 — Operations Management','Open elective'],
     },
-    priorities:['CICS 305 must be taken at UMass and does not count as an elective — do not leave it later than this','Spring is light on purpose: room for a thesis, a graduate AI course, or a heavier job search','Check the Academic Requirements Report on SPIRE at the start of every semester, not just at the end','Graduate applications, if you go that route, are due in December of senior fall'],
+    priorities:['CICS 305 must be taken at UMass and does not count as an elective — do not leave it later than this','OIM 301 closes the minor, but only if the statistics prereq is already done — verify that years earlier, not here','Check the Academic Requirements Report on SPIRE at the start of every semester, not just at the end','Graduate applications, if you go that route, are due in December of senior fall'],
     gpaGoal:'Finish strong — senior grades still land before most application deadlines',
     crTarget:'27 cr across the year',
     tags:['ai','capstone','graduation'],
