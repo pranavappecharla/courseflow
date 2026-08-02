@@ -18,9 +18,11 @@
   --tag-core-bg:#2a1a2a;--tag-core:#d070d8;
   --tag-math-bg:#1e2a12;--tag-math:#80d060;
   --tag-gen-bg:#2a1a0a;--tag-gen:#e09040;
-  --tag-ap-bg:#0a1e2a;--tag-ap:#50b8d8;
+  --tag-net-bg:#0a1e2a;--tag-net:#50b8d8;
   --tag-elec-bg:#2a1a1e;--tag-elec:#e07080;
   --tag-honors-bg:#2a2010;--tag-honors:#d8b040;
+  --tag-biz-bg:#0d2226;--tag-biz:#4fc3c8;
+  --tag-opt-bg:#1c1b22;--tag-opt:#8a83a0;
   --radius:10px;--radius-sm:6px;
   --accent:var(--maroon);--accent-bright:var(--maroon-bright);
 }
@@ -58,6 +60,52 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .progress-seg{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 .seg-item{font-size:0.58rem;color:var(--text3);letter-spacing:0.04em}
 .seg-item span{color:var(--gold)}
+
+
+/* ── DEGREE PROGRESS DASHBOARD ── */
+.prog-panel{margin-top:1.2rem;background:rgba(16,15,18,0.55);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.1rem 1.2rem;backdrop-filter:blur(6px)}
+.prog-top{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap}
+.prog-ring{flex-shrink:0;position:relative}
+.prog-ring svg{display:block}
+.prog-headline{flex:1;min-width:210px}
+.prog-eyebrow{font-size:0.56rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text3);margin-bottom:5px}
+.prog-big{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:800;color:var(--text);line-height:1.15}
+.prog-big em{font-style:normal;color:var(--gold)}
+.prog-sub{font-size:0.63rem;color:var(--text3);margin-top:5px;line-height:1.6}
+.prog-kpis{display:flex;gap:1.6rem;flex-wrap:wrap}
+.kpi{min-width:64px}
+.kpi-num{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;line-height:1;display:block}
+.kpi-lbl{font-size:0.52rem;letter-spacing:0.11em;text-transform:uppercase;color:var(--text3);margin-top:5px;display:block}
+
+/* composition bar */
+.comp-wrap{margin-top:1.1rem;padding-top:1rem;border-top:1px solid var(--border)}
+.comp-bar{display:flex;height:9px;border-radius:99px;overflow:hidden;background:var(--surface2)}
+.comp-seg{height:100%;transition:width 0.7s cubic-bezier(0.4,0,0.2,1);position:relative}
+.comp-seg+.comp-seg{border-left:1px solid rgba(9,8,10,0.55)}
+.comp-legend{display:flex;gap:0.55rem 1.1rem;flex-wrap:wrap;margin-top:0.7rem}
+.comp-item{display:inline-flex;align-items:center;gap:6px;font-size:0.57rem;color:var(--text3);letter-spacing:0.03em;white-space:nowrap}
+.comp-swatch{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+.comp-item b{color:var(--text2);font-weight:500}
+
+/* milestone track */
+.term-track{display:flex;gap:4px;margin-top:1.1rem;padding-top:1rem;border-top:1px solid var(--border);
+  overflow-x:auto;padding-bottom:4px}
+.term-node{flex:1;min-width:74px;background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-sm);padding:0.5rem 0.55rem;text-align:center;transition:all 0.2s;cursor:default}
+.term-node:hover{border-color:var(--gold-dim);background:var(--surface2);transform:translateY(-2px)}
+.term-node.current{border-color:var(--maroon-bright);background:rgba(136,28,40,0.12)}
+.term-name{font-size:0.53rem;color:var(--text3);letter-spacing:0.05em;white-space:nowrap}
+.term-node.current .term-name{color:var(--maroon-bright)}
+.term-cr{font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;color:var(--text2);margin-top:3px;display:block}
+.term-node.current .term-cr{color:var(--gold-bright)}
+.term-load{height:2px;border-radius:99px;margin-top:5px;background:var(--surface2);overflow:hidden}
+.term-load i{display:block;height:100%;border-radius:99px}
+@media(max-width:640px){
+  .prog-kpis{gap:1.1rem}
+  .prog-top{gap:1rem}
+  .term-node{min-width:66px}
+}
 
 /* ── MAIN ── */
 .main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem}
@@ -110,8 +158,11 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 
 /* ── COURSE INFO ── */
 .course-info{flex:1;min-width:0}
-.course-code{font-size:0.65rem;color:var(--text3);display:block;margin-bottom:2px;letter-spacing:0.03em}
-.course-name{font-size:0.8rem;color:var(--text);line-height:1.35}
+.course-code{display:inline-block;font-size:0.76rem;font-weight:600;color:var(--gold-bright);
+  letter-spacing:0.07em;margin-bottom:4px;padding:2px 8px;border-radius:4px;
+  background:rgba(200,169,81,0.09);border:1px solid rgba(200,169,81,0.22);line-height:1.3}
+.done .course-code{color:var(--text3);background:rgba(255,255,255,0.03);border-color:var(--border)}
+.course-name{display:block;font-size:0.76rem;color:var(--text2);line-height:1.4}
 .course-note{font-size:0.62rem;color:var(--text3);margin-top:3px;font-style:italic}
 .course-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}
 .tag{font-size:0.58rem;padding:2px 6px;border-radius:3px;font-weight:500;letter-spacing:0.04em;border:1px solid transparent}
@@ -119,9 +170,10 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .t-core{background:var(--tag-core-bg);color:var(--tag-core);border-color:rgba(208,112,216,0.15)}
 .t-math{background:var(--tag-math-bg);color:var(--tag-math);border-color:rgba(128,208,96,0.15)}
 .t-gen{background:var(--tag-gen-bg);color:var(--tag-gen);border-color:rgba(224,144,64,0.15)}
-.t-ap{background:var(--tag-ap-bg);color:var(--tag-ap);border-color:rgba(80,184,216,0.15)}
 .t-elec{background:var(--tag-elec-bg);color:var(--tag-elec);border-color:rgba(224,112,128,0.15)}
 .t-honors{background:var(--tag-honors-bg);color:var(--tag-honors);border-color:rgba(216,176,64,0.15)}
+.t-biz{background:var(--tag-biz-bg);color:var(--tag-biz);border-color:rgba(79,195,200,0.18)}
+.t-opt{background:var(--tag-opt-bg);color:var(--tag-opt);border-color:rgba(138,131,160,0.18)}
 .place-note{font-size:0.6rem;color:var(--gold-dim);margin-top:3px;letter-spacing:0.03em;font-style:italic}
 
 /* ── COURSE RIGHT ── */
@@ -182,9 +234,10 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .form-tag.t-core-tag.sel{border-color:var(--tag-core);color:var(--tag-core);background:var(--tag-core-bg)}
 .form-tag.t-math-tag.sel{border-color:var(--tag-math);color:var(--tag-math);background:var(--tag-math-bg)}
 .form-tag.t-gen-tag.sel{border-color:var(--tag-gen);color:var(--tag-gen);background:var(--tag-gen-bg)}
-.form-tag.t-ap-tag.sel{border-color:var(--tag-ap);color:var(--tag-ap);background:var(--tag-ap-bg)}
 .form-tag.t-elec-tag.sel{border-color:var(--tag-elec);color:var(--tag-elec);background:var(--tag-elec-bg)}
 .form-tag.t-honors-tag.sel{border-color:var(--tag-honors);color:var(--tag-honors);background:var(--tag-honors-bg)}
+.form-tag.t-biz-tag.sel{border-color:var(--tag-biz);color:var(--tag-biz);background:var(--tag-biz-bg)}
+.form-tag.t-opt-tag.sel{border-color:var(--tag-opt);color:var(--tag-opt);background:var(--tag-opt-bg)}
 .new-tag-row{display:flex;gap:6px;margin-top:6px}
 .new-tag-row input{flex:1;font-size:0.68rem;padding:4px 8px}
 .new-tag-row button{background:none;border:1px solid var(--border);color:var(--text3);border-radius:3px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:0.62rem;padding:4px 8px;transition:all 0.1s;white-space:nowrap}
@@ -221,7 +274,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .cb-card.cb-cs::before{background:linear-gradient(90deg,var(--tag-cs),transparent)}
 .cb-card.cb-core::before{background:linear-gradient(90deg,var(--tag-core),transparent)}
 .cb-card.cb-math::before{background:linear-gradient(90deg,var(--tag-math),transparent)}
-.cb-card.cb-sci::before{background:linear-gradient(90deg,var(--tag-ap),transparent)}
+.cb-card.cb-sci::before{background:linear-gradient(90deg,var(--tag-net),transparent)}
 .cb-card.cb-gen::before{background:linear-gradient(90deg,var(--tag-gen),transparent)}
 .cb-card.cb-elec::before{background:linear-gradient(90deg,var(--tag-elec),transparent)}
 .cb-card.cb-free::before{background:linear-gradient(90deg,var(--text3),transparent)}
@@ -232,7 +285,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .cb-cs .cb-bar-fill{background:linear-gradient(90deg,var(--tag-cs),#5070c8)}
 .cb-core .cb-bar-fill{background:linear-gradient(90deg,var(--tag-core),#a050b8)}
 .cb-math .cb-bar-fill{background:linear-gradient(90deg,var(--tag-math),#60b040)}
-.cb-sci .cb-bar-fill{background:linear-gradient(90deg,var(--tag-ap),#3098b8)}
+.cb-sci .cb-bar-fill{background:linear-gradient(90deg,var(--tag-net),#3098b8)}
 .cb-gen .cb-bar-fill{background:linear-gradient(90deg,var(--tag-gen),#c07020)}
 .cb-elec .cb-bar-fill{background:linear-gradient(90deg,var(--tag-elec),#c05060)}
 .cb-free .cb-bar-fill{background:linear-gradient(90deg,var(--text3),#504060)}
@@ -297,12 +350,17 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .catalog-table td{padding:0.55rem 0.8rem;border-bottom:1px solid var(--border);vertical-align:middle}
 .catalog-table tr:last-child td{border-bottom:none}
 .catalog-table tr:hover td{background:var(--surface)}
-.c-code{color:var(--text3);white-space:nowrap;font-size:0.65rem}
+.c-code{color:var(--gold-bright);white-space:nowrap;font-size:0.72rem;font-weight:600;letter-spacing:0.06em}
 .c-name{color:var(--text);line-height:1.3}
 .c-cr{color:var(--text3);text-align:center;white-space:nowrap}
 .c-prereq{color:var(--text3);font-size:0.62rem;max-width:200px}
 .catalog-add-btn{background:none;border:1px solid var(--border-bright);color:var(--text3);font-family:'JetBrains Mono',monospace;font-size:0.6rem;padding:2px 8px;border-radius:3px;cursor:pointer;transition:all 0.1s;white-space:nowrap}
 .catalog-add-btn:hover{border-color:var(--maroon-bright);color:var(--maroon-bright)}
+
+.track-item .ti-code,.cb-item-name strong{font-weight:600;letter-spacing:0.05em;color:var(--gold-bright)}
+.chain-node .cn-code{font-size:0.72rem;font-weight:600;letter-spacing:0.05em;color:var(--gold-bright)}
+.chain-node.gap .cn-code{color:var(--orange)}
+.ge-course{font-weight:600;letter-spacing:0.05em;color:var(--gold-bright);font-size:0.7rem}
 
 /* ── SECTION LABELS ── */
 .section-label{font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text3);margin-bottom:0.8rem;margin-top:1.5rem;display:flex;align-items:center;gap:8px}
@@ -316,6 +374,132 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .req-table th{text-align:left;color:var(--text3);font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;padding:4px 6px;border-bottom:1px solid var(--border);font-weight:500}
 .req-table td{padding:5px 6px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
 .req-table tr:last-child td{border-bottom:none}
+
+
+/* ── GEN ED BOARD ── */
+.ge-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0.8rem;margin-bottom:1.5rem}
+.ge-sum-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;text-align:center;position:relative;overflow:hidden}
+.ge-sum-card::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px}
+.ge-sum-card.ok::after{background:var(--green)}
+.ge-sum-card.plan::after{background:var(--gold)}
+.ge-sum-card.risk::after{background:var(--orange)}
+.ge-sum-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;line-height:1;display:block}
+.ge-sum-card.ok .ge-sum-num{color:var(--green)}
+.ge-sum-card.plan .ge-sum-num{color:var(--gold)}
+.ge-sum-card.risk .ge-sum-num{color:var(--orange)}
+.ge-sum-lbl{font-size:0.58rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-top:6px}
+.ge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:0.9rem;margin-bottom:1.5rem}
+.ge-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:0.95rem 1rem;position:relative;transition:border-color 0.2s,transform 0.2s}
+.ge-card:hover{border-color:var(--border-bright);transform:translateY(-2px)}
+.ge-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:var(--radius) 0 0 var(--radius)}
+.ge-card.ok::before{background:var(--green)}
+.ge-card.plan::before{background:var(--gold)}
+.ge-card.risk::before{background:var(--orange)}
+.ge-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px}
+.ge-code{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.04em}
+.ge-card.ok .ge-code{color:var(--green)}
+.ge-card.plan .ge-code{color:var(--gold)}
+.ge-card.risk .ge-code{color:var(--orange)}
+.ge-state{font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;padding:2px 7px;border-radius:99px;white-space:nowrap;border:1px solid}
+.ge-card.ok .ge-state{color:var(--green);border-color:rgba(80,200,120,0.3);background:rgba(80,200,120,0.08)}
+.ge-card.plan .ge-state{color:var(--gold);border-color:rgba(200,169,81,0.3);background:rgba(200,169,81,0.07)}
+.ge-card.risk .ge-state{color:var(--orange);border-color:rgba(224,128,64,0.3);background:rgba(224,128,64,0.08)}
+.ge-name{font-size:0.72rem;color:var(--text);line-height:1.35;margin-bottom:8px}
+.ge-course{font-size:0.65rem;color:var(--text2);letter-spacing:0.02em}
+.ge-term{font-size:0.58rem;color:var(--text3);margin-top:3px}
+.ge-note{font-size:0.6rem;color:var(--text3);margin-top:7px;padding-top:7px;border-top:1px dashed var(--border);line-height:1.5;font-style:italic}
+
+/* ── PREREQ CHAIN MAP ── */
+.chain-block{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.2rem;margin-bottom:1rem;transition:border-color 0.2s}
+.chain-block:hover{border-color:var(--border-bright)}
+.chain-title{display:flex;align-items:center;gap:10px;margin-bottom:0.9rem;flex-wrap:wrap}
+.chain-name{font-family:'Syne',sans-serif;font-size:0.85rem;font-weight:700;color:var(--gold)}
+.chain-flag{font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;padding:2px 8px;border-radius:99px;border:1px solid rgba(224,80,80,0.3);color:var(--red);background:rgba(224,80,80,0.07)}
+.chain-desc{font-size:0.63rem;color:var(--text3);line-height:1.6;margin-bottom:0.9rem}
+.chain-flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;row-gap:10px}
+.chain-node{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.55rem 0.75rem;min-width:118px;transition:border-color 0.15s,background 0.15s}
+.chain-node:hover{border-color:var(--gold-dim);background:var(--surface2)}
+.chain-node.start{border-color:rgba(112,144,232,0.35)}
+.chain-node.goal{border-color:rgba(200,169,81,0.4);background:rgba(200,169,81,0.05)}
+.chain-node.gap{border-color:rgba(224,128,64,0.45);background:rgba(224,128,64,0.06);border-style:dashed}
+.cn-code{font-size:0.68rem;color:var(--text);letter-spacing:0.02em;display:block;font-weight:500}
+.cn-term{font-size:0.53rem;color:var(--text3);margin-top:3px;display:block;letter-spacing:0.04em}
+.chain-arrow{display:flex;align-items:center;color:var(--border-bright);padding:0 7px;font-size:0.8rem;flex-shrink:0}
+.chain-plus{display:flex;align-items:center;color:var(--text3);padding:0 7px;font-size:0.7rem;flex-shrink:0}
+.chain-legend{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:0.6rem;color:var(--text3);margin-bottom:1.2rem;padding:0.7rem 0.9rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm)}
+.chain-legend span{display:inline-flex;align-items:center;gap:6px}
+.lg-dot{width:9px;height:9px;border-radius:2px;border:1px solid}
+.lg-start{border-color:rgba(112,144,232,0.5);background:var(--surface)}
+.lg-goal{border-color:rgba(200,169,81,0.5);background:rgba(200,169,81,0.15)}
+.lg-gap{border-color:rgba(224,128,64,0.6);background:rgba(224,128,64,0.15);border-style:dashed}
+
+
+/* ── POLISH ── */
+.panel.active{animation:panelIn 0.35s cubic-bezier(0.22,1,0.36,1) both}
+@keyframes panelIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.year-block:nth-child(1){animation-delay:0s}
+.year-block:nth-child(2){animation-delay:0.06s}
+.year-block:nth-child(3){animation-delay:0.12s}
+.year-block:nth-child(4){animation-delay:0.18s}
+
+/* semester load meter in the card footer */
+.load-meter{display:flex;align-items:center;gap:7px;flex:1;max-width:130px}
+.load-track{flex:1;height:3px;background:var(--surface2);border-radius:99px;overflow:hidden}
+.load-fill{height:100%;border-radius:99px;transition:width 0.6s cubic-bezier(0.4,0,0.2,1)}
+.load-fill.light{background:linear-gradient(90deg,var(--blue),#7ab8ff)}
+.load-fill.normal{background:linear-gradient(90deg,var(--maroon),var(--gold-bright))}
+.load-fill.heavy{background:linear-gradient(90deg,var(--orange),#ffb070)}
+.load-tag{font-size:0.53rem;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap}
+.load-tag.light{color:var(--blue)}
+.load-tag.normal{color:var(--gold)}
+.load-tag.heavy{color:var(--orange)}
+
+/* semester header gets a term chip */
+.sem-card{position:relative}
+.sem-card::after{content:'';position:absolute;inset:0;border-radius:var(--radius);pointer-events:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.02);}
+.sem-card:hover{box-shadow:0 8px 28px rgba(0,0,0,0.35)}
+
+/* tables read better with zebra + hover */
+.req-table tbody tr{transition:background 0.12s}
+.req-table tbody tr:nth-child(even){background:rgba(255,255,255,0.012)}
+.req-table tbody tr:hover{background:rgba(200,169,81,0.05)}
+.req-table td,.req-table th{vertical-align:top}
+
+/* info boxes lift slightly */
+.info-box{transition:border-color 0.2s,transform 0.2s}
+.info-box:hover{border-color:var(--border-bright)}
+
+/* keyboard focus visibility */
+.tab-btn:focus-visible,.hdr-link:focus-visible,.edit-btn:focus-visible,
+.add-course-btn:focus-visible,.btn-primary:focus-visible,.btn-secondary:focus-visible{
+  outline:2px solid var(--gold);outline-offset:2px}
+
+/* scrollbar */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:99px;border:2px solid var(--bg2)}
+::-webkit-scrollbar-thumb:hover{background:var(--border-bright)}
+
+/* the chain map scrolls horizontally on narrow screens rather than wrapping badly */
+@media(max-width:640px){
+  .chain-flow{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px}
+  .chain-node{flex-shrink:0}
+  .header-title{font-size:1.6rem}
+  .main{padding:1.5rem 1rem 3rem}
+}
+
+/* print */
+@media print{
+  body{background:#fff;color:#000}
+  body::before,.header-glow,.header-glow2,.header-grid-bg{display:none}
+  .nav-tabs,.add-course-btn,.edit-btn,.hdr-link,.modal-overlay,.toast{display:none!important}
+  .panel{display:block!important;page-break-before:always}
+  .panel:first-of-type{page-break-before:auto}
+  .sem-card,.info-box,.chain-block,.ge-card{border-color:#bbb;background:#fff}
+  .header-title{-webkit-text-fill-color:#000;color:#000}
+  .course-name,.ge-name,.cn-code{color:#000}
+}
 
 /* ── TOAST ── */
 .toast{position:fixed;bottom:2rem;right:2rem;background:var(--surface2);border:1px solid var(--border-bright);border-radius:var(--radius-sm);padding:0.6rem 1.2rem;font-size:0.72rem;color:var(--text);z-index:9999;transform:translateY(20px);opacity:0;transition:all 0.25s;pointer-events:none}
@@ -355,24 +539,34 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
           <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
           Portfolio
         </a>
-        <div class="stat-pill maroon"><span class="num" id="hdrTotal">120</span><span class="lbl">Total Cr</span></div>
-        <div class="stat-pill"><span class="num" id="hdrCompleted">0</span><span class="lbl">Done Cr</span></div>
-        <div class="stat-pill green"><span class="num" id="hdrDone">0</span><span class="lbl">Done</span></div>
-        <div class="stat-pill blue"><span class="num" id="hdrSems">8</span><span class="lbl">Semesters</span></div>
+        <div class="stat-pill maroon"><span class="num" id="hdrTotal">129</span><span class="lbl">Planned Cr</span></div>
+        <div class="stat-pill green"><span class="num" id="hdrDone">0</span><span class="lbl">Courses Done</span></div>
       </div>
     </div>
-    <div class="progress-ring-wrap">
-      <svg width="72" height="72" viewBox="0 0 72 72">
-        <circle class="ring-bg" cx="36" cy="36" r="30" fill="none" stroke-width="5"/>
-        <circle class="ring-fill" cx="36" cy="36" r="30" fill="none" stroke-width="5" id="ringCircle" stroke-dasharray="188.5" stroke-dashoffset="188.5"/>
-        <text class="ring-label" x="36" y="33" id="ringPct">0%</text>
-        <text class="ring-sub" x="36" y="46">complete</text>
-      </svg>
-      <div class="progress-details">
-        <div style="font-size:0.62rem;color:var(--text3);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px">Degree Progress</div>
-        <div class="progress-bar-track"><div class="progress-bar-fill" id="hdrBar"></div></div>
-        <div class="progress-seg" id="hdrSeg"></div>
+    <div class="prog-panel">
+      <div class="prog-top">
+        <div class="prog-ring">
+          <svg width="86" height="86" viewBox="0 0 86 86">
+            <circle class="ring-bg" cx="43" cy="43" r="36" fill="none" stroke-width="6"/>
+            <circle class="ring-fill" cx="43" cy="43" r="36" fill="none" stroke-width="6" id="ringCircle"
+                    stroke-dasharray="226.2" stroke-dashoffset="226.2"/>
+            <text class="ring-label" x="43" y="40" id="ringPct">0%</text>
+            <text class="ring-sub" x="43" y="54">complete</text>
+          </svg>
+        </div>
+        <div class="prog-headline">
+          <div class="prog-eyebrow">Degree Progress</div>
+          <div class="prog-big" id="progBig">0 of 129 credits done</div>
+          <div class="prog-sub" id="progSub"></div>
+        </div>
+        <div class="prog-kpis" id="progKpis"></div>
       </div>
+      <div class="comp-wrap">
+        <div class="prog-eyebrow">Credit Composition</div>
+        <div class="comp-bar" id="compBar"></div>
+        <div class="comp-legend" id="compLegend"></div>
+      </div>
+      <div class="term-track" id="termTrack"></div>
     </div>
   </div>
 </div>
@@ -385,6 +579,8 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
     <button class="tab-btn" onclick="switchTab('credits',this)">🎯 Credits</button>
     <button class="tab-btn" onclick="switchTab('roadmap',this)">🗺 Roadmap</button>
     <button class="tab-btn" onclick="switchTab('reqtrack',this)">📌 Req Track</button>
+    <button class="tab-btn" onclick="switchTab('gened',this)">🎓 Gen Ed</button>
+    <button class="tab-btn" onclick="switchTab('prereq',this)">🔗 Prereq Map</button>
     <button class="tab-btn" onclick="switchTab('catalog',this)">📚 CS Catalog</button>
     <button class="tab-btn" onclick="switchTab('info',this)">ℹ Info</button>
   </div>
@@ -407,20 +603,48 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 
   <!-- CREDITS BREAKDOWN -->
   <div class="panel" id="panel-credits">
-    <div class="section-label">Credit Breakdown — 120 Credit Path to Graduation</div>
+    <div class="section-label">Credit Breakdown — 129 Planned vs 120 Required</div>
     <div class="cb-summary-banner" id="cbSummaryBanner"></div>
     <div class="credit-breakdown-grid" id="creditBreakdownGrid"></div>
   </div>
 
   <!-- ROADMAP -->
   <div class="panel" id="panel-roadmap">
-    <div class="section-label">4-Year Roadmap — AI / Machine Learning Track</div>
+    <div class="section-label">4-Year Roadmap — 129 Credits, 8 Semesters</div>
     <div id="roadmapContainer"></div>
   </div>
 
   <!-- REQ TRACK -->
   <div class="panel" id="panel-reqtrack">
     <div class="track-grid" id="trackGrid"></div>
+  </div>
+
+  <!-- GEN ED BOARD -->
+  <div class="panel" id="panel-gened">
+    <div class="section-label">General Education &amp; University Requirements</div>
+    <div class="ge-summary" id="geSummary"></div>
+    <div class="ge-grid" id="geGrid"></div>
+    <div class="info-box">
+      <div class="ib-title">Standing Limits</div>
+      <ul style="padding-left:1rem;line-height:1.9;font-size:0.68rem;color:var(--text2)">
+        <li>At most <strong>3 Interdisciplinary (I) or Science Interdisciplinary (SI)</strong> courses may count — PUBHLTH 160 is one; JAPANESE 135 would be a second</li>
+        <li>At most <strong>1 Computer Science course</strong> may count toward Gen Ed — CICS 110 is already using it</li>
+        <li><strong>No Pass/Fail</strong> course counts toward Gen Ed or the major</li>
+        <li>The <strong>Integrative Experience</strong> and <strong>Junior Year Writing</strong> must both be taken at UMass Amherst</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PREREQ MAP -->
+  <div class="panel" id="panel-prereq">
+    <div class="section-label">Prerequisite Chains — what unlocks what</div>
+    <div class="chain-legend">
+      <span><i class="lg-dot lg-start"></i> Entry point</span>
+      <span><i class="lg-dot lg-goal"></i> Counts toward the upper-level eight</span>
+      <span><i class="lg-dot lg-gap"></i> Unresolved — not yet in the plan</span>
+      <span>→ requires &nbsp;·&nbsp; + taken together</span>
+    </div>
+    <div id="chainList"></div>
   </div>
 
   <!-- CS CATALOG -->
@@ -460,6 +684,35 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   <!-- INFO -->
   <div class="panel" id="panel-info">
 
+    <div class="section-label">Four Things Still Unresolved</div>
+    <div class="info-box" style="margin-bottom:1.5rem;border-color:rgba(224,128,64,0.35)">
+      <table class="req-table">
+        <thead><tr><th>Open item</th><th>Why it matters</th><th>Decide by</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--orange)">Statistics prerequisite</strong></td>
+            <td>OIM 301 will not let you enrol without one, and it sits <em>outside</em> the minor's 15 credits. MATH 233 does not cover it. Two candidates already near your plan: <strong>STATISTC 315</strong> (which the ARR accepts in place of MATH 233 — one course, two requirements) and <strong>COMPSCI 240</strong>. Neither is confirmed against Isenberg's qualifying list.</td>
+            <td>Before you register for Spring 2028</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--orange)">JAPANESE 135 vs 147</strong></td>
+            <td>Only <strong>147 (AT+DG)</strong> fills your Arts &amp; Literature line. <strong>135 is I+DG</strong> — pick it and Arts &amp; Literature stays open, needing a separate course and 4 more credits. Both cover DG, which HISTORY 116 already covers anyway.</td>
+            <td>Before Spring 2029 registration</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--orange)">MATH 131 exemption</strong></td>
+            <td>You are going straight into MATH 132. Two things to confirm with advising: that the ARR's "Take Math 131" line closes via exemption rather than reopening, and that <strong>Gen Ed R1</strong> transfers to MATH 132 — the report currently credits MATH 131 for it. The exemption also earns no credit, which is why the plan totals 129 rather than 133.</td>
+            <td>Before add/drop closes this semester</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--orange)">NUTRITN 130 access</strong></td>
+            <td>It carries Gen Ed BS, which is exactly what you need — but UMass listings show it restricted to Nutrition majors in some terms. It is your only Biological Science course, so a closed section means finding a replacement.</td>
+            <td>Before Spring 2027 registration</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="section-label">Where You Actually Stand — from the Academic Requirements Report, 1 Aug 2026</div>
     <div class="two-col" style="margin-bottom:1.5rem">
       <div class="info-box">
@@ -467,14 +720,14 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <table class="req-table">
           <thead><tr><th>Requirement</th><th>Cleared by</th></tr></thead>
           <tbody>
-            <tr><td>Basic Math (R1)</td><td>MATH 131</td></tr>
+            <tr><td>Basic Math (R1)</td><td style="color:var(--orange)">MATH 131 — being exempted, verify R1 moves to MATH 132</td></tr>
             <tr><td>Analytical Reasoning (R2)</td><td>CICS 110</td></tr>
             <tr><td>Physical Science (PS)</td><td>PHYSICS 151</td></tr>
             <tr><td>Social World (AL/AT/I/SB/SI)</td><td>PUBHLTH 160</td></tr>
             <tr><td>Diversity — one DU course</td><td>PUBHLTH 160</td></tr>
             <tr><td>DG or DU in first year of residence</td><td>PUBHLTH 160</td></tr>
             <tr><td>CS major — take CICS 110</td><td>CICS 110</td></tr>
-            <tr><td>Math — take MATH 131</td><td>MATH 131</td></tr>
+            <tr><td>Math — take MATH 131</td><td style="color:var(--orange)">Clearing by exemption exam — confirm the ARR line closes</td></tr>
             <tr><td>Science — PHYSICS 151 or 181</td><td>PHYSICS 151</td></tr>
           </tbody>
         </table>
@@ -493,11 +746,11 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
             <tr><td>Historical Studies (HS)</td><td>4 units</td></tr>
             <tr><td>Social &amp; Behavioural Science (SB)</td><td>4 units</td></tr>
             <tr><td>Diversity — one DG course</td><td>1 course</td></tr>
-            <tr><td>Integrative Experience</td><td>CS 320, 325 or 326</td></tr>
-            <tr><td>CS major courses</td><td>160, 210, 220, 230, 240, 250, 305</td></tr>
-            <tr><td>Upper-level CS</td><td>311 + 7 electives</td></tr>
-            <tr><td>Math</td><td>132, 235, and 233 or STATISTC 315</td></tr>
-            <tr><td>Lab science, 2nd course</td><td>PHYSICS 152 or equivalent</td></tr>
+            <tr><td>Integrative Experience</td><td>COMPSCI 320 — Fall 2028</td></tr>
+            <tr><td>CS major courses</td><td>160, 210, 198C, 220, 230, 240, 250, 305</td></tr>
+            <tr><td>Upper-level CS</td><td>311 + 7 more — all chosen</td></tr>
+            <tr><td>Math</td><td>132 (Fall 2026), 235, 233 — 131 by exemption</td></tr>
+            <tr><td>Lab science, 2nd course</td><td>CICS 256 — Fall 2028</td></tr>
           </tbody>
         </table>
       </div>
@@ -509,13 +762,13 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <thead><tr><th>ARR line</th><th>What it wants</th><th>Your AI-track pick</th></tr></thead>
         <tbody>
           <tr><td>9</td><td>COMPSCI 311 — no substitutes</td><td>COMPSCI 311 — Algorithms</td></tr>
-          <tr><td>10</td><td>Three CompSci electives numbered <strong>400+</strong> (≥9 cr)</td><td>485 NLP · 514 Algorithms for Data Science · 589 Machine Learning</td></tr>
-          <tr><td>11</td><td>Three CompSci electives numbered <strong>300+</strong> (≥9 cr), not CICS 305</td><td>383 AI · 389 Intro to ML · 320 Software Engineering</td></tr>
-          <tr><td>12a <em>or</em> 12b</td><td>One more 300+ CompSci, <strong>or</strong> one approved outside elective</td><td>MATH 545 (12b route)</td></tr>
+          <tr><td>10</td><td>Three CompSci electives numbered <strong>400+</strong> (≥9 cr)</td><td>445 Information Systems · 453 Computer Networks · 589 Machine Learning — 9 cr exactly</td></tr>
+          <tr><td>11</td><td>Three CompSci electives numbered <strong>300+</strong> (≥9 cr), not CICS 305</td><td>320 Software Engineering · 377 Operating Systems · 383 Artificial Intelligence — 11 cr</td></tr>
+          <tr><td>12a <em>or</em> 12b</td><td>One more 300+ CompSci, <strong>or</strong> one approved outside elective</td><td>ECE 547 Security Engineering (12b route)</td></tr>
           <tr><td>13</td><td>At least <strong>5 of the 8</strong> taken at UMass Amherst</td><td>All 8 at UMass ✓</td></tr>
         </tbody>
       </table>
-      <div style="margin-top:0.8rem;font-size:0.65rem;color:var(--text3)">COMPSCI 320 counts twice over: it satisfies the Integrative Experience and still fills a 300+ elective slot. CICS 305 does the opposite — required, but it does not count as an elective. Any CompSci course numbered '90–'99 needs UPD approval, and at most 3 credits of 499T/P or 396/496/596 may count.</div>
+      <div style="margin-top:0.8rem;font-size:0.65rem;color:var(--text3)">The 400+ bucket lands on exactly 9 credits — the minimum. If any one of 445, 453 or 589 falls through, you need another 400+ course, not just any elective. COMPSCI 320 counts twice over: Integrative Experience <em>and</em> a 300+ slot. CICS 305 does the opposite — required, but never an elective. Beyond the eight you are also taking COMPSCI 345 (to unlock 445) and, optionally, 485, 520 and 532.</div>
     </div>
 
     <div class="section-label">Approved Outside Electives — may replace one CS 300+</div>
@@ -523,40 +776,44 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
       <table class="req-table">
         <thead><tr><th>Code</th><th>Course</th><th>Why it might suit you</th></tr></thead>
         <tbody>
-          <tr><td>MATH 545</td><td>Linear Algebra for Applied Mathematics</td><td>⭐ Also the stated prereq for COMPSCI 589</td></tr>
+          <tr><td><strong>ECE 547</strong></td><td>Security Engineering</td><td>⭐ <strong>Your pick</strong> — fills ARR line 12b, Spring 2030</td></tr>
+          <tr><td>MATH 545</td><td>Linear Algebra for Applied Mathematics</td><td>Backup. Also the stated prereq for COMPSCI 589 — though B+ in MATH 233 + 235 waives that</td></tr>
           <tr><td>MATH 551</td><td>Introduction to Scientific Computing</td><td>Numerical methods behind ML</td></tr>
           <tr><td>MATH 552</td><td>Applications of Scientific Computing</td><td>Follow-on to 551</td></tr>
           <tr><td>MATH 411</td><td>Introduction to Abstract Algebra I</td><td>Theory depth</td></tr>
           <tr><td>MATH 571</td><td>Introduction to Mathematical Cryptography</td><td>If security ever pulls you back</td></tr>
           <tr><td>INFO 324</td><td>Introduction to Clinical Health Data Science</td><td>Applied data science breadth</td></tr>
           <tr><td>LINGUIST 301</td><td>Introduction to Linguistic Theory</td><td>Useful grounding for NLP work</td></tr>
-          <tr><td>ECE 547</td><td>Security Engineering</td><td>Systems and security angle</td></tr>
           <tr><td>ECE 668</td><td>Computer Architecture</td><td>Hardware depth</td></tr>
         </tbody>
       </table>
       <div style="margin-top:0.8rem;font-size:0.65rem;color:var(--text3)">List taken verbatim from the BS-CS tracking form revised 18 March 2026. Only <strong>one</strong> of these can count toward the major.</div>
     </div>
 
-    <div class="section-label">AI/ML Elective Menu — what CICS actually offers</div>
+    <div class="section-label">Your Upper-Level Track — and what you passed over</div>
     <div class="info-box" style="margin-bottom:1.5rem">
       <table class="req-table">
         <thead><tr><th>Code</th><th>Course</th><th>Cr</th><th>Level</th><th>Gate to clear first</th></tr></thead>
         <tbody>
-          <tr><td>COMPSCI 383</td><td>Artificial Intelligence</td><td>3</td><td>300+</td><td>CICS 210 + COMPSCI 240</td></tr>
-          <tr><td>COMPSCI 389</td><td>Intro to Machine Learning</td><td>3</td><td>300+</td><td>CICS 210 + 240 + MATH 132</td></tr>
-          <tr><td>COMPSCI 328</td><td>Mobile Health Sensing &amp; Analytics</td><td>3</td><td>300+</td><td>CICS 210</td></tr>
-          <tr><td>COMPSCI 485</td><td>Applications of NLP</td><td>3</td><td>400+</td><td>COMPSCI 220 + 240</td></tr>
-          <tr><td>COMPSCI 514</td><td>Algorithms for Data Science</td><td>3</td><td>400+</td><td>COMPSCI 240 + 311, both B+</td></tr>
-          <tr><td>COMPSCI 571</td><td>Data Visualization &amp; Exploration</td><td>3</td><td>400+</td><td>COMPSCI 220, 230 or 326</td></tr>
-          <tr><td>COMPSCI 589</td><td>Machine Learning</td><td>3</td><td>400+</td><td>MATH 545 + COMPSCI 240 + STATISTC 315</td></tr>
-          <tr><td>COMPSCI 590OP</td><td>Applied Numerical Optimization</td><td>3</td><td>400+</td><td>Python, probability, linear algebra</td></tr>
-          <tr><td>COMPSCI 682</td><td>Neural Networks: A Modern Introduction</td><td>3</td><td>600</td><td>Graduate — needs permission</td></tr>
-          <tr><td>COMPSCI 687</td><td>Reinforcement Learning</td><td>3</td><td>600</td><td>Graduate — 589/689 assumed</td></tr>
-          <tr><td>COMPSCI 690S</td><td>AI Alignment</td><td>3</td><td>600</td><td>Graduate — needs permission</td></tr>
-          <tr><td>COMPSCI 684</td><td>Trustworthy and Responsible AI</td><td>3</td><td>600</td><td>Graduate — NLP + ML + security assumed</td></tr>
+          <tr><td>COMPSCI 320</td><td>Software Engineering</td><td>4</td><td>✅ In plan</td><td>Fall 2028 · also the IE requirement</td></tr>
+          <tr><td>COMPSCI 345</td><td>Practice &amp; Applications of Data Management</td><td>3</td><td>✅ In plan</td><td>Fall 2028 · unlocks COMPSCI 445</td></tr>
+          <tr><td>COMPSCI 311</td><td>Introduction to Algorithms</td><td>4</td><td>✅ In plan</td><td>Spring 2029 · required by name</td></tr>
+          <tr><td>COMPSCI 377</td><td>Operating Systems</td><td>4</td><td>✅ In plan</td><td>Spring 2029</td></tr>
+          <tr><td>COMPSCI 383</td><td>Artificial Intelligence</td><td>3</td><td>✅ In plan</td><td>Spring 2029</td></tr>
+          <tr><td>COMPSCI 445</td><td>Information Systems</td><td>3</td><td>✅ In plan</td><td>Fall 2029 · longest prereq chain</td></tr>
+          <tr><td>COMPSCI 453</td><td>Computer Networks</td><td>3</td><td>✅ In plan</td><td>Fall 2029</td></tr>
+          <tr><td>COMPSCI 589</td><td>Machine Learning</td><td>3</td><td>✅ In plan</td><td>Fall 2029 · both prereqs waivable</td></tr>
+          <tr><td>ECE 547</td><td>Security Engineering</td><td>3</td><td>✅ In plan</td><td>Spring 2030 · outside elective</td></tr>
+          <tr><td>COMPSCI 485</td><td>Applications of NLP</td><td>3</td><td>◇ Optional</td><td>Spring 2030 · could move earlier</td></tr>
+          <tr><td>COMPSCI 520</td><td>Theory &amp; Practice of Software Engineering</td><td>3</td><td>◇ Optional</td><td>Spring 2030</td></tr>
+          <tr><td>COMPSCI 532</td><td>Systems for Data Science</td><td>3</td><td>◇ Optional</td><td>Spring 2030 · needs 377 + 445</td></tr>
+          <tr><td>COMPSCI 389</td><td>Intro to Machine Learning</td><td>3</td><td>— not taken</td><td>Would overlap heavily with 589</td></tr>
+          <tr><td>COMPSCI 514</td><td>Algorithms for Data Science</td><td>3</td><td>— not taken</td><td>Needs B+ in both 240 and 311</td></tr>
+          <tr><td>COMPSCI 682</td><td>Neural Networks: A Modern Introduction</td><td>3</td><td>— not taken</td><td>Graduate. A swap option for an optional slot</td></tr>
+          <tr><td>COMPSCI 690S</td><td>AI Alignment</td><td>3</td><td>— not taken</td><td>Graduate. A swap option for an optional slot</td></tr>
         </tbody>
       </table>
-      <div style="margin-top:0.8rem;font-size:0.65rem;color:var(--text3)">600-level courses are allowed toward the major but often carry roughly twice the workload of an undergraduate course. Two useful waivers on COMPSCI 589: MATH 545 can be skipped with MATH 235 <em>and</em> 233 both at B+ or better, and STATISTC 315/515 can be skipped with a B+ in COMPSCI 240.</div>
+      <div style="margin-top:0.8rem;font-size:0.65rem;color:var(--text3)">Your track spans AI, systems, networks, data and security rather than specialising — broad enough for most graduate applications and most industry roles. The three optional Spring 2030 courses are the natural place to swap in a 600-level AI course if your grades and interests point that way. Note the two waivers on COMPSCI 589: MATH 545 is skipped with B+ in MATH 233 <em>and</em> 235, and STATISTC 315/515 is skipped with a B+ in COMPSCI 240 — which is why neither appears in your plan.</div>
     </div>
 
     <div class="section-label">Rules Worth Not Forgetting</div>
@@ -590,16 +847,22 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
       </div>
     </div>
 
-    <div class="section-label">Placement Exams — what changes if you pass</div>
+    <div class="section-label">How the Load Is Balanced</div>
     <div class="info-box" style="margin-bottom:1.5rem">
       <table class="req-table">
-        <thead><tr><th>If you place out of</th><th>You take instead</th><th>Watch out for</th></tr></thead>
+        <thead><tr><th>Term</th><th>Cr</th><th>Shape of the semester</th></tr></thead>
         <tbody>
-          <tr><td>CICS 110</td><td>CICS 160</td><td>CICS 110 is currently your Gen Ed R2. CICS 160 also carries R2, so this one is safe — but confirm it lands on the ARR.</td></tr>
-          <tr><td>MATH 131</td><td>MATH 132</td><td>MATH 131 is currently your Gen Ed R1. Ask your advisor to confirm MATH 132 covers R1 before you drop 131.</td></tr>
+          <tr><td>Fall 2026</td><td>17</td><td>As enrolled, with MATH 132 in place of 131. One CS course, one math, two Gen Eds, one seminar.</td></tr>
+          <tr><td>Spring 2027</td><td>17</td><td>Linear Algebra pulled forward a year by the exemption. Accounting starts the minor.</td></tr>
+          <tr><td>Fall 2027</td><td>17</td><td>CICS 210 plus Multivariate Calc and two Gen Eds. The last easy term.</td></tr>
+          <tr><td>Spring 2028</td><td>15</td><td>⚠ Three core CS courses at once — the densest term. Management 301 is the deliberate light one beside them.</td></tr>
+          <tr><td>Fall 2028</td><td>15</td><td>Junior year opens: IE, data management, the physical computing lab.</td></tr>
+          <tr><td>Spring 2029</td><td>18</td><td>⚠ Algorithms, OS and AI together — the hardest term of the degree.</td></tr>
+          <tr><td>Fall 2029</td><td>15</td><td>Three 400-level electives plus JYW. Lighter on purpose.</td></tr>
+          <tr><td>Spring 2030</td><td>15</td><td>Nine of these credits are optional — but cutting all three drops you to exactly 120.</td></tr>
         </tbody>
       </table>
-      <div style="margin-top:0.8rem;font-size:0.65rem;color:var(--text3)">A placement exam gives placement, not credit. Passing both moves the whole plan up by roughly one semester and frees space later — but it also removes 8 credits from your total, so the free-elective slots at the end matter more, not less.</div>
+      <div style="margin-top:0.8rem;font-size:0.65rem;color:var(--text3)">Total: <strong>129 credits</strong> against a 120 minimum — a 9-credit cushion. That is smaller than it looks: the MATH 131 exemption clears the requirement but earns no credit, so it costs you 4 credits toward the 120. Drop all three optional Spring 2030 electives and you land on <strong>exactly 120</strong>, with no room for a dropped or failed course. Treat those three as part of the plan, not as spares.</div>
     </div>
 
     <div class="section-label">Business Minor — 15 credits, plus a statistics prerequisite</div>
@@ -650,13 +913,13 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
       <table class="req-table">
         <thead><tr><th>Option</th><th>Note</th></tr></thead>
         <tbody>
-          <tr><td>PHYSICS 151 (or 181) + PHYSICS 152 (or 182)</td><td>⭐ Your current path — 151 is already in progress</td></tr>
+          <tr><td><strong>PHYSICS 151 + CICS 256</strong></td><td>⭐ <strong>Your path.</strong> 151 is in progress; CICS 256 lands Fall 2028 and keeps the second science inside CICS</td></tr>
+          <tr><td>PHYSICS 152 (or 182)</td><td>The conventional second half — no longer needed if CICS 256 goes through</td></tr>
           <tr><td>CHEM 111 (or 121) + CHEM 112 (or 122)</td><td>Alternative pair</td></tr>
           <tr><td>GEOL 101 with lab (or 103/131, or 105/131)</td><td>Contact upd@cs.umass.edu for the ARR adjustment</td></tr>
-          <tr><td>CICS 256 — Make: Physical Computing</td><td>Counts as a lab science. Needs CICS 210 first.</td></tr>
         </tbody>
       </table>
-      <div style="margin-top:0.8rem;font-size:0.65rem;color:var(--text3)">Sources: BS-CS tracking form revised 18 March 2026, Academic Requirements Report dated 1 August 2026, and the CICS Fall 2026 course descriptions. Requirements can change — SPIRE is the only authority, and this planner is a convenience, not a substitute for it.</div>
+      <div style="margin-top:0.8rem;font-size:0.65rem;color:var(--text3)">Using CICS 256 here is the quietly clever move in this plan: it satisfies the CNS lab science requirement while keeping the credits inside CICS, which also helps the 60-units-in-CICS/CNS college rule. It does need CICS 210 first. Sources: BS-CS tracking form revised 18 March 2026, Academic Requirements Report dated 1 August 2026, and the CICS Fall 2026 course descriptions. Requirements can change — SPIRE is the only authority, and this planner is a convenience, not a substitute for it.</div>
     </div>
   </div>
 </div>
@@ -683,6 +946,8 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
           <span class="form-tag t-math-tag" data-tag="t-math" onclick="toggleTag(this)">Math</span>
           <span class="form-tag t-gen-tag" data-tag="t-gen" onclick="toggleTag(this)">Gen Ed</span>
           <span class="form-tag t-elec-tag" data-tag="t-elec" onclick="toggleTag(this)">Elective</span>
+          <span class="form-tag t-biz-tag" data-tag="t-biz" onclick="toggleTag(this)">Business</span>
+          <span class="form-tag t-opt-tag" data-tag="t-opt" onclick="toggleTag(this)">Optional</span>
           <span class="form-tag t-honors-tag" data-tag="t-honors" onclick="toggleTag(this)">Honors</span>
         </div>
         <div class="new-tag-row">
@@ -721,40 +986,40 @@ var CATALOG = [
   {code:'COMPSCI 250',name:'Introduction to Computation',cr:4,area:'core',prereq:'CICS 160 (or 210) and MATH 132, both with C or better',note:'Discrete math, induction, automata. Prereq for 311. Golin · Qiao'},
 
   // ── 300-LEVEL ──
-  {code:'CICS 305',name:'Social Issues in Computing (JYW)',cr:3,area:'se',prereq:'ENGLWRIT 112 (C+), COMPSCI 220, 230 and 240 (or 250)',note:'Satisfies Junior Year Writing. CICS primary majors only. Butler · Meï · Obara · Sutcliffe'},
+  {code:'CICS 305',name:'Social Issues in Computing (JYW)',cr:3,area:'se',prereq:'ENGLWRIT 112 (C+), COMPSCI 220, 230 and 240 (or 250)',note:'⭐ In your plan — Fall 2029. JYW, must be at UMass, does NOT count as an elective. Butler · Meï · Obara · Sutcliffe'},
   {code:'COMPSCI 311',name:'Introduction to Algorithms',cr:4,area:'theory',prereq:'CICS 210, and COMPSCI 250 or MATH 455, all with C or better',note:'⭐ Required for the BS. Divide and conquer, greedy, DP, NP-completeness. Parvini · Sheldon · Siegelmann'},
-  {code:'COMPSCI 320',name:'Software Engineering',cr:4,area:'se',prereq:'COMPSCI 220 with C or better',note:'⭐ AI track — 300+ elective AND the IE requirement. Semester-long team project. Endres · Perretta'},
+  {code:'COMPSCI 320',name:'Software Engineering',cr:4,area:'se',prereq:'COMPSCI 220 with C or better',note:'⭐ In your plan — Fall 2028. Counts as a 300+ elective AND the IE requirement. Endres · Perretta'},
   {code:'COMPSCI 325',name:'Intro to Human-Computer Interaction',cr:3,area:'se',prereq:'CICS 210 with C or better (juniors and seniors only)',note:'Design thinking, HCD, evaluation methods. Tuson'},
   {code:'COMPSCI 326',name:'Web Programming',cr:4,area:'se',prereq:'COMPSCI 220 with C or better',note:'Satisfies the IE requirement. HTTP, HTML5, CSS, JS, key-value stores, SQL. Richards'},
   {code:'COMPSCI 328',name:'Mobile Health Sensing & Analytics',cr:3,area:'ai',prereq:'CICS 210 with C or better',note:'Signal processing plus ML on phone sensor data. Team projects in Python. Ganesan'},
   {code:'COMPSCI 335',name:'Inside the Box: How Computers Work',cr:3,area:'systems',prereq:'COMPSCI 220 or 230 with C or better (juniors and seniors only)',note:'Logic circuits up to ARM assembly, caches, pipelines. Weems'},
-  {code:'COMPSCI 345',name:'Practice & Applications of Data Management',cr:3,area:'db',prereq:'CICS 210 with C or better',note:'Relational model, SQL, schema design, transactions. Anderson · Makhija · Meliou'},
+  {code:'COMPSCI 345',name:'Practice & Applications of Data Management',cr:3,area:'db',prereq:'CICS 210 with C or better',note:'⭐ In your plan — Fall 2028. Added specifically to unlock COMPSCI 445. Anderson · Makhija · Meliou'},
   {code:'COMPSCI 360',name:'Intro to Computer & Network Security',cr:3,area:'security',prereq:'COMPSCI 230 with C or better',note:'Ciphers, web and mobile security, prompt injection and jailbreaking. Datta'},
   {code:'COMPSCI 363',name:'Computer Crime Law',cr:3,area:'security',prereq:'COMPSCI 230 (C+) and ENGLWRIT 112 (C+) or the CW Gen Ed',note:'Case law, statutes, forensic investigation. Juniors and seniors only. Cable'},
   {code:'COMPSCI 367',name:'Reverse Engineering & Exploit Development',cr:3,area:'security',prereq:'COMPSCI 230 (or E&C-ENG 322) with C or better',note:'x86 assembly, binary exploitation, ASLR/NX/stack cookie bypasses. Grenier'},
-  {code:'COMPSCI 377',name:'Operating Systems',cr:4,area:'systems',prereq:'COMPSCI 230 with C or better',note:'Processes, scheduling, memory, file systems. Projects in C. Chiu'},
-  {code:'COMPSCI 383',name:'Artificial Intelligence',cr:3,area:'ai',prereq:'CICS 210 and COMPSCI 240 (or STATISTC 315), both with C or better',note:'⭐ AI track — 300+ elective. Survey of industry AI with an ML emphasis. Rattigan'},
-  {code:'COMPSCI 389',name:'Intro to Machine Learning',cr:3,area:'ai',prereq:'CICS 210, COMPSCI 240 (or a stats equivalent), and MATH 132, all C or better',note:'⭐ AI track — 300+ elective. Supervised learning, RL, plus ethics and fairness. Weber'},
+  {code:'COMPSCI 377',name:'Operating Systems',cr:4,area:'systems',prereq:'COMPSCI 230 with C or better',note:'⭐ In your plan — Spring 2029. Processes, scheduling, memory, file systems. Chiu'},
+  {code:'COMPSCI 383',name:'Artificial Intelligence',cr:3,area:'ai',prereq:'CICS 210 and COMPSCI 240 (or STATISTC 315), both with C or better',note:'⭐ In your plan — Spring 2029. Survey of industry AI with an ML emphasis. Rattigan'},
+  {code:'COMPSCI 389',name:'Intro to Machine Learning',cr:3,area:'ai',prereq:'CICS 210, COMPSCI 240 (or a stats equivalent), and MATH 132, all C or better',note:'Not in your plan — overlaps heavily with COMPSCI 589. Weber'},
 
   // ── 400-LEVEL ──
   {code:'COMPSCI 420',name:'Software Entrepreneurship',cr:3,area:'se',prereq:'COMPSCI 320 (or 326) with C or better',note:'Challenge-based learning with the Ventures @ CICS entrepreneurs in residence. Rattigan'},
   {code:'COMPSCI 429',name:'Software Engineering Project Management',cr:3,area:'se',prereq:'COMPSCI 320 with B or better + instructor permission',note:'You manage a COMPSCI 320 team. Meets alongside 320. Endres · Perretta'},
-  {code:'COMPSCI 445',name:'Information Systems',cr:3,area:'db',prereq:'COMPSCI 220 (or 230), 311 and 345, all with C or better',note:'SQL, query optimisation, XML/JSON, MapReduce and Spark. Serafini'},
-  {code:'COMPSCI 453',name:'Computer Networks',cr:3,area:'networks',prereq:'COMPSCI 230 (or 377) with C or better',note:'TCP/IP, sockets, routing, wireless, network security. Bovornkeeratiroj'},
+  {code:'COMPSCI 445',name:'Information Systems',cr:3,area:'db',prereq:'COMPSCI 220 (or 230), 311 and 345, all with C or better',note:'⭐ In your plan — Fall 2029. Needs COMPSCI 345 first. SQL, query optimisation, MapReduce, Spark. Serafini'},
+  {code:'COMPSCI 453',name:'Computer Networks',cr:3,area:'networks',prereq:'COMPSCI 230 (or 377) with C or better',note:'⭐ In your plan — Fall 2029. TCP/IP, sockets, routing, wireless, network security. Bovornkeeratiroj'},
   {code:'COMPSCI 461',name:'Secure Distributed Systems',cr:3,area:'security',prereq:'COMPSCI 326, 345, 377, 453 or 497P with C or better',note:'Byzantine fault tolerance, Bitcoin and Ethereum internals. CS majors only. Stone'},
-  {code:'COMPSCI 485',name:'Applications of NLP',cr:3,area:'ai',prereq:'COMPSCI 220 and 240 with C or better (or LINGUIST 429B)',note:'⭐ AI track — 400+ elective. Text classification, sentiment, machine translation. O\'Connor'},
+  {code:'COMPSCI 485',name:'Applications of NLP',cr:3,area:'ai',prereq:'COMPSCI 220 and 240 with C or better (or LINGUIST 429B)',note:'◇ Optional in your plan — Spring 2030. Text classification, sentiment, machine translation. O\'Connor'},
   {code:'COMPSCI 491P',name:'Seminar — Philosophy of AI & Consciousness',cr:3,area:'ai',prereq:'COMPSCI 250 and 383 (or 389), both with C or better',note:'Reading seminar, no exams. ~4–8 hrs/week outside class. Weems'},
 
   // ── 500-LEVEL ──
-  {code:'COMPSCI 514',name:'Algorithms for Data Science',cr:3,area:'ai',prereq:'COMPSCI 240 (or STATISTC 315/515) and 311, both B+ or better',note:'⭐ AI track — 400+ elective. Needs B+ in both COMPSCI 240 and 311. Musco'},
+  {code:'COMPSCI 514',name:'Algorithms for Data Science',cr:3,area:'ai',prereq:'COMPSCI 240 (or STATISTC 315/515) and 311, both B+ or better',note:'Not in your plan — needs B+ in both COMPSCI 240 and 311. Musco'},
   {code:'COMPSCI 515',name:'Computational Social Choice',cr:3,area:'theory',prereq:'COMPSCI 240 and 250 with C or better (juniors and seniors)',note:'Game theory, matching algorithms, mechanism design. Zick'},
-  {code:'COMPSCI 520',name:'Theory & Practice of Software Engineering',cr:3,area:'se',prereq:'COMPSCI 320 (or 220 + 326) with C or better',note:'AI for SE and SE for AI, including fairness bugs. Brun'},
-  {code:'COMPSCI 532',name:'Systems for Data Science',cr:3,area:'systems',prereq:'COMPSCI 377 and 445, both with C or better',note:'Scaling up and out — Hadoop, Spark, distributed databases. Klemperer'},
+  {code:'COMPSCI 520',name:'Theory & Practice of Software Engineering',cr:3,area:'se',prereq:'COMPSCI 320 (or 220 + 326) with C or better',note:'◇ Optional in your plan — Spring 2030. AI for SE and SE for AI. Brun'},
+  {code:'COMPSCI 532',name:'Systems for Data Science',cr:3,area:'systems',prereq:'COMPSCI 377 and 445, both with C or better',note:'◇ Optional in your plan — Spring 2030. Needs COMPSCI 377 + 445. Klemperer'},
   {code:'COMPSCI 550',name:'Introduction to Simulation',cr:3,area:'theory',prereq:'CICS 210 and STATISTC 315',note:'Stochastic simulation for system design and evaluation. Haas'},
   {code:'COMPSCI 565',name:'Advanced Digital Forensic Systems',cr:3,area:'security',prereq:'COMPSCI 365 or 377 with C or better',note:'File carving, filesystem/network/mobile/memory forensics. Klemperer'},
   {code:'COMPSCI 571',name:'Data Visualization & Exploration',cr:3,area:'db',prereq:'COMPSCI 220, 230 or 326 with C or better',note:'Perception, design theory, clustering, D3. Mahyar'},
   {code:'COMPSCI 575',name:'Combinatorics & Graph Theory',cr:3,area:'theory',prereq:'COMPSCI 250 or MATH 455 with B or better (juniors and seniors)',note:'Graph theory, counting, generating functions, Polya. Minea'},
-  {code:'COMPSCI 589',name:'Machine Learning',cr:3,area:'ai',prereq:'MATH 545, COMPSCI 240 and STATISTC 315/515, all with C or better',note:'⭐ Classification, regression, clustering. Strong math prereqs. Castro da Silva'},
+  {code:'COMPSCI 589',name:'Machine Learning',cr:3,area:'ai',prereq:'MATH 545, COMPSCI 240 and STATISTC 315/515, all with C or better',note:'⭐ In your plan — Fall 2029. Both listed prereqs are waivable with B+ grades. Castro da Silva'},
   {code:'COMPSCI 590AF',name:'Reverse Engineering & Exploit Development',cr:3,area:'security',prereq:'COMPSCI 230 (or E&C-ENG 322) with C or better',note:'Graduate-numbered twin of COMPSCI 367. Grenier'},
   {code:'COMPSCI 590OP',name:'Applied Numerical Optimization',cr:3,area:'ai',prereq:'Python, probability and statistics, linear algebra, multivariate calculus',note:'Gradient descent through interior point and distributed methods. Lan'},
   {code:'COMPSCI 590Q',name:'Quantum Information Systems',cr:3,area:'systems',prereq:'MATH 235 with C or better',note:'Entanglement, teleportation, Grover and Shor. Towsley'},
@@ -785,7 +1050,7 @@ var CATALOG = [
   {code:'CICS 190A',name:'Makerspace Studio: Physical Computing',cr:1,area:'other',prereq:'None',note:'Weekly hands-on session — 3D printing, laser cutting, microcontrollers. Pfeiffer'},
   {code:'CICS 208',name:'Defending Democracy in a Digital World',cr:3,area:'other',prereq:'None',note:'Gen Ed SB. Does NOT count toward the CS major. Zuckerman'},
   {code:'CICS 237',name:'Intro to Research in the Discipline',cr:2,area:'other',prereq:'Early Research Scholars Program (ERSP)',note:'Group-based, dual-mentored first research experience. Maloney'},
-  {code:'CICS 256',name:'Make: Physical Computing',cr:4,area:'other',prereq:'CICS 210 with C or better + R1 Gen Ed',note:'Counts as one of the CS lab science courses for the BS. Nguyen'},
+  {code:'CICS 256',name:'Make: Physical Computing',cr:4,area:'other',prereq:'CICS 210 with C or better + R1 Gen Ed',note:'⭐ In your plan — Fall 2028. Your second lab science, kept inside CICS. Nguyen'},
   {code:'CICS 291C',name:'Seminar — Find Your Strengths, Design Your Career',cr:1,area:'other',prereq:'None',note:'Internship and job search preparation. Maloney'},
   {code:'CICS 291T',name:'Seminar — CICS Transfer Success',cr:1,area:'other',prereq:'Transfer students',note:'Anderson'},
   {code:'COMPSCI 119',name:'Intro to Programming',cr:3,area:'other',prereq:'None',note:'Python survey. NOT open to Computer Science majors. Nguyen'},
@@ -808,122 +1073,136 @@ var CATALOG = [
 ];
 
 // ─── REQUIREMENT TRACKER ─────────────────────────────────────────────────────
-// Structure taken from the Academic Requirements Report (08 Aug 2026) and the
-// BS-CS tracking form revised 18 Mar 2026. Catalog year: Fall 2026.
 var REQ_GROUPS = [
-  {title:'A. Introductory + Core CS — 7 courses',items:[
-    {code:'CICS 110',name:'Foundations of Programming',required:true},
-    {code:'CICS 160',name:'Object-Oriented Programming',required:true},
-    {code:'CICS 210',name:'Data Structures',required:true},
-    {code:'COMPSCI 198C',name:'Intro to C — gates COMPSCI 230 (1 cr)',required:true},
-    {code:'COMPSCI 220',name:'Programming Methodology',required:true},
-    {code:'COMPSCI 230',name:'Computer Systems Principles',required:true},
-    {code:'COMPSCI 240',name:'Reasoning Under Uncertainty',required:true},
-    {code:'COMPSCI 250',name:'Introduction to Computation',required:true},
+  {title:'A. Introductory + Core CS — 8 courses, 29 cr',items:[
+    {code:'CICS 110',name:'Foundations of Programming — Fall 2026',required:true},
+    {code:'CICS 160',name:'Object-Oriented Programming — Spring 2027',required:true},
+    {code:'CICS 210',name:'Data Structures — Fall 2027',required:true},
+    {code:'COMPSCI 198C',name:'Intro to C — Fall 2027',required:true},
+    {code:'COMPSCI 220',name:'Programming Methodology — Spring 2028',required:true},
+    {code:'COMPSCI 230',name:'Computer Systems Principles — Spring 2028',required:true},
+    {code:'COMPSCI 240',name:'Reasoning Under Uncertainty — Spring 2028',required:true},
+    {code:'COMPSCI 250',name:'Introduction to Computation — Fall 2028',required:true},
+    {code:'CICS 210',name:'(listed above — Fall 2027)',required:false},
   ]},
-  {title:'B. Upper-Level CS — 8 courses, 5 of them at UMass',items:[
-    {code:'COMPSCI 311',name:'Algorithms — required, prereq COMPSCI 250',required:true},
-    {code:'COMPSCI 485',name:'400+ elective 1 of 3 — Applications of NLP',required:true},
-    {code:'COMPSCI 514',name:'400+ elective 2 of 3 — Algorithms for Data Science',required:true},
-    {code:'COMPSCI 589',name:'400+ elective 3 of 3 — Machine Learning',required:true},
-    {code:'COMPSCI 383',name:'300+ elective 1 of 3 — Artificial Intelligence',required:true},
-    {code:'COMPSCI 389',name:'300+ elective 2 of 3 — Intro to Machine Learning',required:true},
-    {code:'COMPSCI 320',name:'300+ elective 3 of 3 — Software Engineering (also IE)',required:true},
-    {code:'MATH 545',name:'8th slot — approved outside elective (12b)',required:true},
+  {title:'B. The Upper-Level Eight — 5 must be at UMass',items:[
+    {code:'COMPSCI 311',name:'Algorithms — required by name (Spring 2029)',required:true},
+    {code:'COMPSCI 445',name:'400+ #1 — Information Systems (Fall 2029)',required:true},
+    {code:'COMPSCI 453',name:'400+ #2 — Computer Networks (Fall 2029)',required:true},
+    {code:'COMPSCI 589',name:'400+ #3 — Machine Learning (Fall 2029)',required:true},
+    {code:'COMPSCI 320',name:'300+ #1 — Software Engineering (Fall 2028)',required:true},
+    {code:'COMPSCI 377',name:'300+ #2 — Operating Systems (Spring 2029)',required:true},
+    {code:'COMPSCI 383',name:'300+ #3 — Artificial Intelligence (Spring 2029)',required:true},
+    {code:'ECE 547',name:'Line 12b — approved outside elective (Spring 2030)',required:true},
   ]},
-  {title:'C. Junior Year Writing + Integrative Experience',items:[
-    {code:'CICS 305',name:'Social Issues in Computing — JYW, must be at UMass',required:true},
-    {code:'COMPSCI 320',name:'IE — 320, 325 or 326, junior or senior year, at UMass',required:true},
+  {title:'C. Extra CS beyond the eight',items:[
+    {code:'COMPSCI 345',name:'Data Management — enables COMPSCI 445 (Fall 2028)',required:true},
+    {code:'COMPSCI 485',name:'Applications of NLP — optional (Spring 2030)',required:false},
+    {code:'COMPSCI 520',name:'Theory & Practice of SE — optional (Spring 2030)',required:false},
+    {code:'COMPSCI 532',name:'Systems for Data Science — optional (Spring 2030)',required:false},
   ]},
-  {title:'D. Math — 4 courses',items:[
-    {code:'MATH 131',name:'Calculus I — in progress',required:true},
-    {code:'MATH 132',name:'Calculus II — gates COMPSCI 240 and 250',required:true},
-    {code:'MATH 235',name:'Linear Algebra (3 cr)',required:true},
-    {code:'MATH 233',name:'Multivariate Calculus (or STATISTC 315)',required:true},
+  {title:'D. Junior Year Writing + Integrative Experience',items:[
+    {code:'CICS 305',name:'Social Issues in Computing — JYW, at UMass (Fall 2029)',required:true},
+    {code:'COMPSCI 320',name:'Integrative Experience — junior/senior, at UMass (Fall 2028)',required:true},
   ]},
-  {title:'E. Lab Science — 2 of the approved list',items:[
-    {code:'PHYSICS 151',name:'General Physics I — in progress',required:true},
-    {code:'PHYSICS 152',name:'General Physics II (or CHEM 111/112, GEOL 101, CICS 256)',required:true},
+  {title:'E. Math — 4 required, 1 by exemption',items:[
+    {code:'MATH 131',name:'Calculus I — clearing by exemption exam, no credit',required:false},
+    {code:'MATH 132',name:'Calculus II — Fall 2026',required:true},
+    {code:'MATH 235',name:'Linear Algebra — Spring 2027',required:true},
+    {code:'MATH 233',name:'Multivariate Calculus — Fall 2027',required:true},
   ]},
-  {title:'F. Gen Ed — still open',items:[
-    {code:'ENGLWRIT 112',name:'College Writing (CW)',required:true},
-    {code:'GENED BS',name:'Biological Science (BS) — 4 units',required:true},
-    {code:'GENED AL',name:'Arts & Literature (AL or AT) — 4 units',required:true},
-    {code:'GENED HS',name:'Historical Studies (HS) — 4 units',required:true},
-    {code:'GENED SB',name:'Social & Behavioural Science (SB) — 4 units',required:true},
-    {code:'GENED DG',name:'One Diversity DG course',required:true},
+  {title:'F. Lab Science — 2 courses, 8 cr',items:[
+    {code:'PHYSICS 151',name:'General Physics I — Fall 2026',required:true},
+    {code:'CICS 256',name:'Make: Physical Computing — Fall 2028',required:true},
   ]},
-  {title:'G. Gen Ed — already satisfied',items:[
-    {code:'MATH 131',name:'Basic Math (R1) ✓',required:false},
-    {code:'CICS 110',name:'Analytical Reasoning (R2) ✓',required:false},
-    {code:'PHYSICS 151',name:'Physical Science (PS) ✓',required:false},
-    {code:'PUBHLTH 160',name:'Social World (SI) + Diversity DU + first-year DG/DU ✓',required:false},
+  {title:'G. General Education',items:[
+    {code:'CICS 110',name:'R2 Analytical Reasoning — Fall 2026',required:true},
+    {code:'MATH 132',name:'R1 Basic Math — Fall 2026 (verify: 131 is being exempted)',required:true},
+    {code:'PHYSICS 151',name:'PS Physical Science — Fall 2026',required:true},
+    {code:'PUBHLTH 160',name:'SI Social World + DU Diversity — Fall 2026',required:true},
+    {code:'ENGLWRIT 112',name:'CW College Writing — Spring 2027',required:true},
+    {code:'NUTRITN 130',name:'BS Biological Science — Spring 2027',required:true},
+    {code:'PSYCH 100',name:'SB Social & Behavioural — Fall 2027',required:true},
+    {code:'HISTORY 116',name:'HS Historical Studies + DG Diversity — Fall 2027',required:true},
+    {code:'JAPANESE 147',name:'AT Arts & Literature — Spring 2029 (only if you pick 147)',required:true},
+  ]},
+  {title:'H. Business Minor — 15 cr',items:[
+    {code:'ACCOUNTNG 233',name:'Accounting Principles — Spring 2027',required:true},
+    {code:'MANAGMNT 301',name:'Principles of Management — Fall 2028',required:true},
+    {code:'FINANCE 301',name:'Fundamentals of Finance — Spring 2029',required:true},
+    {code:'MARKETNG 301',name:'Fundamentals of Marketing — Fall 2029',required:true},
+    {code:'OIM 301',name:'Operations Management — Spring 2030',required:true},
+    {code:'STATS ???',name:'Qualifying statistics course — NOT YET CHOSEN',required:true},
   ]},
 ];
 
 // ─── SEMESTERS DATA ───────────────────────────────────────────────────────────
-// Fall 2026 is exactly what the ARR shows as enrolled (17 cr). Everything after
-// it is planned backwards from the unmet requirements on that report, with the
-// upper-level eight chosen as an AI/ML track. Total: 123 cr against a 120 min.
+// 129 credits across 8 terms, every term between 15 and 18.
+// MATH 131 is not listed: it is being cleared by the exemption exam, which
+// grants placement but no credit — hence 129 rather than 133.
+// The three Spring 2030 courses tagged Optional are stretch picks; drop all
+// three and the plan still lands on 120 exactly.
 var SEMESTERS = [
   {id:'s1',name:'Fall 2026',year:1,targetCr:17,courses:[
-    {id:'c-cics110',code:'CICS 110',name:'Foundations of Programming',cr:4,tags:['t-cs'],note:'Enrolled. Satisfies Gen Ed R2 (Analytical Reasoning).',done:false,grade:'',placement:'Aiming to place out via the CICS exemption exam → CICS 160 instead (also R2)'},
-    {id:'c-math132',code:'MATH 132',name:'Calculus II',cr:4,tags:['t-math'],note:'Enrolled — placed out of MATH 131 via the math placement test. Confirm Gen Ed R1 still clears through this.',done:false,grade:''},
+    {id:'c-cics110',code:'CICS 110',name:'Foundations of Programming',cr:4,tags:['t-cs'],note:'Enrolled. Satisfies Gen Ed R2 (Analytical Reasoning) — your one permitted CS Gen Ed.',done:false,grade:''},
+    {id:'c-math132',code:'MATH 132',name:'Calculus II',cr:4,tags:['t-math'],note:'Straight into Calc II via the MATH 131 exemption exam. Gates COMPSCI 240 and 250 — the most load-bearing course of year one.',done:false,grade:'',placement:'MATH 131 cleared by exemption — confirm the Gen Ed R1 line still closes'},
     {id:'c-phys151',code:'PHYSICS 151',name:'General Physics I',cr:4,tags:['t-gen'],note:'Enrolled. Lab science 1 of 2, and satisfies Gen Ed PS.',done:false,grade:''},
-    {id:'c-pubhlth160',code:'PUBHLTH 160',name:'My Body, My Health',cr:4,tags:['t-gen'],note:'Enrolled. Clears Social World (SI), Diversity DU, and the first-year DG/DU rule in one go.',done:false,grade:''},
-    {id:'c-fys191',code:'FYS 191MCS26',name:'FYS — Topics in CICS: Bits, Bytes & Modern Computing',cr:1,tags:['t-elec'],note:'Enrolled. Counts as free credit, not toward the major.',done:false,grade:''},
+    {id:'c-pubhlth160',code:'PUBHLTH 160',name:'My Body, My Health',cr:4,tags:['t-gen'],note:'Enrolled. Clears Social World (SI), Diversity DU, and the first-year DG/DU rule at once.',done:false,grade:''},
+    {id:'c-fys191',code:'FYS 191MCS26',name:'FYS — Topics in CICS: Bits, Bytes & Modern Computing',cr:1,tags:['t-elec'],note:'Enrolled. Free credit — does not count toward the major.',done:false,grade:''},
   ]},
-  {id:'s2',name:'Spring 2027',year:1,targetCr:14,courses:[
-    {id:'c-cics160',code:'CICS 160',name:'Object-Oriented Programming',cr:4,tags:['t-cs'],note:'Prereq: CICS 110 with C or better.',done:false,grade:''},
-    {id:'c-acct233',code:'ACCOUNTNG 233',name:'Financial and Managerial Accounting Principles',cr:3,tags:['t-elec'],note:'Business minor 1 of 5. Isenberg tells new minors to take this in Spring 2027 — and FINANCE 301 needs it done or concurrent.',done:false,grade:''},
-    {id:'c-phys152',code:'PHYSICS 152',name:'General Physics II',cr:4,tags:['t-gen'],note:'Lab science 2 of 2 — closes the CNS science requirement.',done:false,grade:''},
-    {id:'c-englwrit112',code:'ENGLWRIT 112',name:'College Writing',cr:3,tags:['t-gen'],note:'Gen Ed CW. Also a prereq for CICS 305 later.',done:false,grade:''},
+  {id:'s2',name:'Spring 2027',year:1,targetCr:17,courses:[
+    {id:'c-cics160',code:'CICS 160',name:'Object-Oriented Programming',cr:4,tags:['t-cs'],note:'Needs CICS 110 (C or better). Unlocks CICS 210 and COMPSCI 198C.',done:false,grade:''},
+    {id:'c-math235',code:'MATH 235',name:'Introduction to Linear Algebra',cr:3,tags:['t-math'],note:'Moved up a year now that Calc II is done early. Aim for B+ — with MATH 233 it waives the MATH 545 prerequisite on COMPSCI 589.',done:false,grade:''},
+    {id:'c-nutritn130',code:'NUTRITN 130',name:'Nutrition for a Healthy Lifestyle',cr:4,tags:['t-gen'],note:'Gen Ed BS (Biological Science) — the last science Gen Ed you need. Check the major restriction before registration.',done:false,grade:''},
+    {id:'c-englwrit112',code:'ENGLWRIT 112',name:'College Writing',cr:3,tags:['t-gen'],note:'Gen Ed CW, and a prerequisite for CICS 305 in senior year.',done:false,grade:''},
+    {id:'c-acct233',code:'ACCOUNTNG 233',name:'Financial and Managerial Accounting Principles',cr:3,tags:['t-biz'],note:'Business minor 1 of 5. Isenberg directs new minors to take this in Spring 2027.',done:false,grade:''},
   ]},
-  {id:'s3',name:'Fall 2027',year:2,targetCr:16,courses:[
-    {id:'c-cics210',code:'CICS 210',name:'Data Structures',cr:4,tags:['t-cs'],note:'Prereq: CICS 160 with C or better. Gateway to everything above.',done:false,grade:''},
-    {id:'c-cs198c',code:'COMPSCI 198C',name:'Intro to the C Programming Language',cr:1,tags:['t-core'],note:'Only 1 credit but COMPSCI 230 will not let you in without it.',done:false,grade:''},
-    {id:'c-math235',code:'MATH 235',name:'Introduction to Linear Algebra',cr:3,tags:['t-math'],note:'Foundation for the ML electives later.',done:false,grade:''},
-    {id:'c-gened-bs',code:'GENED BS',name:'Biological Science elective (pick one)',cr:4,tags:['t-gen'],note:'Gen Ed BS — 4 units still needed per the ARR.',done:false,grade:''},
-    {id:'c-gened-al',code:'GENED AL/AT',name:'Arts & Literature elective (pick one)',cr:4,tags:['t-gen'],note:'Gen Ed AL or AT — 4 units still needed.',done:false,grade:''},
+  {id:'s3',name:'Fall 2027',year:2,targetCr:17,courses:[
+    {id:'c-cics210',code:'CICS 210',name:'Data Structures',cr:4,tags:['t-cs'],note:'Needs CICS 160. The gateway — almost every 200+ CS course waits on this.',done:false,grade:''},
+    {id:'c-cs198c',code:'COMPSCI 198C',name:'Intro to the C Programming Language',cr:1,tags:['t-core'],note:'One credit, easy to forget, and COMPSCI 230 is locked without it.',done:false,grade:''},
+    {id:'c-math233',code:'MATH 233',name:'Multivariate Calculus',cr:4,tags:['t-math'],note:'Fourth math slot. STATISTC 315 is the accepted alternative — and may also cover the OIM 301 statistics prerequisite. Decide before you register.',done:false,grade:''},
+    {id:'c-psych100',code:'PSYCH 100',name:'Introductory Psychology',cr:4,tags:['t-gen'],note:'Gen Ed SB (Social & Behavioural Science).',done:false,grade:''},
+    {id:'c-hist116',code:'HISTORY 116',name:'History of Japan',cr:4,tags:['t-gen'],note:'Gen Ed HS + DG — closes Historical Studies and the last diversity line together.',done:false,grade:''},
   ]},
-  {id:'s4',name:'Spring 2028',year:2,targetCr:16,courses:[
-    {id:'c-cs220',code:'COMPSCI 220',name:'Programming Methodology',cr:4,tags:['t-core'],note:'Prereq: CICS 210. Opens 320, 326, 485.',done:false,grade:''},
-    {id:'c-cs230',code:'COMPSCI 230',name:'Computer Systems Principles',cr:4,tags:['t-core'],note:'Prereq: CICS 210 + COMPSCI 198C.',done:false,grade:''},
-    {id:'c-math233',code:'MATH 233',name:'Multivariate Calculus',cr:4,tags:['t-math'],note:'Fourth math course. STATISTC 315 is the alternative.',done:false,grade:''},
-    {id:'c-gened-hs',code:'GENED HS+DG',name:'Historical Studies elective (pick one)',cr:4,tags:['t-gen'],note:'Pick one carrying both HS and DG — that closes the last diversity line too.',done:false,grade:''},
+  {id:'s4',name:'Spring 2028',year:2,targetCr:15,courses:[
+    {id:'c-cs220',code:'COMPSCI 220',name:'Programming Methodology',cr:4,tags:['t-core'],note:'Needs CICS 210. Opens 320, 445, 485 and 520.',done:false,grade:''},
+    {id:'c-cs230',code:'COMPSCI 230',name:'Computer Systems Principles',cr:4,tags:['t-core'],note:'Needs CICS 210 + COMPSCI 198C. Opens 377 and 453.',done:false,grade:''},
+    {id:'c-cs240',code:'COMPSCI 240',name:'Reasoning Under Uncertainty',cr:4,tags:['t-core'],note:'Needs CICS 210 + MATH 132. Aim for B+ — it waives the STATISTC 315 prerequisite on COMPSCI 589.',done:false,grade:''},
+    {id:'c-mgmt301',code:'MANAGMNT 301',name:'Principles of Management',cr:3,tags:['t-biz'],note:'Business minor 2 of 5. No stated prerequisite — a deliberate lighter course beside three core CS classes.',done:false,grade:''},
   ]},
-  {id:'s5',name:'Fall 2028',year:3,targetCr:16,courses:[
-    {id:'c-cs240',code:'COMPSCI 240',name:'Reasoning Under Uncertainty',cr:4,tags:['t-core'],note:'Prereq: CICS 210 + MATH 132. Aim for B+ — it waives the STATISTC 315 prereq on COMPSCI 589.',done:false,grade:''},
-    {id:'c-cs250',code:'COMPSCI 250',name:'Introduction to Computation',cr:4,tags:['t-core'],note:'Prereq: CICS 160 + MATH 132. Required before COMPSCI 311.',done:false,grade:''},
-    {id:'c-cs320',code:'COMPSCI 320',name:'Software Engineering',cr:4,tags:['t-elec','t-gen'],note:'Prereq: COMPSCI 220. Satisfies the IE requirement AND counts as a 300+ elective. Junior year or later.',done:false,grade:''},
-    {id:'c-gened-sb',code:'GENED SB',name:'Social & Behavioural Science elective (pick one)',cr:4,tags:['t-gen'],note:'Gen Ed SB — 4 units still needed. A business-minor course may double up here.',done:false,grade:''},
+  {id:'s5',name:'Fall 2028',year:3,targetCr:15,courses:[
+    {id:'c-cs250',code:'COMPSCI 250',name:'Introduction to Computation',cr:4,tags:['t-core'],note:'Needs CICS 160 + MATH 132. Required before COMPSCI 311.',done:false,grade:''},
+    {id:'c-cs320',code:'COMPSCI 320',name:'Software Engineering',cr:4,tags:['t-elec','t-gen'],note:'Needs COMPSCI 220. Counts twice: Integrative Experience AND a 300+ elective. Junior year or later — this is the earliest it is allowed.',done:false,grade:''},
+    {id:'c-cs345',code:'COMPSCI 345',name:'Practice & Applications of Data Management',cr:3,tags:['t-elec'],note:'Needs CICS 210. In the plan specifically because COMPSCI 445 will not let you enrol without it.',done:false,grade:''},
+    {id:'c-cics256',code:'CICS 256',name:'Make: Physical Computing',cr:4,tags:['t-gen'],note:'Needs CICS 210 + R1. Lab science 2 of 2 — closes the CNS science requirement without a second physics course.',done:false,grade:''},
   ]},
-  {id:'s6',name:'Spring 2029',year:3,targetCr:16,courses:[
-    {id:'c-cs311',code:'COMPSCI 311',name:'Introduction to Algorithms',cr:4,tags:['t-elec'],note:'Prereq: CICS 210 + COMPSCI 250. Aim for B+ — COMPSCI 514 requires it.',done:false,grade:''},
-    {id:'c-cs383',code:'COMPSCI 383',name:'Artificial Intelligence',cr:3,tags:['t-elec'],note:'Prereq: CICS 210 + COMPSCI 240. 300+ elective.',done:false,grade:''},
-    {id:'c-cs389',code:'COMPSCI 389',name:'Intro to Machine Learning',cr:3,tags:['t-elec'],note:'Prereq: CICS 210 + COMPSCI 240 + MATH 132. 300+ elective.',done:false,grade:''},
-    {id:'c-math545',code:'MATH 545',name:'Linear Algebra for Applied Mathematics',cr:3,tags:['t-elec'],note:'Approved outside elective (fills slot 12b) and the stated prereq for COMPSCI 589. Two birds.',done:false,grade:''},
-    {id:'c-mgmt301',code:'MANAGMNT 301',name:'Principles of Management',cr:3,tags:['t-elec'],note:'Business minor 2 of 5. No stated prereq — safe to slot anywhere after admission.',done:false,grade:''},
+  {id:'s6',name:'Spring 2029',year:3,targetCr:18,courses:[
+    {id:'c-cs311',code:'COMPSCI 311',name:'Introduction to Algorithms',cr:4,tags:['t-elec'],note:'Needs CICS 210 + COMPSCI 250. Required by name — no substitutes.',done:false,grade:''},
+    {id:'c-cs377',code:'COMPSCI 377',name:'Operating Systems',cr:4,tags:['t-elec'],note:'Needs COMPSCI 230. 300+ elective, and a prerequisite for COMPSCI 532.',done:false,grade:''},
+    {id:'c-cs383',code:'COMPSCI 383',name:'Artificial Intelligence',cr:3,tags:['t-elec'],note:'Needs CICS 210 + COMPSCI 240. 300+ elective.',done:false,grade:''},
+    {id:'c-japanese',code:'JAPANESE 135 / 147',name:'Japanese Art & Culture  —or—  Manga / Anime',cr:4,tags:['t-gen'],note:'Not yet chosen. 147 carries AT+DG; 135 carries I+DG. Only 147 fills the Arts & Literature line — see the Gen Ed tab.',done:false,grade:''},
+    {id:'c-fin301',code:'FINANCE 301',name:'Fundamentals of Finance',cr:3,tags:['t-biz'],note:'Business minor 3 of 5. Needs ACCOUNTNG 233 completed or concurrent.',done:false,grade:''},
   ]},
   {id:'s7',name:'Fall 2029',year:4,targetCr:15,courses:[
-    {id:'c-cics305',code:'CICS 305',name:'Social Issues in Computing (JYW)',cr:3,tags:['t-gen'],note:'Prereq: ENGLWRIT 112 + COMPSCI 220, 230 and 240. Must be taken at UMass. Does NOT count as an elective.',done:false,grade:''},
-    {id:'c-cs485',code:'COMPSCI 485',name:'Applications of NLP',cr:3,tags:['t-elec'],note:'Prereq: COMPSCI 220 + 240. 400+ elective.',done:false,grade:''},
-    {id:'c-cs514',code:'COMPSCI 514',name:'Algorithms for Data Science',cr:3,tags:['t-elec'],note:'Prereq: COMPSCI 240 + 311, both B+ or better. 400+ elective.',done:false,grade:''},
-    {id:'c-fin301',code:'FINANCE 301',name:'Fundamentals of Finance',cr:3,tags:['t-elec'],note:'Business minor 3 of 5. Prereq: ACCOUNTNG 233 completed or taken concurrently.',done:false,grade:''},
-    {id:'c-mkt301',code:'MARKETNG 301',name:'Fundamentals of Marketing',cr:3,tags:['t-elec'],note:'Business minor 4 of 5.',done:false,grade:''},
+    {id:'c-cics305',code:'CICS 305',name:'Social Issues in Computing (JYW)',cr:3,tags:['t-gen'],note:'Needs ENGLWRIT 112 + COMPSCI 220, 230 and 240. Must be taken at UMass. Required, but does NOT count as an elective.',done:false,grade:''},
+    {id:'c-cs445',code:'COMPSCI 445',name:'Information Systems',cr:3,tags:['t-elec'],note:'Needs COMPSCI 220 + 311 + 345 — the longest prerequisite chain in the plan. 400+ elective.',done:false,grade:''},
+    {id:'c-cs453',code:'COMPSCI 453',name:'Computer Networks',cr:3,tags:['t-elec'],note:'Needs COMPSCI 230. 400+ elective.',done:false,grade:''},
+    {id:'c-cs589',code:'COMPSCI 589',name:'Machine Learning',cr:3,tags:['t-elec'],note:'400+ elective. Both listed prerequisites are waivable: MATH 545 via B+ in MATH 233 and 235; STATISTC 315 via B+ in COMPSCI 240.',done:false,grade:''},
+    {id:'c-mkt301',code:'MARKETNG 301',name:'Fundamentals of Marketing',cr:3,tags:['t-biz'],note:'Business minor 4 of 5.',done:false,grade:''},
   ]},
-  {id:'s8',name:'Spring 2030',year:4,targetCr:10,courses:[
-    {id:'c-cs589',code:'COMPSCI 589',name:'Machine Learning',cr:3,tags:['t-elec'],note:'Prereq: MATH 545 + COMPSCI 240 + STATISTC 315. The 315 half is waived with a B+ in 240. 400+ elective.',done:false,grade:''},
-    {id:'c-oim301',code:'OIM 301',name:'Introduction to Operations Management',cr:3,tags:['t-elec'],note:'Business minor 5 of 5. Needs a qualifying statistics course FIRST — that is the one prereq that can derail the minor.',done:false,grade:''},
-    {id:'c-free1',code:'FREE ELECTIVE',name:'Open elective',cr:4,tags:['t-elec'],note:'The only slack in the whole plan. Swap for a graduate AI course, a thesis, or leave it as insurance.',done:false,grade:''},
+  {id:'s8',name:'Spring 2030',year:4,targetCr:15,courses:[
+    {id:'c-ece547',code:'ECE 547',name:'Security Engineering',cr:3,tags:['t-elec'],note:'The approved outside elective (ARR line 12b). Confirm the ECE prerequisite and seat availability a semester ahead.',done:false,grade:''},
+    {id:'c-oim301',code:'OIM 301',name:'Introduction to Operations Management',cr:3,tags:['t-biz'],note:'Business minor 5 of 5. Needs a qualifying statistics course FIRST — the one unresolved item in this plan.',done:false,grade:''},
+    {id:'c-cs532',code:'COMPSCI 532',name:'Systems for Data Science',cr:3,tags:['t-opt'],note:'Stretch pick. Needs COMPSCI 377 + 445, which is why it has to sit last.',done:false,grade:''},
+    {id:'c-cs520',code:'COMPSCI 520',name:'Theory & Practice of Software Engineering',cr:3,tags:['t-opt'],note:'Stretch pick. Needs COMPSCI 320.',done:false,grade:''},
+    {id:'c-cs485',code:'COMPSCI 485',name:'Applications of NLP',cr:3,tags:['t-opt'],note:'Stretch pick. Needs COMPSCI 220 + 240 — could move up to Spring 2029 if you want it sooner.',done:false,grade:''},
   ]},
 ];
 
 // ─── CREDIT BREAKDOWN DATA ────────────────────────────────────────────────────
 var CREDIT_BREAKDOWN = [
   {
-    key:'cb-cs',cls:'cb-cs',title:'Introductory CS',
-    required:12,note:'CICS 110, 160, 210 — each gates the next',
+    key:'cb-cs',cls:'cb-cs',title:'Introductory CS',required:12,note:'CICS 110 → 160 → 210, each gating the next',
     items:[
       {name:'CICS 110 — Foundations of Programming',cr:4,tag:'t-cs'},
       {name:'CICS 160 — Object-Oriented Programming',cr:4,tag:'t-cs'},
@@ -931,8 +1210,7 @@ var CREDIT_BREAKDOWN = [
     ]
   },
   {
-    key:'cb-core',cls:'cb-core',title:'Core CS Courses',
-    required:17,note:'198C (1 cr) + 220 + 230 + 240 + 250',
+    key:'cb-core',cls:'cb-core',title:'Core CS Courses',required:17,note:'198C (1 cr) + 220 + 230 + 240 + 250',
     items:[
       {name:'COMPSCI 198C — Intro to C',cr:1,tag:'t-core'},
       {name:'COMPSCI 220 — Programming Methodology',cr:4,tag:'t-core'},
@@ -942,61 +1220,56 @@ var CREDIT_BREAKDOWN = [
     ]
   },
   {
-    key:'cb-elec',cls:'cb-elec',title:'Upper-Level CS — AI Track',
-    required:26,note:'311 + three 400+ (≥9 cr) + three 300+ (≥9 cr) + one 300+/outside. Five must be at UMass.',
+    key:'cb-elec',cls:'cb-elec',title:'Upper-Level Eight',required:26,note:'311 + three 400+ (≥9 cr) + three 300+ (≥9 cr) + one outside elective',
     items:[
-      {name:'COMPSCI 311 — Algorithms (required)',cr:4,tag:'t-elec'},
-      {name:'COMPSCI 485 — Applications of NLP (400+)',cr:3,tag:'t-elec'},
-      {name:'COMPSCI 514 — Algorithms for Data Science (400+)',cr:3,tag:'t-elec'},
+      {name:'COMPSCI 311 — Algorithms',cr:4,tag:'t-elec'},
+      {name:'COMPSCI 445 — Information Systems (400+)',cr:3,tag:'t-elec'},
+      {name:'COMPSCI 453 — Computer Networks (400+)',cr:3,tag:'t-elec'},
       {name:'COMPSCI 589 — Machine Learning (400+)',cr:3,tag:'t-elec'},
-      {name:'COMPSCI 383 — Artificial Intelligence (300+)',cr:3,tag:'t-elec'},
-      {name:'COMPSCI 389 — Intro to Machine Learning (300+)',cr:3,tag:'t-elec'},
       {name:'COMPSCI 320 — Software Engineering (300+, also IE)',cr:4,tag:'t-elec'},
-      {name:'MATH 545 — approved outside elective (12b)',cr:3,tag:'t-elec'},
+      {name:'COMPSCI 377 — Operating Systems (300+)',cr:4,tag:'t-elec'},
+      {name:'COMPSCI 383 — Artificial Intelligence (300+)',cr:3,tag:'t-elec'},
+      {name:'ECE 547 — Security Engineering (line 12b)',cr:3,tag:'t-elec'},
     ]
   },
   {
-    key:'cb-math',cls:'cb-math',title:'Mathematics',
-    required:15,note:'131 + 132 + 235 + (233 or STATISTC 315)',
+    key:'cb-math',cls:'cb-math',title:'Mathematics',required:11,note:'132 + 235 + 233. MATH 131 clears by exemption — requirement met, no credit earned.',
     items:[
-      {name:'MATH 131 — Calculus I',cr:4,tag:'t-math'},
       {name:'MATH 132 — Calculus II',cr:4,tag:'t-math'},
       {name:'MATH 235 — Linear Algebra',cr:3,tag:'t-math'},
       {name:'MATH 233 — Multivariate Calculus',cr:4,tag:'t-math'},
     ]
   },
   {
-    key:'cb-sci',cls:'cb-sci',title:'Lab Sciences',
-    required:8,note:'Two from: PHYSICS 151/152, CHEM 111/112, GEOL 101, CICS 256',
+    key:'cb-sci',cls:'cb-sci',title:'Lab Sciences',required:8,note:'PHYSICS 151 + CICS 256 — the second one stays inside CICS',
     items:[
       {name:'PHYSICS 151 — General Physics I',cr:4,tag:'t-gen'},
-      {name:'PHYSICS 152 — General Physics II',cr:4,tag:'t-gen'},
+      {name:'CICS 256 — Make: Physical Computing',cr:4,tag:'t-gen'},
     ]
   },
   {
-    key:'cb-gen',cls:'cb-gen',title:'General Education',
-    required:26,note:'CW + JYW + BS + AL/AT + HS + SB + one DG. R1, R2, PS, SI and DU are already covered.',
+    key:'cb-gen',cls:'cb-gen',title:'General Education',required:26,note:'CW + BS + AL/AT + HS + SB + JYW. R1, R2, PS, SI and DU already covered by Fall 2026.',
     items:[
-      {name:'ENGLWRIT 112 — College Writing (CW)',cr:3,tag:'t-gen'},
-      {name:'CICS 305 — Social Issues in Computing (JYW)',cr:3,tag:'t-gen'},
-      {name:'PUBHLTH 160 — Social World SI + Diversity DU ✓',cr:4,tag:'t-gen'},
-      {name:'Biological Science (BS) — to pick',cr:4,tag:'t-gen'},
-      {name:'Arts & Literature (AL or AT) — to pick',cr:4,tag:'t-gen'},
-      {name:'Historical Studies (HS) + DG — to pick',cr:4,tag:'t-gen'},
-      {name:'Social & Behavioural Science (SB) — to pick',cr:4,tag:'t-gen'},
+      {name:'PUBHLTH 160 — SI + DU',cr:4,tag:'t-gen'},
+      {name:'ENGLWRIT 112 — CW',cr:3,tag:'t-gen'},
+      {name:'NUTRITN 130 — BS',cr:4,tag:'t-gen'},
+      {name:'PSYCH 100 — SB',cr:4,tag:'t-gen'},
+      {name:'HISTORY 116 — HS + DG',cr:4,tag:'t-gen'},
+      {name:'JAPANESE 135/147 — AT (if 147)',cr:4,tag:'t-gen'},
+      {name:'CICS 305 — Junior Year Writing',cr:3,tag:'t-gen'},
     ]
   },
   {
-    key:'cb-free',cls:'cb-free',title:'Free Electives / Business Minor',
-    required:20,note:'Business Minor is 15 cr across 5 courses, plus a statistics prereq for OIM 301',
+    key:'cb-free',cls:'cb-free',title:'Business Minor + Extras',required:29,note:'15 cr of business, plus COMPSCI 345 and the optional stretch electives',
     items:[
-      {name:'ACCOUNTNG 233 — Financial & Managerial Accounting',cr:3,tag:'t-elec'},
-      {name:'FINANCE 301 — Fundamentals of Finance',cr:3,tag:'t-elec'},
-      {name:'MANAGMNT 301 — Principles of Management',cr:3,tag:'t-elec'},
-      {name:'MARKETNG 301 — Fundamentals of Marketing',cr:3,tag:'t-elec'},
-      {name:'OIM 301 — Introduction to Operations Management',cr:3,tag:'t-elec'},
+      {name:'ACCOUNTNG 233 — Accounting Principles',cr:3,tag:'t-biz'},
+      {name:'MANAGMNT 301 — Principles of Management',cr:3,tag:'t-biz'},
+      {name:'FINANCE 301 — Fundamentals of Finance',cr:3,tag:'t-biz'},
+      {name:'MARKETNG 301 — Fundamentals of Marketing',cr:3,tag:'t-biz'},
+      {name:'OIM 301 — Operations Management',cr:3,tag:'t-biz'},
+      {name:'COMPSCI 345 — Data Management',cr:3,tag:'t-elec'},
+      {name:'COMPSCI 485 / 520 / 532 — optional',cr:9,tag:'t-opt'},
       {name:'FYS 191MCS26 — Topics in CICS',cr:1,tag:'t-elec'},
-      {name:'Open elective — the plan\'s only slack',cr:4,tag:'t-elec'},
     ]
   },
 ];
@@ -1005,61 +1278,61 @@ var CREDIT_BREAKDOWN = [
 var ROADMAP = [
   {
     period:'Year 1 — Fall 2026 + Spring 2027',
-    label:'Foundations',
+    label:'Foundations · 34 cr',
     status:'active',
     courses:{
-      fall:['CICS 110 — Foundations of Programming','MATH 132 — Calculus II (placed out of 131)','PHYSICS 151 — General Physics I','PUBHLTH 160 — My Body, My Health','FYS 191MCS26 — Topics in CICS'],
-      spring:['CICS 160 — Object-Oriented Programming','PHYSICS 152 — General Physics II','ENGLWRIT 112 — College Writing','ACCOUNTNG 233 — Accounting Principles'],
+      fall:['CICS 110 — Foundations of Programming','MATH 132 — Calculus II (131 exempted)','PHYSICS 151 — General Physics I','PUBHLTH 160 — My Body, My Health','FYS 191MCS26 — Topics in CICS'],
+      spring:['CICS 160 — Object-Oriented Programming','MATH 235 — Linear Algebra','NUTRITN 130 — Nutrition (Gen Ed BS)','ENGLWRIT 112 — College Writing','ACCOUNTNG 233 — Accounting Principles'],
     },
-    priorities:['⚑ The Business Minor lottery opens 21 September and closes 2 October — that is this semester, and it is the single hardest deadline in year one','Sit the CICS exemption exam, then confirm the result on SPIRE before add/drop closes','With MATH 131 placed out, check that Gen Ed R1 is still covered by MATH 132','PHYSICS 152 in spring closes the whole lab science requirement in year one'],
-    gpaGoal:'Year 1 is the lightest it gets — bank a high GPA now',
-    crTarget:'32 cr across the year',
-    tags:['foundation','gen-ed','math'],
+    priorities:['⚑ Business Minor lottery: opens 21 Sept, closes 2 Oct, decisions week of 12 Oct — this semester, and easy to miss','Check the NUTRITN 130 enrolment restriction early; if it is closed to you, find another Gen Ed BS course','MATH 132 in your first semester is the single biggest lever in this plan — it pulls Linear Algebra and Multivariate Calc forward a full year','Five Gen Ed lines close before sophomore year if this runs to plan'],
+    gpaGoal:'Lightest CS load you will ever have — bank a high GPA now',
+    crTarget:'17 + 17 = 34 cr',
+    tags:['foundations','gen-ed','business'],
   },
   {
     period:'Year 2 — Fall 2027 + Spring 2028',
-    label:'Core CS + Gen Ed Clearance',
+    label:'Core CS · 32 cr',
     status:'future',
     courses:{
-      fall:['CICS 210 — Data Structures','COMPSCI 198C — Intro to C','MATH 235 — Linear Algebra','Biological Science Gen Ed','Arts & Literature Gen Ed'],
-      spring:['COMPSCI 220 — Programming Methodology','COMPSCI 230 — Computer Systems Principles','MATH 233 — Multivariate Calculus','Historical Studies Gen Ed (pick one carrying DG)'],
+      fall:['CICS 210 — Data Structures','COMPSCI 198C — Intro to C','MATH 233 — Multivariate Calculus','PSYCH 100 — Introductory Psychology','HISTORY 116 — History of Japan'],
+      spring:['COMPSCI 220 — Programming Methodology','COMPSCI 230 — Computer Systems Principles','COMPSCI 240 — Reasoning Under Uncertainty','MANAGMNT 301 — Principles of Management'],
     },
-    priorities:['COMPSCI 198C is one credit and easy to forget — without it COMPSCI 230 is locked','Get the four open Gen Eds out of the way now, while the CS load is still moderate','One HS course that also carries DG closes both the historical studies line and the last diversity line','Look for a research assistant or grader role from spring onwards'],
-    gpaGoal:'220 and 230 in one semester is the year\'s pressure point',
-    crTarget:'32 cr across the year',
-    tags:['core','gen-ed'],
+    priorities:['COMPSCI 198C is one credit and gates COMPSCI 230 — register for it the moment CICS 210 is confirmed','Spring is three core CS courses at once — Management 301 sits alongside them deliberately as the light one','Chase B+ in COMPSCI 240, MATH 233 and MATH 235 — together they waive both prerequisites on COMPSCI 589','Decide MATH 233 vs STATISTC 315 here, once you know whether 315 covers the OIM 301 statistics requirement','HISTORY 116 closes Historical Studies and the last diversity line in one course'],
+    gpaGoal:'Spring 2028 is the pressure point — 220, 230 and 240 together',
+    crTarget:'17 + 15 = 32 cr',
+    tags:['core','gen-ed','math'],
   },
   {
     period:'Year 3 — Fall 2028 + Spring 2029',
-    label:'AI Track Opens',
+    label:'Upper-Level Opens · 33 cr',
     status:'future',
     courses:{
-      fall:['COMPSCI 240 — Reasoning Under Uncertainty','COMPSCI 250 — Introduction to Computation','COMPSCI 320 — Software Engineering (IE)','Social & Behavioural Science Gen Ed'],
-      spring:['COMPSCI 311 — Algorithms','COMPSCI 383 — Artificial Intelligence','COMPSCI 389 — Intro to Machine Learning','MATH 545 — outside elective','MANAGMNT 301 — Principles of Management'],
+      fall:['COMPSCI 250 — Introduction to Computation','COMPSCI 320 — Software Engineering (IE)','COMPSCI 345 — Data Management','CICS 256 — Make: Physical Computing'],
+      spring:['COMPSCI 311 — Introduction to Algorithms','COMPSCI 377 — Operating Systems','COMPSCI 383 — Artificial Intelligence','JAPANESE 135 or 147','FINANCE 301 — Fundamentals of Finance'],
     },
-    priorities:['A B+ in COMPSCI 240 waives the STATISTC 315 prereq on COMPSCI 589 — worth chasing','A B+ in COMPSCI 311 is a hard gate for COMPSCI 514 next year','COMPSCI 320 pulls double duty: Integrative Experience and a 300+ elective','MATH 545 is both the outside elective slot and the COMPSCI 589 prereq','This is the year to find an AI/ML professor and ask about research'],
-    gpaGoal:'The heaviest CS stretch — protect the GPA here above all',
-    crTarget:'32 cr across the year',
-    tags:['ai','ml','electives','research'],
+    priorities:['COMPSCI 320 is the earliest the IE requirement is allowed — junior year, at UMass','COMPSCI 345 exists in this plan purely to unlock COMPSCI 445 next year','CICS 256 closes the lab science requirement without a second physics course','Pick the Japanese course by now: only 147 fills the Arts & Literature Gen Ed','Spring 2029 is the hardest term in the degree — Algorithms, OS and AI together'],
+    gpaGoal:'Protect the GPA here above everywhere else',
+    crTarget:'15 + 18 = 33 cr',
+    tags:['upper-level','ai','systems','research'],
   },
   {
     period:'Year 4 — Fall 2029 + Spring 2030',
-    label:'Advanced AI + Graduation',
+    label:'Advanced + Graduation · 30 cr',
     status:'future',
     courses:{
-      fall:['CICS 305 — Social Issues in Computing (JYW)','COMPSCI 485 — Applications of NLP','COMPSCI 514 — Algorithms for Data Science','FINANCE 301','MARKETNG 301'],
-      spring:['COMPSCI 589 — Machine Learning','OIM 301 — Operations Management','Open elective'],
+      fall:['CICS 305 — Social Issues in Computing (JYW)','COMPSCI 445 — Information Systems','COMPSCI 453 — Computer Networks','COMPSCI 589 — Machine Learning','MARKETNG 301 — Fundamentals of Marketing'],
+      spring:['ECE 547 — Security Engineering','OIM 301 — Operations Management','COMPSCI 532 · 520 · 485 — optional stretch electives'],
     },
-    priorities:['CICS 305 must be taken at UMass and does not count as an elective — do not leave it later than this','OIM 301 closes the minor, but only if the statistics prereq is already done — verify that years earlier, not here','Check the Academic Requirements Report on SPIRE at the start of every semester, not just at the end','Graduate applications, if you go that route, are due in December of senior fall'],
-    gpaGoal:'Finish strong — senior grades still land before most application deadlines',
-    crTarget:'27 cr across the year',
-    tags:['ai','capstone','graduation'],
+    priorities:['CICS 305 must be at UMass and does not count as an elective — do not push it later than this','Confirm ECE 547 prerequisites and seat availability a full semester ahead','OIM 301 needs the statistics prerequisite finished years earlier — verify in Year 2, not here','Drop all three optional electives and the plan lands at exactly 120 — no margin, so treat them as real','Graduate applications, if you go that route, are due December of senior fall'],
+    gpaGoal:'Senior grades still land before most application deadlines',
+    crTarget:'15 + 15 = 30 cr',
+    tags:['capstone','graduation','flexible'],
   },
 ];
 
 // ─── GRADE POINTS & TAGS ─────────────────────────────────────────────────────
 var GRADE_POINTS={'A+':4.0,'A':4.0,'A-':3.7,'B+':3.3,'B':3.0,'B-':2.7,'C+':2.3,'C':2.0,'C-':1.7,'D':1.0,'F':0,'IP':null,'':null};
-var TAG_LABELS={'t-cs':'Intro CS','t-core':'Core CS','t-math':'Math','t-gen':'Gen Ed','t-elec':'Elective','t-honors':'Honors'};
+var TAG_LABELS={'t-cs':'Intro CS','t-core':'Core CS','t-math':'Math','t-gen':'Gen Ed','t-elec':'Elective','t-biz':'Business','t-opt':'Optional','t-honors':'Honors'};
 var CUSTOM_TAGS={};
 var state={semesters:{}};
 var editTarget=null;
@@ -1101,7 +1374,7 @@ function loadState(){
 }
 
 // ─── RENDER ───────────────────────────────────────────────────────────────────
-function render(){renderPlan();renderGPA();renderTrack();renderCatalog();renderCreditBreakdown();renderRoadmap();updateHeader();}
+function render(){renderPlan();renderGPA();renderTrack();renderCatalog();renderCreditBreakdown();renderRoadmap();renderGenEd();renderChains();updateHeader();}
 
 function renderPlan(){
   var c=document.getElementById('semestersContainer');c.innerHTML='';
@@ -1134,8 +1407,14 @@ function buildSemCard(sem){
   addBtn.onclick=function(){openAddModal(sem.id);};
   card.appendChild(addBtn);
   var pct=totCr>0?Math.round(doneCr/totCr*100):0;
+  var loadCls=totCr<=13?'light':(totCr>=18?'heavy':'normal');
+  var loadTxt=totCr<=13?'light':(totCr>=18?'heavy':'balanced');
+  var loadPct=Math.min(100,Math.round(totCr/18*100));
   var foot=document.createElement('div');foot.className='sem-foot';
-  foot.innerHTML='<span>'+pct+'% done</span><span class="cr-progress">'+doneCr+'/'+totCr+' cr</span>';
+  foot.innerHTML='<span>'+pct+'% done</span>'+
+    '<div class="load-meter"><div class="load-track"><div class="load-fill '+loadCls+'" style="width:'+loadPct+'%"></div></div>'+
+    '<span class="load-tag '+loadCls+'">'+loadTxt+'</span></div>'+
+    '<span class="cr-progress">'+doneCr+'/'+totCr+' cr</span>';
   card.appendChild(foot);
   return card;
 }
@@ -1306,26 +1585,81 @@ function closeModal(){document.getElementById('modalOverlay').classList.remove('
 function closeModalOutside(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
 
 // ─── HEADER / PROGRESS ───────────────────────────────────────────────────────
+// Which bucket a course falls into, for the composition bar. First match wins,
+// so the order here is the priority order.
+var COMP_BUCKETS = [
+  {key:'t-cs',   label:'Intro CS',      color:'var(--tag-cs)'},
+  {key:'t-core', label:'Core CS',       color:'var(--tag-core)'},
+  {key:'t-elec', label:'Upper-Level',   color:'var(--tag-elec)'},
+  {key:'t-math', label:'Math',          color:'var(--tag-math)'},
+  {key:'t-gen',  label:'Gen Ed & Lab',  color:'var(--tag-gen)'},
+  {key:'t-biz',  label:'Business Minor',color:'var(--tag-biz)'},
+  {key:'t-opt',  label:'Optional',      color:'var(--tag-opt)'},
+];
+
+function bucketOf(c){
+  for(var i=0;i<COMP_BUCKETS.length;i++){
+    if(c.tags&&c.tags.indexOf(COMP_BUCKETS[i].key)!==-1)return COMP_BUCKETS[i];
+  }
+  return {key:'other',label:'Other',color:'var(--text3)'};
+}
+
 function updateHeader(){
   var all=[];SEMESTERS.forEach(function(s){s.courses.forEach(function(c){all.push(c);});});
   var total=all.reduce(function(a,c){return a+c.cr;},0);
   var done=all.filter(function(c){return c.done;});
   var doneCr=done.reduce(function(a,c){return a+c.cr;},0);
   var pct=total>0?Math.round(doneCr/total*100):0;
+  var optCr=all.filter(function(c){return c.tags&&c.tags.indexOf('t-opt')!==-1;})
+               .reduce(function(a,c){return a+c.cr;},0);
+  var cushion=total-120;
+
+  // ── ring + headline ──
   document.getElementById('hdrTotal').textContent=total;
-  document.getElementById('hdrCompleted').textContent=doneCr;
   document.getElementById('hdrDone').textContent=done.length;
-  document.getElementById('hdrBar').style.width=pct+'%';
   document.getElementById('ringPct').textContent=pct+'%';
-  var circ=188.5;
+  var circ=226.2;
   document.getElementById('ringCircle').setAttribute('stroke-dashoffset',circ-(circ*pct/100));
-  var elCr=all.filter(function(c){return c.tags&&c.tags.includes('t-elec');}).reduce(function(a,c){return a+c.cr;},0);
-  var remaining=Math.max(0,120-total);
-  document.getElementById('hdrSeg').innerHTML=
-    '<span class="seg-item">Planned <span>'+total+' cr</span></span>'+
-    '<span class="seg-item">Still to plan <span>'+remaining+' cr</span></span>'+
-    '<span class="seg-item">Electives <span>'+elCr+' cr</span></span>'+
-    '<span class="seg-item">Done <span>'+doneCr+'/'+total+' cr</span></span>';
+  document.getElementById('progBig').innerHTML='<em>'+doneCr+'</em> of '+total+' credits done';
+  document.getElementById('progSub').textContent=
+    total+' planned against a 120 minimum — a '+cushion+'-credit cushion. '+
+    'Drop the '+optCr+' optional credits and you land on '+(total-optCr)+'.';
+
+  // ── kpis ──
+  var remainingCr=total-doneCr;
+  var doneSems=SEMESTERS.filter(function(s){
+    return s.courses.length&&s.courses.every(function(c){return c.done;});
+  }).length;
+  document.getElementById('progKpis').innerHTML=
+    '<div class="kpi"><span class="kpi-num" style="color:var(--gold)">'+total+'</span><span class="kpi-lbl">Planned</span></div>'+
+    '<div class="kpi"><span class="kpi-num" style="color:var(--green)">'+doneCr+'</span><span class="kpi-lbl">Earned</span></div>'+
+    '<div class="kpi"><span class="kpi-num" style="color:var(--text2)">'+remainingCr+'</span><span class="kpi-lbl">Remaining</span></div>'+
+    '<div class="kpi"><span class="kpi-num" style="color:var(--blue)">'+doneSems+'/'+SEMESTERS.length+'</span><span class="kpi-lbl">Semesters</span></div>'+
+    '<div class="kpi"><span class="kpi-num" style="color:'+(cushion>=0?'var(--green)':'var(--red)')+'">'+(cushion>=0?'+':'')+cushion+'</span><span class="kpi-lbl">vs 120</span></div>';
+
+  // ── composition bar ──
+  var sums={};
+  all.forEach(function(c){var b=bucketOf(c);sums[b.label]=(sums[b.label]||0)+c.cr;});
+  var order=COMP_BUCKETS.filter(function(b){return sums[b.label];});
+  document.getElementById('compBar').innerHTML=order.map(function(b){
+    return '<div class="comp-seg" style="width:'+(sums[b.label]/total*100)+'%;background:'+b.color+'" title="'+b.label+' — '+sums[b.label]+' cr"></div>';
+  }).join('');
+  document.getElementById('compLegend').innerHTML=order.map(function(b){
+    return '<span class="comp-item"><i class="comp-swatch" style="background:'+b.color+'"></i>'+
+           b.label+' <b>'+sums[b.label]+' cr</b></span>';
+  }).join('');
+
+  // ── term track ──
+  document.getElementById('termTrack').innerHTML=SEMESTERS.map(function(sem,idx){
+    var cr=sem.courses.reduce(function(a,c){return a+c.cr;},0);
+    var col=cr<=13?'var(--blue)':(cr>=18?'var(--orange)':'var(--gold)');
+    var isCur=idx===0;
+    return '<div class="term-node'+(isCur?' current':'')+'" title="'+escHtml(sem.name)+' — '+cr+' credits">'+
+      '<div class="term-name">'+escHtml(sem.name.replace(' 20',' \u2019'))+'</div>'+
+      '<span class="term-cr">'+cr+'</span>'+
+      '<div class="term-load"><i style="width:'+Math.min(100,cr/18*100)+'%;background:'+col+'"></i></div>'+
+    '</div>';
+  }).join('');
 }
 
 // ─── GPA ─────────────────────────────────────────────────────────────────────
@@ -1475,7 +1809,7 @@ function renderCatalog(){
   var lvl=document.getElementById('catFilter').value;
   var area=document.getElementById('catAreaFilter').value;
   var body=document.getElementById('catBody');body.innerHTML='';
-  var areaColors={security:'var(--tag-elec)',systems:'var(--tag-cs)',ai:'var(--tag-core)',theory:'var(--tag-math)',networks:'var(--tag-ap)',se:'var(--tag-gen)',db:'var(--tag-honors)',intro:'var(--green)',core:'var(--tag-core)',other:'var(--text3)'};
+  var areaColors={security:'var(--tag-elec)',systems:'var(--tag-cs)',ai:'var(--tag-core)',theory:'var(--tag-math)',networks:'var(--tag-net)',se:'var(--tag-gen)',db:'var(--tag-honors)',intro:'var(--green)',core:'var(--tag-core)',other:'var(--text3)'};
   CATALOG.filter(function(c){
     var mq=!q||(c.code.toLowerCase().includes(q)||c.name.toLowerCase().includes(q)||(c.area||'').toLowerCase().includes(q));
     var numMatch=c.code.match(/\d+/);var firstDigit=numMatch?numMatch[0].charAt(0):'';
@@ -1518,6 +1852,153 @@ function addCatCourse(enc){
   document.getElementById('modalOverlay').classList.add('open');
 }
 
+// ─── GEN ED BOARD ─────────────────────────────────────────────────────────────
+// Status reflects the Academic Requirements Report of 1 Aug 2026 plus this plan.
+// ok   = the ARR already shows it satisfied by an enrolled Fall 2026 course
+// plan = a course is chosen and scheduled, nothing left to decide
+// risk = still a decision or a restriction standing between you and the tick
+var GENED = [
+  {code:'R1',name:'Basic Math',status:'risk',course:'MATH 132',term:'Fall 2026',note:'The ARR currently credits MATH 131 for this. You are exempting out of 131, so confirm with advising that MATH 132 carries R1 — otherwise this line reopens.'},
+  {code:'R2',name:'Analytical Reasoning',status:'ok',course:'CICS 110',term:'Fall 2026',note:'Uses your one permitted CS Gen Ed slot.'},
+  {code:'PS',name:'Physical Science',status:'ok',course:'PHYSICS 151',term:'Fall 2026',note:'Also lab science 1 of 2.'},
+  {code:'SI',name:'Social World',status:'ok',course:'PUBHLTH 160',term:'Fall 2026',note:'One course, three lines: SI, DU, and the first-year diversity rule.'},
+  {code:'DU',name:'Diversity — United States',status:'ok',course:'PUBHLTH 160',term:'Fall 2026',note:''},
+  {code:'CW',name:'College Writing',status:'plan',course:'ENGLWRIT 112',term:'Spring 2027',note:'Also a prerequisite for CICS 305.'},
+  {code:'BS',name:'Biological Science',status:'risk',course:'NUTRITN 130',term:'Spring 2027',note:'Carries Gen Ed BS, but UMass listings show it restricted to Nutrition majors in some terms. Confirm you can enrol, or line up a backup.'},
+  {code:'SB',name:'Social & Behavioural Science',status:'plan',course:'PSYCH 100',term:'Fall 2027',note:''},
+  {code:'HS',name:'Historical Studies',status:'plan',course:'HISTORY 116',term:'Fall 2027',note:'Carries HS + DG — closes two lines at once.'},
+  {code:'DG',name:'Diversity — Global',status:'plan',course:'HISTORY 116',term:'Fall 2027',note:'Both Japanese options also carry DG, so this is doubly covered.'},
+  {code:'AL/AT',name:'Arts & Literature',status:'risk',course:'JAPANESE 147',term:'Spring 2029',note:'Only JAPANESE 147 (AT+DG) fills this line. JAPANESE 135 is I+DG and leaves Arts & Literature open — you would need a separate AL/AT course.'},
+  {code:'IE',name:'Integrative Experience',status:'plan',course:'COMPSCI 320',term:'Fall 2028',note:'Junior or senior year only, and must be at UMass.'},
+  {code:'JYW',name:'Junior Year Writing',status:'plan',course:'CICS 305',term:'Fall 2029',note:'Must be at UMass. Does not count as a CS elective.'},
+];
+
+function renderGenEd(){
+  var counts={ok:0,plan:0,risk:0};
+  GENED.forEach(function(g){counts[g.status]++;});
+  document.getElementById('geSummary').innerHTML=
+    '<div class="ge-sum-card ok"><span class="ge-sum-num">'+counts.ok+'</span><div class="ge-sum-lbl">Already Satisfied</div></div>'+
+    '<div class="ge-sum-card plan"><span class="ge-sum-num">'+counts.plan+'</span><div class="ge-sum-lbl">Course Chosen</div></div>'+
+    '<div class="ge-sum-card risk"><span class="ge-sum-num">'+counts.risk+'</span><div class="ge-sum-lbl">Needs a Decision</div></div>'+
+    '<div class="ge-sum-card plan"><span class="ge-sum-num">'+GENED.length+'</span><div class="ge-sum-lbl">Lines Total</div></div>';
+  var lbl={ok:'satisfied',plan:'planned',risk:'check this'};
+  document.getElementById('geGrid').innerHTML=GENED.map(function(g){
+    return '<div class="ge-card '+g.status+'">'+
+      '<div class="ge-head"><span class="ge-code">'+escHtml(g.code)+'</span>'+
+      '<span class="ge-state">'+lbl[g.status]+'</span></div>'+
+      '<div class="ge-name">'+escHtml(g.name)+'</div>'+
+      '<div class="ge-course">'+escHtml(g.course)+'</div>'+
+      '<div class="ge-term">'+escHtml(g.term)+'</div>'+
+      (g.note?'<div class="ge-note">'+escHtml(g.note)+'</div>':'')+
+    '</div>';
+  }).join('');
+}
+
+// ─── PREREQUISITE CHAINS ──────────────────────────────────────────────────────
+// Each chain is read left to right: a node requires everything to its left.
+// "+" means two courses are needed together before the next arrow.
+var CHAINS = [
+  {
+    name:'The Programming Spine',
+    desc:'Every CS course above the 100 level descends from this. A delay anywhere here pushes the whole degree back a semester.',
+    nodes:[
+      {c:'CICS 110',t:'Fall 2026',k:'start'},{a:1},{c:'CICS 160',t:'Spring 2027'},{a:1},
+      {c:'CICS 210',t:'Fall 2027'},{a:1},{c:'COMPSCI 220',t:'Spring 2028'},{a:1},
+      {c:'COMPSCI 320',t:'Fall 2028',k:'goal'},{a:1},{c:'COMPSCI 520',t:'Spring 2030'},
+    ],
+  },
+  {
+    name:'Systems',
+    desc:'COMPSCI 198C is a single credit and the only thing standing between you and COMPSCI 230. Miss it and the entire systems branch stalls for a year.',
+    nodes:[
+      {c:'CICS 210',t:'Fall 2027',k:'start'},{p:1},{c:'COMPSCI 198C',t:'Fall 2027'},{a:1},
+      {c:'COMPSCI 230',t:'Spring 2028'},{a:1},{c:'COMPSCI 377',t:'Spring 2029',k:'goal'},{a:1},
+      {c:'COMPSCI 532',t:'Spring 2030'},
+    ],
+  },
+  {
+    name:'Networks',
+    desc:'A short branch off systems — COMPSCI 453 needs only 230, so it could move earlier if you want a lighter senior fall.',
+    nodes:[
+      {c:'COMPSCI 230',t:'Spring 2028',k:'start'},{a:1},{c:'COMPSCI 453',t:'Fall 2029',k:'goal'},
+    ],
+  },
+  {
+    name:'Theory → Algorithms',
+    desc:'MATH 132 is the hinge: it gates COMPSCI 250, which gates COMPSCI 311, which is required by name and gates COMPSCI 445.',
+    nodes:[
+      {c:'MATH 132',t:'Fall 2026',k:'start'},{a:1},{c:'COMPSCI 250',t:'Fall 2028'},{a:1},
+      {c:'COMPSCI 311',t:'Spring 2029',k:'goal'},{a:1},{c:'COMPSCI 445',t:'Fall 2029',k:'goal'},
+    ],
+  },
+  {
+    name:'Data Management → Information Systems',
+    desc:'COMPSCI 445 needs 345 as well as 311. COMPSCI 345 is in the plan for exactly this reason — without it, 445 and 532 are both unreachable.',
+    nodes:[
+      {c:'CICS 210',t:'Fall 2027',k:'start'},{a:1},{c:'COMPSCI 345',t:'Fall 2028'},{p:1},
+      {c:'COMPSCI 311',t:'Spring 2029'},{a:1},{c:'COMPSCI 445',t:'Fall 2029',k:'goal'},{a:1},
+      {c:'COMPSCI 532',t:'Spring 2030'},
+    ],
+  },
+  {
+    name:'AI / Machine Learning',
+    desc:'COMPSCI 240 opens the AI branch. A B+ in it also waives the STATISTC 315 prerequisite on COMPSCI 589 — and a B+ in MATH 233 plus 235 waives the MATH 545 half.',
+    nodes:[
+      {c:'MATH 132',t:'Fall 2026',k:'start'},{a:1},{c:'COMPSCI 240',t:'Spring 2028'},{a:1},
+      {c:'COMPSCI 383',t:'Spring 2029',k:'goal'},
+    ],
+  },
+  {
+    name:'Machine Learning + NLP',
+    desc:'Both hang off COMPSCI 240; 485 also needs 220. Neither has a long tail, so they are the easiest courses to reschedule if a semester gets heavy.',
+    nodes:[
+      {c:'COMPSCI 220',t:'Spring 2028',k:'start'},{p:1},{c:'COMPSCI 240',t:'Spring 2028'},{a:1},
+      {c:'COMPSCI 485',t:'Spring 2030'},{p:1},{c:'COMPSCI 589',t:'Fall 2029',k:'goal'},
+    ],
+  },
+  {
+    name:'Junior Year Writing',
+    desc:'CICS 305 has the widest prerequisite set of any single course in the degree — four courses spread across two years.',
+    nodes:[
+      {c:'ENGLWRIT 112',t:'Spring 2027',k:'start'},{p:1},{c:'COMPSCI 220',t:'Spring 2028'},{p:1},
+      {c:'COMPSCI 230',t:'Spring 2028'},{p:1},{c:'COMPSCI 240',t:'Spring 2028'},{a:1},
+      {c:'CICS 305',t:'Fall 2029'},
+    ],
+  },
+  {
+    name:'Business Minor',
+    desc:'Accounting first, finance after. The statistics prerequisite for OIM 301 is the one node in this whole map that has no course assigned to it yet.',
+    nodes:[
+      {c:'ACCOUNTNG 233',t:'Spring 2027',k:'start'},{a:1},{c:'FINANCE 301',t:'Spring 2029'},
+    ],
+    nodes2:[
+      {c:'STATISTICS ?',t:'not chosen',k:'gap'},{a:1},{c:'OIM 301',t:'Spring 2030'},
+    ],
+    flag:'unresolved',
+  },
+];
+
+function chainFlow(nodes){
+  return '<div class="chain-flow">'+nodes.map(function(n){
+    if(n.a)return '<div class="chain-arrow">&#10230;</div>';
+    if(n.p)return '<div class="chain-plus">+</div>';
+    return '<div class="chain-node '+(n.k||'')+'"><span class="cn-code">'+escHtml(n.c)+
+           '</span><span class="cn-term">'+escHtml(n.t)+'</span></div>';
+  }).join('')+'</div>';
+}
+
+function renderChains(){
+  document.getElementById('chainList').innerHTML=CHAINS.map(function(ch){
+    return '<div class="chain-block">'+
+      '<div class="chain-title"><span class="chain-name">'+escHtml(ch.name)+'</span>'+
+      (ch.flag?'<span class="chain-flag">'+escHtml(ch.flag)+'</span>':'')+'</div>'+
+      '<div class="chain-desc">'+escHtml(ch.desc)+'</div>'+
+      chainFlow(ch.nodes)+
+      (ch.nodes2?'<div style="height:10px"></div>'+chainFlow(ch.nodes2):'')+
+    '</div>';
+  }).join('');
+}
+
 // ─── TABS ─────────────────────────────────────────────────────────────────────
 function switchTab(id,btn){
   document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
@@ -1526,6 +2007,8 @@ function switchTab(id,btn){
   if(btn)btn.classList.add('active');
   if(id==='gpa')renderGPA();
   if(id==='reqtrack')renderTrack();
+  if(id==='gened')renderGenEd();
+  if(id==='prereq')renderChains();
   if(id==='catalog')renderCatalog();
   if(id==='credits')renderCreditBreakdown();
   if(id==='roadmap')renderRoadmap();
