@@ -1617,14 +1617,14 @@ var REQ_GROUPS = [
 var SEMESTERS = [
   {id:'s1',name:'Fall 2026',year:1,targetCr:17,courses:[
     {id:'c-cics110',locked:true,prof:'Cole Reilly',code:'CICS 110',name:'Foundations of Programming',cr:4,tags:['t-cs'],note:'Enrolled. Satisfies Gen Ed R2 (Analytical Reasoning) — your one permitted CS Gen Ed.',done:false,grade:''},
-    {id:'c-math131',locked:true,prof:'Kien Nguyen',code:'MATH 131',name:'Calculus I',cr:4,tags:['t-math'],note:'Enrolled. Taken for credit — no AP exemption. Satisfies Gen Ed R1 outright, and gates MATH 132 next spring.',done:false,grade:'',placement:'Starting the math sequence from the top — every later math course counts from here'},
+    {id:'c-math131',locked:true,prof:'Kien Nguyen',code:'MATH 131',name:'Calculus I',cr:4,tags:['t-math'],note:'Enrolled. Taken for credit — no AP exemption. Satisfies Gen Ed R1 outright, and gates MATH 132 next spring.',done:false,grade:''},
     {id:'c-phys151',locked:true,prof:'David Hamilton',code:'PHYSICS 151',name:'General Physics I',cr:4,tags:['t-gen'],note:'Enrolled. Lab science 1 of 2, and satisfies Gen Ed PS.',done:false,grade:''},
     {id:'c-pubhlth160',locked:true,prof:'Andrea Ayvazian',code:'PUBHLTH 160',ge:'SI + DU',name:'My Body, My Health',cr:4,tags:['t-gen'],note:'Enrolled. Clears Social World (SI), Diversity DU, and the first-year DG/DU rule at once.',done:false,grade:''},
     {id:'c-fys191',locked:true,prof:'Angela Upreti',code:'FYS 191MCS26',name:'FYS — Topics in CICS: Bits, Bytes & Modern Computing',cr:1,tags:['t-elec'],note:'Enrolled. Free credit — does not count toward the major.',done:false,grade:''},
   ]},
   {id:'s2',name:'Spring 2027',year:1,targetCr:19,courses:[
     {id:'c-cics160',locked:true,prof:'Cole Reilly',code:'CICS 160',name:'Object-Oriented Programming',cr:4,tags:['t-cs'],note:'Locked in. Needs CICS 110 (C or better). Unlocks CICS 210, COMPSCI 198C and COMPSCI 250.',done:false,grade:''},
-    {id:'c-math132',locked:true,prof:'Catherine Benincasa (backup: Arie Stern)',code:'MATH 132',name:'Calculus II',cr:4,tags:['t-math'],note:'Locked in. Needs MATH 131. The load-bearing course of year one — it gates COMPSCI 240, COMPSCI 250, MATH 233 and MATH 235 all at once.',done:false,grade:'',placement:'Moved here from Fall 2026 because MATH 131 comes first'},
+    {id:'c-math132',locked:true,prof:'Catherine Benincasa (backup: Arie Stern)',code:'MATH 132',name:'Calculus II',cr:4,tags:['t-math'],note:'Locked in. Needs MATH 131. The load-bearing course of year one — it gates COMPSCI 240, COMPSCI 250, MATH 233 and MATH 235 all at once.',done:false,grade:''},
     {id:'c-englwrit112',locked:true,prof:'Devin Day',code:'ENGLWRIT 112',name:'College Writing',cr:3,tags:['t-gen'],note:'Locked in. Gen Ed CW, and a prerequisite for CICS 305 in junior year.',done:false,grade:''},
     {id:'c-econ121',code:'ECON 121',ge:'SB + DG',name:'International Economy',cr:4,tags:['t-gen'],note:'Locked in. Gen Ed SB and DG in one course, so both lines close here. Intro level, no prerequisites.',done:false,grade:'',
       alt:{code:'PSYCH 100',name:'Introductory Psychology',ge:'SB',note:'SB only, no DG. If you swap to this, keep HISTORY 116 so DG is still covered.'}},
@@ -1633,9 +1633,9 @@ var SEMESTERS = [
   {id:'s3',name:'Fall 2027',year:2,targetCr:18,courses:[
     {id:'c-cics210',locked:true,prof:'Marc Liberatore',code:'CICS 210',name:'Data Structures',cr:4,tags:['t-cs'],note:'Needs CICS 160. The gateway — almost every 200+ CS course waits on this, including CICS 256 next spring.',done:false,grade:''},
     {id:'c-cs198c',locked:true,prof:'Timothy Richards',code:'COMPSCI 198C',name:'Intro to the C Programming Language',cr:1,tags:['t-core'],note:'One credit, easy to forget, and COMPSCI 230 is locked without it.',done:false,grade:''},
-    {id:'c-cs250',prof:'Mordecai Golin',code:'COMPSCI 250',name:'Introduction to Computation',cr:4,tags:['t-core'],note:'Its real prerequisites are CICS 160 and MATH 132 — both finished last spring — so it runs beside CICS 210 and lets COMPSCI 311 move up to junior fall.',done:false,grade:'',placement:'The single move that absorbs the MATH 131 delay'},
-    {id:'c-math233',code:'MATH 233',name:'Multivariate Calculus',cr:4,tags:['t-math'],note:'Needs MATH 132. STATISTC 315 is the ARR-accepted alternative, but keep MATH 233: a B+ here and in MATH 235 waives the MATH 545 prerequisite on COMPSCI 589.',done:false,grade:''},
-    {id:'c-hist116',code:'HISTORY 116',ge:'HS + DG',name:'History of Japan',cr:4,tags:['t-gen'],note:'Gen Ed HS. It also carries DG, which ECON 121 already covers, so any HS course could take this slot.',done:false,grade:'',placement:'Moved into sophomore fall to front-load the degree',
+    {id:'c-cs250',prof:'Mordecai Golin',code:'COMPSCI 250',name:'Introduction to Computation',cr:4,tags:['t-core'],note:'Its real prerequisites are CICS 160 and MATH 132 — both finished last spring — so it runs beside CICS 210 and lets COMPSCI 311 move up to junior fall.',done:false,grade:''},
+    {id:'c-math233',prof:'A Havens',code:'MATH 233',name:'Multivariate Calculus',cr:4,tags:['t-math'],note:'Needs MATH 132. STATISTC 315 is the ARR-accepted alternative, but keep MATH 233: a B+ here and in MATH 235 waives the MATH 545 prerequisite on COMPSCI 589.',done:false,grade:''},
+    {id:'c-hist116',code:'HISTORY 116',ge:'HS + DG',name:'History of Japan',cr:4,tags:['t-gen'],note:'Gen Ed HS. It also carries DG, which ECON 121 already covers, so any HS course could take this slot.',done:false,grade:'',
       alt:{code:'POLISCI 201',name:'American Politics Through Film',ge:'HS',note:'HS only, no DG. Fine as long as you keep ECON 121 for DG.'}},
     {id:'c-cics291c',prof:'Casey Maloney',code:'CICS 291C',name:'Seminar — Find Your Strengths, Design Your Career',cr:1,tags:['t-elec'],note:'One credit of internship and job-search prep, right before the summer 2028 internship season. Free elective.',done:false,grade:''},
   ]},
@@ -1643,32 +1643,32 @@ var SEMESTERS = [
     {id:'c-cs220',prof:'James Perretta',code:'COMPSCI 220',name:'Programming Methodology',cr:4,tags:['t-core'],note:'Needs CICS 210. Opens 320, 326 and 485.',done:false,grade:''},
     {id:'c-cs230',prof:'Phuthipong Bovornkeeratiroj',code:'COMPSCI 230',name:'Computer Systems Principles',cr:4,tags:['t-core'],note:'Needs CICS 210 + COMPSCI 198C. Opens 377 and 453.',done:false,grade:''},
     {id:'c-cs240',prof:'Ghazaleh Parvini',code:'COMPSCI 240',name:'Reasoning Under Uncertainty',cr:4,tags:['t-core'],note:'Needs CICS 210 + MATH 132. Aim for B+ — it waives the STATISTC 315 prerequisite on COMPSCI 589.',done:false,grade:''},
-    {id:'c-cics256',prof:'Donghyun Kim',code:'CICS 256',name:'Make: Physical Computing',cr:4,tags:['t-gen'],note:'Needs CICS 210 + R1. Lab science 2 of 2. Hands-on: ESP32 and Arduino, sensors, WiFi, 3D printing, and a two-person final project. Freshmen and sophomores register first, so register the moment you are eligible. Backup: PHYSICS 152.',done:false,grade:'',placement:'Moved up from Fall 2028 — sophomores get first pick of seats'},
+    {id:'c-cics256',prof:'Donghyun Kim',code:'CICS 256',name:'Make: Physical Computing',cr:4,tags:['t-gen'],note:'Needs CICS 210 + R1. Lab science 2 of 2. Hands-on: ESP32 and Arduino, sensors, WiFi, 3D printing, and a two-person final project. Freshmen and sophomores register first, so register the moment you are eligible. Backup: PHYSICS 152.',done:false,grade:''},
   ]},
   {id:'s5',name:'Fall 2028',year:3,targetCr:13,courses:[
-    {id:'c-math235',code:'MATH 235',name:'Introduction to Linear Algebra',cr:3,tags:['t-math'],note:'Needs MATH 132. Your last math course, finished a year before COMPSCI 589. Aim for B+ — with MATH 233 it waives the MATH 545 prerequisite on 589.',done:false,grade:'',placement:'Moved from Spring 2028 when COMPSCI 328 and 520 were dropped'},
-    {id:'c-cs311',prof:'Ghazaleh Parvini / Cooper Sigrist',code:'COMPSCI 311',name:'Introduction to Algorithms',cr:4,tags:['t-elec'],note:'Needs CICS 210 + COMPSCI 250, both done in Fall 2027. Required by name — no substitutes.',done:false,grade:'',placement:'Moved up from Spring 2029'},
+    {id:'c-math235',prof:'Refik Baykur',code:'MATH 235',name:'Introduction to Linear Algebra',cr:3,tags:['t-math'],note:'Needs MATH 132. Your last math course, finished a year before COMPSCI 589. Aim for B+ — with MATH 233 it waives the MATH 545 prerequisite on 589.',done:false,grade:''},
+    {id:'c-cs311',prof:'Ghazaleh Parvini / Cooper Sigrist',code:'COMPSCI 311',name:'Introduction to Algorithms',cr:4,tags:['t-elec'],note:'Needs CICS 210 + COMPSCI 250, both done in Fall 2027. Required by name — no substitutes.',done:false,grade:''},
     {id:'c-cs345',code:'COMPSCI 345',name:'Practice & Applications of Data Management',cr:3,tags:['t-elec'],note:'Needs CICS 210. In the plan because COMPSCI 445 will not let you enrol without it. It also counts as a 300+ CS elective.',done:false,grade:''},
-    {id:'c-cics305',locked:true,code:'CICS 305',name:'Social Issues in Computing (JYW)',cr:3,tags:['t-gen'],note:'Needs ENGLWRIT 112 + COMPSCI 220, 230 and 240 — all finished by Spring 2028. Must be taken at UMass. Required, but does NOT count as an elective.',done:false,grade:'',placement:'Moved up from Spring 2029 to junior fall'},
+    {id:'c-cics305',locked:true,prof:'Erin Butler',code:'CICS 305',name:'Social Issues in Computing (JYW)',cr:3,tags:['t-gen'],note:'Needs ENGLWRIT 112 + COMPSCI 220, 230 and 240 — all finished by Spring 2028. Must be taken at UMass. Required, but does NOT count as an elective.',done:false,grade:''},
   ]},
   {id:'s6',name:'Spring 2029',year:3,targetCr:14,courses:[
     {id:'c-cs383',code:'COMPSCI 383',name:'Artificial Intelligence',cr:3,tags:['t-elec'],note:'Needs CICS 210 + COMPSCI 240. 300+ elective.',done:false,grade:''},
     {id:'c-phil100',code:'PHIL 100',name:'Introduction to Philosophy',cr:4,tags:['t-gen'],note:'Gen Ed AL — your last Gen Ed line. No prerequisites, offered every semester. No DG or DU tag needed, since PUBHLTH 160 and ECON 121 cover diversity.',done:false,grade:''},
     {id:'c-cs326',code:'COMPSCI 326',name:'Web Programming',cr:4,tags:['t-elec'],note:'Needs COMPSCI 220. Full-stack web work: HTTP, JavaScript, databases — practical portfolio material. Also counts for the IE, a backup if 320 falls through.',done:false,grade:''},
-    {id:'c-cs453',code:'COMPSCI 453',name:'Computer Networks',cr:3,tags:['t-elec'],note:'Needs only COMPSCI 230, finished in Spring 2028. 400+ elective.',done:false,grade:'',placement:'Moved to junior spring to make room for CICS 305 in the fall'},
+    {id:'c-cs453',code:'COMPSCI 453',name:'Computer Networks',cr:3,tags:['t-elec'],note:'Needs only COMPSCI 230, finished in Spring 2028. 400+ elective.',done:false,grade:''},
   ]},
   {id:'s7',name:'Fall 2029',year:4,targetCr:14,courses:[
     {id:'c-cs377',prof:'Phuthipong Bovornkeeratiroj',code:'COMPSCI 377',name:'Operating Systems',cr:4,tags:['t-elec'],note:'Needs COMPSCI 230. 300+ elective, and a prerequisite for COMPSCI 532.',done:false,grade:''},
     {id:'c-cs445',code:'COMPSCI 445',name:'Information Systems',cr:3,tags:['t-elec'],note:'Needs COMPSCI 220 + 311 + 345 — all three done by junior fall. 400+ elective.',done:false,grade:''},
     {id:'c-cs589',code:'COMPSCI 589',name:'Machine Learning',cr:3,tags:['t-elec'],note:'400+ elective. Both listed prerequisites are waivable: MATH 545 via B+ in MATH 233 and 235; STATISTC 315 via B+ in COMPSCI 240.',done:false,grade:''},
-    {id:'c-cs320',prof:'Jaime Davila',code:'COMPSCI 320',name:'Software Engineering',cr:4,tags:['t-elec','t-gen'],note:'Needs COMPSCI 220. Counts twice: Integrative Experience AND a 300+ elective. Must be junior or senior year, at UMass.',done:false,grade:'',placement:'Moved from Fall 2028 to keep senior fall full-time'},
+    {id:'c-cs320',prof:'Jaime Davila',code:'COMPSCI 320',name:'Software Engineering',cr:4,tags:['t-elec','t-gen'],note:'Needs COMPSCI 220. Counts twice: Integrative Experience AND a 300+ elective. Must be junior or senior year, at UMass.',done:false,grade:''},
   ]},
   {id:'s8',name:'Spring 2030',year:4,targetCr:12,courses:[
-    {id:'c-cs546',code:'COMPSCI 546',name:'Applied Information Retrieval',cr:3,tags:['t-elec'],note:'Needs COMPSCI 320 or 326, plus 383 or 485, all done by now. Graduate-level but open to undergraduates. Building search engines, learning to rank, and deep learning for retrieval, with many programming projects. Fills the 8th upper-level slot and also counts as 400+. Offered Spring 2026; confirm it is on the Spring 2030 schedule.',done:false,grade:'',placement:'Replaces ECE 547: the 8th upper-level slot takes any 300+ CS elective',
+    {id:'c-cs546',code:'COMPSCI 546',name:'Applied Information Retrieval',cr:3,tags:['t-elec'],note:'Needs COMPSCI 320 or 326, plus 383 or 485, all done by now. Graduate-level but open to undergraduates. Building search engines, learning to rank, and deep learning for retrieval, with many programming projects. Fills the 8th upper-level slot and also counts as 400+. Offered Spring 2026; confirm it is on the Spring 2030 schedule.',done:false,grade:'',
       alt:{code:'COMPSCI 360',name:'Intro to Computer & Network Security',note:'Needs only COMPSCI 230. Practical security, including AI security such as prompt injection.'}},
     {id:'c-cs532',code:'COMPSCI 532',name:'Systems for Data Science',cr:3,tags:['t-elec'],note:'Needs COMPSCI 377 + 445, both in Fall 2029, which is why it sits last. Systems for processing data at scale — the closest course in this plan to cloud computing.',done:false,grade:''},
     {id:'c-cs485',code:'COMPSCI 485',name:'Applications of NLP',cr:3,tags:['t-elec'],note:'Needs COMPSCI 220 + 240. Text classification, sentiment analysis, machine translation.',done:false,grade:''},
-    {id:'c-cs426',code:'COMPSCI 426',name:'Scalable Web Systems',cr:3,tags:['t-elec'],note:'Needs COMPSCI 320 or 326, both done by now. How large web apps scale across many services, databases and machines: the closest fit to cloud computing after 532. A 400-level elective, so it also backs up the 400+ bucket.',done:false,grade:'',placement:'Replaces COMPSCI 682, which the Spring 2026 listing opens to graduate CS students only',
+    {id:'c-cs426',code:'COMPSCI 426',name:'Scalable Web Systems',cr:3,tags:['t-elec'],note:'Needs COMPSCI 320 or 326, both done by now. How large web apps scale across many services, databases and machines: the closest fit to cloud computing after 532. A 400-level elective, so it also backs up the 400+ bucket.',done:false,grade:'',
       alt:{code:'COMPSCI 682',name:'Neural Networks: A Modern Introduction',note:'Graduate CS students only per the Spring 2026 listing. Only if CICS grants you an exception.'}},
   ]},
 ];
@@ -2268,7 +2268,7 @@ var STORE_KEY='courseflow_v5';
 var LEGACY_KEYS=['courseflow_v4'];
 /* Bump PLAN_VERSION whenever the default plan changes. A save from an older
    version then loads the new plan while keeping grades, checkmarks and theme. */
-var PLAN_VERSION='2026-11-05g';
+var PLAN_VERSION='2026-11-05k';
 var MIGRATED=false;
 var CUSTOM_TAGS={};
 var FLAGS={showIssues:true,showNotes:true,hideDone:false};
