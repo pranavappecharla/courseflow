@@ -1026,8 +1026,8 @@ body.dep-mode .course-item.dep-down{opacity:1;background:color-mix(in srgb,var(-
           </tr>
           <tr>
             <td>NUTRITN 130 (BS) · PSYCH 100 (SB) · JAPANESE 135/147 (AL/AT)</td>
-            <td><strong>KIN 110</strong> (BS) · <strong>ECON 121</strong> (SB + DG) · AL/AT not chosen yet</td>
-            <td>PSYCH 100 is no longer needed. Any plain AL or AT course finishes the Arts &amp; Literature line</td>
+            <td><strong>KIN 110</strong> (BS) · <strong>ECON 121</strong> (SB + DG) · <strong>PHIL 100</strong> (AL)</td>
+            <td>PSYCH 100 is no longer needed, and every Gen Ed line now has a course</td>
           </tr>
           <tr>
             <td>Fall 2027: five courses, 17 cr</td>
@@ -1060,9 +1060,9 @@ body.dep-mode .course-item.dep-down{opacity:1;background:color-mix(in srgb,var(-
         <thead><tr><th>Open item</th><th>Why it matters</th><th>Decide by</th></tr></thead>
         <tbody>
           <tr>
-            <td><strong style="color:var(--orange)">AL/AT course</strong></td>
-            <td>Your last unchosen Gen Ed. Any plain AL or AT course works; it does not need a DG or DU tag, since PUBHLTH 160 and ECON 121 already cover diversity. Ideas from the Spring 2027 list: PHIL 100, ENGLISH 254, MUSIC 100.</td>
-            <td>Spring 2029 registration</td>
+            <td><strong style="color:var(--orange)">ARR line 13a</strong></td>
+            <td>Line 13a only asks for one more CompSci course numbered 300+ (3+ credits, not CICS 305). COMPSCI 345 may already fill it, which would make ECE 547 optional and lighten senior spring. Ask a CICS advisor to confirm, since the ARR decides which course fills which line.</td>
+            <td>Before Spring 2030 registration</td>
           </tr>
           <tr>
             <td><strong style="color:var(--orange)">CICS 256 seat</strong></td>
@@ -1115,7 +1115,7 @@ body.dep-mode .course-item.dep-down{opacity:1;background:color-mix(in srgb,var(-
             <tr><td>Diversity — one DG course</td><td>ECON 121 · Spring 2027</td></tr>
             <tr><td>Biological Science (BS)</td><td>KIN 110 · Spring 2027</td></tr>
             <tr><td>Historical Studies (HS)</td><td>HISTORY 116 · Fall 2028</td></tr>
-            <tr><td>Arts &amp; Literature (AL or AT)</td><td><strong style="color:var(--orange)">Not chosen</strong> · Spring 2029</td></tr>
+            <tr><td>Arts &amp; Literature (AL or AT)</td><td>PHIL 100 · Spring 2029</td></tr>
             <tr><td>Integrative Experience</td><td>COMPSCI 320 · Fall 2028</td></tr>
             <tr><td>CS major courses</td><td>160, 198C, 210, 220, 230, 240, 250, 305</td></tr>
             <tr><td>Upper-level CS</td><td>311 + 7 more — all chosen</td></tr>
@@ -1259,7 +1259,7 @@ body.dep-mode .course-item.dep-down{opacity:1;background:color-mix(in srgb,var(-
           <tr><td>Fall 2027</td><td>14</td><td>Deliberately light. CICS 210, COMPSCI 250 and MATH 233, with only 198C and a 1-credit career seminar beside them.</td></tr>
           <tr><td>Spring 2028</td><td>16</td><td>⚠ The densest CS term: 220, 230 and 240 plus CICS 256. No Gen Ed.</td></tr>
           <tr><td>Fall 2028</td><td>17</td><td>Junior year opens: IE, data management, networks and linear algebra, with HISTORY 116 as the light one.</td></tr>
-          <tr><td>Spring 2029</td><td>17</td><td>⚠ Algorithms plus AI plus JYW. The AL/AT course and COMPSCI 328 balance it.</td></tr>
+          <tr><td>Spring 2029</td><td>17</td><td>⚠ Algorithms plus AI plus JYW. PHIL 100 and COMPSCI 328 balance it.</td></tr>
           <tr><td>Fall 2029</td><td>14</td><td>⚠ Operating Systems and Machine Learning together — kept to four courses.</td></tr>
           <tr><td>Spring 2030</td><td>15</td><td>Four electives to finish, plus the optional graduate 682.</td></tr>
         </tbody>
@@ -1603,7 +1603,7 @@ var REQ_GROUPS = [
     {code:'ECON 121',name:'SB Social & Behavioural + DG Diversity — Spring 2027',required:true},
     {code:'KIN 110',name:'BS Biological Science — Spring 2027',required:true},
     {code:'HISTORY 116',name:'HS Historical Studies — Fall 2028',required:true},
-    {code:'AL/AT GEN ED',name:'AL or AT Arts & Literature — Spring 2029 (not chosen yet)',required:true},
+    {code:'PHIL 100',name:'AL Arts & Literature — Spring 2029',required:true},
   ]},
 ];
 
@@ -1646,7 +1646,7 @@ var SEMESTERS = [
     {id:'c-cs311',code:'COMPSCI 311',name:'Introduction to Algorithms',cr:4,tags:['t-elec'],note:'Needs CICS 210 + COMPSCI 250. Required by name — no substitutes.',done:false,grade:''},
     {id:'c-cs383',code:'COMPSCI 383',name:'Artificial Intelligence',cr:3,tags:['t-elec'],note:'Needs CICS 210 + COMPSCI 240. 300+ elective.',done:false,grade:''},
     {id:'c-cics305',code:'CICS 305',name:'Social Issues in Computing (JYW)',cr:3,tags:['t-gen'],note:'Needs ENGLWRIT 112 + COMPSCI 220, 230 and 240 — all finished by Spring 2028. Must be taken at UMass. Required, but does NOT count as an elective.',done:false,grade:'',placement:'Junior spring keeps senior fall light'},
-    {id:'c-alat',code:'AL/AT GEN ED',name:'Arts & Literature Gen Ed — not chosen yet',cr:4,tags:['t-gen'],note:'Any plain AL or AT course works — no DG or DU tag needed, since PUBHLTH 160 and ECON 121 cover diversity. Ideas from the Spring 2027 list: PHIL 100, ENGLISH 254, MUSIC 100.',done:false,grade:''},
+    {id:'c-phil100',code:'PHIL 100',name:'Introduction to Philosophy',cr:4,tags:['t-gen'],note:'Gen Ed AL — your last Gen Ed line. No prerequisites, offered every semester. No DG or DU tag needed, since PUBHLTH 160 and ECON 121 cover diversity.',done:false,grade:''},
     {id:'c-cs328',code:'COMPSCI 328',name:'Mobile Health Sensing & Analytics',cr:3,tags:['t-elec'],note:'Needs CICS 210. Machine learning on phone sensor data, with team projects in Python — a natural follow-on to CICS 256. Elective toward the 120.',done:false,grade:''},
   ]},
   {id:'s7',name:'Fall 2029',year:4,targetCr:14,courses:[
@@ -1713,14 +1713,14 @@ var CREDIT_BREAKDOWN = [
     ]
   },
   {
-    key:'cb-gen',cls:'cb-gen',title:'General Education',required:26,note:'CW, SB, DG and BS all close in Spring 2027. HS in Fall 2028; AL/AT and JYW in Spring 2029. R1, R2, PS, SI and DU were covered in Fall 2026.',
+    key:'cb-gen',cls:'cb-gen',title:'General Education',required:26,note:'CW, SB, DG and BS all close in Spring 2027. HS in Fall 2028; AL and JYW in Spring 2029. R1, R2, PS, SI and DU were covered in Fall 2026.',
     items:[
       {name:'PUBHLTH 160 — SI + DU',cr:4,tag:'t-gen'},
       {name:'ENGLWRIT 112 — CW',cr:3,tag:'t-gen'},
       {name:'ECON 121 — SB + DG',cr:4,tag:'t-gen'},
       {name:'KIN 110 — BS',cr:4,tag:'t-gen'},
       {name:'HISTORY 116 — HS',cr:4,tag:'t-gen'},
-      {name:'AL/AT course — not chosen yet',cr:4,tag:'t-gen'},
+      {name:'PHIL 100 — AL',cr:4,tag:'t-gen'},
       {name:'CICS 305 — Junior Year Writing',cr:3,tag:'t-gen'},
     ]
   },
@@ -1773,9 +1773,9 @@ var ROADMAP = [
     status:'future',
     courses:{
       fall:['COMPSCI 320 — Software Engineering (IE)','COMPSCI 345 — Data Management','MATH 235 — Linear Algebra','HISTORY 116 — History of Japan (HS)','COMPSCI 453 — Computer Networks'],
-      spring:['COMPSCI 311 — Introduction to Algorithms','COMPSCI 383 — Artificial Intelligence','CICS 305 — Social Issues in Computing (JYW)','AL/AT Gen Ed — not chosen yet','COMPSCI 328 — Mobile Health Sensing & Analytics'],
+      spring:['COMPSCI 311 — Introduction to Algorithms','COMPSCI 383 — Artificial Intelligence','CICS 305 — Social Issues in Computing (JYW)','PHIL 100 — Introduction to Philosophy (AL)','COMPSCI 328 — Mobile Health Sensing & Analytics'],
     },
-    priorities:['COMPSCI 320 is the earliest the IE requirement is allowed — junior year, at UMass','COMPSCI 453 moved up to fall: it needs only COMPSCI 230','MATH 235: a B+ here plus a B+ in MATH 233 waives the MATH 545 half of the COMPSCI 589 prerequisite','Pick your AL/AT course before Spring 2029 registration — any plain AL or AT course works','COMPSCI 328 applies machine learning to sensor data, building on what you did in CICS 256'],
+    priorities:['COMPSCI 320 is the earliest the IE requirement is allowed — junior year, at UMass','COMPSCI 453 moved up to fall: it needs only COMPSCI 230','MATH 235: a B+ here plus a B+ in MATH 233 waives the MATH 545 half of the COMPSCI 589 prerequisite','PHIL 100 closes your last Gen Ed line (AL), so every Gen Ed is done by the end of junior year','COMPSCI 328 applies machine learning to sensor data, building on what you did in CICS 256'],
     gpaGoal:'Protect the GPA here above everywhere else',
     crTarget:'17 + 17 = 34 cr',
     tags:['upper-level','ai','systems','writing'],
@@ -1806,7 +1806,7 @@ var GENED = [
   {code:'DG',name:'Diversity — Global',status:'plan',course:'ECON 121',term:'Spring 2027',note:'With DU from PUBHLTH 160, your diversity requirement is complete.'},
   {code:'BS',name:'Biological Science',status:'plan',course:'KIN 110',term:'Spring 2027',note:'Locked in. Open to all majors; KIN 110H also counts if you join the Honors College.'},
   {code:'HS',name:'Historical Studies',status:'plan',course:'HISTORY 116',term:'Fall 2028',note:'Any HS course works now that ECON 121 covers DG.'},
-  {code:'AL/AT',name:'Arts & Literature',status:'risk',course:'Not chosen yet',term:'Spring 2029',note:'Any plain AL or AT course fills this line — no DG or DU tag needed. Ideas from the Spring 2027 list: PHIL 100, ENGLISH 254, MUSIC 100.'},
+  {code:'AL',name:'Arts & Literature',status:'plan',course:'PHIL 100',term:'Spring 2029',note:'Introduction to Philosophy, 4 credits — meets the 4-unit AL minimum. No DG or DU tag needed.'},
   {code:'IE',name:'Integrative Experience',status:'plan',course:'COMPSCI 320',term:'Fall 2028',note:'Junior or senior year only, and must be at UMass. COMPSCI 326 in Fall 2029 also qualifies as a backup.'},
   {code:'JYW',name:'Junior Year Writing',status:'plan',course:'CICS 305',term:'Spring 2029',note:'Must be at UMass. Does not count as a CS elective.'},
 ];
@@ -2032,7 +2032,7 @@ function courseIndex(){
   SEMESTERS.forEach(function(s,i){s.courses.forEach(function(c){m[c.code]={c:c,sem:s,idx:i};});});
   return m;
 }
-/* Codes like "AL/AT GEN ED" stand for a course not yet chosen. */
+/* Codes containing "/" or "?" stand for a course not yet chosen. */
 function isUndecided(code){return code.indexOf('/')!==-1||code.indexOf('?')!==-1;}
 
 function prereqEdges(code){
@@ -2259,6 +2259,9 @@ function issuesByCourse(){
    ═══════════════════════════════════════════════════════════════════════════ */
 var STORE_KEY='courseflow_v5';
 var LEGACY_KEYS=['courseflow_v4'];
+/* Bump PLAN_VERSION whenever the default plan changes. A save from an older
+   version then loads the new plan while keeping grades, checkmarks and theme. */
+var PLAN_VERSION='2026-11-05';
 var MIGRATED=false;
 var CUSTOM_TAGS={};
 var FLAGS={showIssues:true,showNotes:true,hideDone:false};
@@ -2277,7 +2280,7 @@ function snapshot(){
               courses:JSON.parse(JSON.stringify(s.courses))};
     }),
     customTags:CUSTOM_TAGS, flags:FLAGS, theme:document.documentElement.dataset.theme,
-    version:5, savedAt:new Date().toISOString()
+    version:5, planVersion:PLAN_VERSION, savedAt:new Date().toISOString()
   };
 }
 function saveState(){
@@ -2296,7 +2299,12 @@ function applySnapshot(s){
 function loadState(){
   try{
     var raw=localStorage.getItem(STORE_KEY);
-    if(raw){applySnapshot(JSON.parse(raw));return;}
+    if(raw){
+      var saved=JSON.parse(raw);
+      if(saved.planVersion===PLAN_VERSION)applySnapshot(saved);
+      else migrateLegacy(saved);
+      return;
+    }
     for(var i=0;i<LEGACY_KEYS.length;i++){
       var old=localStorage.getItem(LEGACY_KEYS[i]);
       if(old){migrateLegacy(JSON.parse(old));return;}
@@ -3365,7 +3373,7 @@ function boot(){
   setTheme(document.documentElement.dataset.theme||'maroon');
   renderAll();
   renderCheck();
-  if(MIGRATED)toast('Loaded the November 2026 plan — your grades, checkmarks and theme carried over','gold');
+  if(MIGRATED)toast('Loaded the updated plan — your grades, checkmarks and theme carried over','gold');
 }
 boot();
 
