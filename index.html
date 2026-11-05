@@ -275,6 +275,17 @@ body.dep-mode .course-item.dep-down{opacity:1;background:color-mix(in srgb,var(-
 .t-opt{background:var(--tag-opt-bg);color:var(--tag-opt)}
 .t-honors{background:var(--tag-honors-bg);color:var(--tag-honors)}
 .place-note{font-size:0.73rem;color:var(--gold-dim);margin-top:5px;font-style:italic;line-height:1.55}
+.ge-pill{display:inline-block;margin-left:6px;font-family:var(--font-mono);font-size:0.78rem;font-weight:600;
+  padding:2px 8px;border-radius:5px;line-height:1.4;letter-spacing:0.03em;vertical-align:top;
+  color:var(--tag-gen);background:var(--tag-gen-bg);border:1px solid color-mix(in srgb,var(--tag-gen) 32%,transparent)}
+.lock-mark{margin-right:6px;font-size:0.8rem}
+.ge-pill.sm{font-size:0.66rem;padding:1px 6px;margin-left:5px;vertical-align:baseline}
+.done .ge-pill{color:var(--text3);background:var(--surface);border-color:var(--border)}
+.alt-note{font-size:0.75rem;color:var(--text2);margin-top:7px;padding:5px 9px;border-radius:6px;line-height:1.55;
+  border:1px dashed var(--border-bright);background:color-mix(in srgb,var(--surface) 55%,transparent)}
+.alt-label{font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-right:6px}
+.alt-code{font-family:var(--font-mono);font-weight:600;color:var(--gold-bright);font-size:0.74rem;margin-right:5px}
+.alt-sub{display:block;font-size:0.71rem;color:var(--text3);margin-top:2px}
 .issue-note{font-size:0.73rem;margin-top:6px;padding:4px 9px;border-radius:6px;line-height:1.55;
   background:color-mix(in srgb,var(--orange) 13%,transparent);color:var(--orange);
   border:1px solid color-mix(in srgb,var(--orange) 26%,transparent)}
@@ -1027,7 +1038,7 @@ body.dep-mode .course-item.dep-down{opacity:1;background:color-mix(in srgb,var(-
           <tr>
             <td>NUTRITN 130 (BS) · PSYCH 100 (SB) · JAPANESE 135/147 (AL/AT)</td>
             <td><strong>KIN 110</strong> (BS) · <strong>ECON 121</strong> (SB + DG) · <strong>PHIL 100</strong> (AL)</td>
-            <td>PSYCH 100 is no longer needed, and every Gen Ed line now has a course</td>
+            <td>PSYCH 100 stays as the SB backup (it has no DG), and every Gen Ed line now has a course</td>
           </tr>
           <tr>
             <td>Sophomore year: 14 + 16 credits</td>
@@ -1035,9 +1046,9 @@ body.dep-mode .course-item.dep-down{opacity:1;background:color-mix(in srgb,var(-
             <td>Freshman and sophomore years now carry the most credits (36 + 37). Junior and senior terms drop to 13–15</td>
           </tr>
           <tr>
-            <td>COMPSCI 311 and 453 in Spring 2029</td>
-            <td>Both in <strong>Fall 2028</strong></td>
-            <td>311 needs only CICS 210 and COMPSCI 250. Finishing 311 and 345 in junior fall opens COMPSCI 445 for senior fall</td>
+            <td>COMPSCI 311 and CICS 305 in Spring 2029, COMPSCI 453 in Fall 2028</td>
+            <td>311 and 305 in <strong>Fall 2028</strong>, 453 in <strong>Spring 2029</strong></td>
+            <td>311 needs only CICS 210 and COMPSCI 250. Finishing 311 and 345 in junior fall opens COMPSCI 445 for senior fall. Swapping 305 and 453 keeps both junior terms at 14</td>
           </tr>
           <tr>
             <td>COMPSCI 485, 520 and 532 as optional extras</td>
@@ -1111,10 +1122,10 @@ body.dep-mode .course-item.dep-down{opacity:1;background:color-mix(in srgb,var(-
             <tr><td>120 units to graduate</td><td>129 planned</td></tr>
             <tr><td>45 units in residence</td><td>All courses at UMass</td></tr>
             <tr><td>College Writing (CW)</td><td>ENGLWRIT 112 · Spring 2027</td></tr>
-            <tr><td>Social &amp; Behavioural Science (SB)</td><td>ECON 121 · Spring 2027</td></tr>
+            <tr><td>Social &amp; Behavioural Science (SB)</td><td>ECON 121 · Spring 2027 (alt PSYCH 100)</td></tr>
             <tr><td>Diversity — one DG course</td><td>ECON 121 · Spring 2027</td></tr>
             <tr><td>Biological Science (BS)</td><td>KIN 110 · Spring 2027</td></tr>
-            <tr><td>Historical Studies (HS)</td><td>HISTORY 116 · Fall 2027</td></tr>
+            <tr><td>Historical Studies (HS)</td><td>HISTORY 116 · Fall 2027 (alt POLISCI 201)</td></tr>
             <tr><td>Arts &amp; Literature (AL or AT)</td><td>PHIL 100 · Spring 2029</td></tr>
             <tr><td>Integrative Experience</td><td>COMPSCI 320 · Fall 2028</td></tr>
             <tr><td>CS major courses</td><td>160, 198C, 210, 220, 230, 240, 250, 305</td></tr>
@@ -1167,7 +1178,7 @@ body.dep-mode .course-item.dep-down{opacity:1;background:color-mix(in srgb,var(-
         <tbody>
           <tr><td>COMPSCI 320</td><td>Software Engineering</td><td>4</td><td>✅ In plan</td><td>Fall 2028 · also the IE requirement</td></tr>
           <tr><td>COMPSCI 345</td><td>Practice &amp; Applications of Data Management</td><td>3</td><td>✅ In plan</td><td>Fall 2028 · unlocks COMPSCI 445</td></tr>
-          <tr><td>COMPSCI 453</td><td>Computer Networks</td><td>3</td><td>✅ In plan</td><td>Fall 2028 · needs only COMPSCI 230</td></tr>
+          <tr><td>COMPSCI 453</td><td>Computer Networks</td><td>3</td><td>✅ In plan</td><td>Spring 2029 · needs only COMPSCI 230</td></tr>
           <tr><td>COMPSCI 311</td><td>Introduction to Algorithms</td><td>4</td><td>✅ In plan</td><td>Fall 2028 · required by name</td></tr>
           <tr><td>COMPSCI 383</td><td>Artificial Intelligence</td><td>3</td><td>✅ In plan</td><td>Spring 2029</td></tr>
           <tr><td>COMPSCI 328</td><td>Mobile Health Sensing &amp; Analytics</td><td>3</td><td>✅ In plan</td><td>Fall 2029 · ML on sensor data, follows CICS 256</td></tr>
@@ -1258,8 +1269,8 @@ body.dep-mode .course-item.dep-down{opacity:1;background:color-mix(in srgb,var(-
           <tr><td>Spring 2027</td><td>19</td><td>Locked in. Two real courses (CICS 160 and MATH 132) plus three intro Gen Eds. The UMass maximum, no petition needed.</td></tr>
           <tr><td>Fall 2027</td><td>18</td><td>CICS 210, COMPSCI 250 and MATH 233 plus HISTORY 116, with 198C and the career seminar as 1-credit add-ons.</td></tr>
           <tr><td>Spring 2028</td><td>19</td><td>⚠ The heaviest term of the degree: 220, 230 and 240 plus CICS 256 and MATH 235. MATH 235 is the piece to move if it gets to be too much.</td></tr>
-          <tr><td>Fall 2028</td><td>14</td><td>Junior year opens: IE, Algorithms, data management and networks.</td></tr>
-          <tr><td>Spring 2029</td><td>14</td><td>AI and JYW, with PHIL 100 and Web Programming beside them.</td></tr>
+          <tr><td>Fall 2028</td><td>14</td><td>Junior year opens: IE, Algorithms, data management and JYW.</td></tr>
+          <tr><td>Spring 2029</td><td>14</td><td>AI and networks, with PHIL 100 and Web Programming beside them.</td></tr>
           <tr><td>Fall 2029</td><td>13</td><td>⚠ Operating Systems and Machine Learning together — kept light on purpose.</td></tr>
           <tr><td>Spring 2030</td><td>15</td><td>Four electives to finish, plus the optional graduate 682.</td></tr>
         </tbody>
@@ -1456,7 +1467,7 @@ var CATALOG = [
   {code:'COMPSCI 250',name:'Introduction to Computation',cr:4,area:'core',prereq:'CICS 160 (or 210) and MATH 132, both with C or better',note:'⭐ In your plan — Fall 2027. Needs only CICS 160 and MATH 132, so it runs beside CICS 210. Golin · Qiao'},
 
   // ── 300-LEVEL ──
-  {code:'CICS 305',name:'Social Issues in Computing (JYW)',cr:3,area:'se',prereq:'ENGLWRIT 112 (C+), COMPSCI 220, 230 and 240 (or 250)',note:'⭐ In your plan — Spring 2029. JYW, must be at UMass, does NOT count as an elective. Butler · Meï · Obara · Sutcliffe'},
+  {code:'CICS 305',name:'Social Issues in Computing (JYW)',cr:3,area:'se',prereq:'ENGLWRIT 112 (C+), COMPSCI 220, 230 and 240 (or 250)',note:'⭐ In your plan — Fall 2028. JYW, must be at UMass, does NOT count as an elective. Butler · Meï · Obara · Sutcliffe'},
   {code:'COMPSCI 311',name:'Introduction to Algorithms',cr:4,area:'theory',prereq:'CICS 210, and COMPSCI 250 or MATH 455, all with C or better',note:'⭐ Required for the BS — Fall 2028. Divide and conquer, greedy, DP, NP-completeness. Parvini · Sheldon · Siegelmann'},
   {code:'COMPSCI 320',name:'Software Engineering',cr:4,area:'se',prereq:'COMPSCI 220 with C or better',note:'⭐ In your plan — Fall 2028. Counts as a 300+ elective AND the IE requirement. Endres · Perretta'},
   {code:'COMPSCI 325',name:'Intro to Human-Computer Interaction',cr:3,area:'se',prereq:'CICS 210 with C or better (juniors and seniors only)',note:'Design thinking, HCD, evaluation methods. Tuson'},
@@ -1475,7 +1486,7 @@ var CATALOG = [
   {code:'COMPSCI 420',name:'Software Entrepreneurship',cr:3,area:'se',prereq:'COMPSCI 320 (or 326) with C or better',note:'Challenge-based learning with the Ventures @ CICS entrepreneurs in residence. Rattigan'},
   {code:'COMPSCI 429',name:'Software Engineering Project Management',cr:3,area:'se',prereq:'COMPSCI 320 with B or better + instructor permission',note:'You manage a COMPSCI 320 team. Meets alongside 320. Endres · Perretta'},
   {code:'COMPSCI 445',name:'Information Systems',cr:3,area:'db',prereq:'COMPSCI 220 (or 230), 311 and 345, all with C or better',note:'⭐ In your plan — Fall 2029. Needs COMPSCI 345 first. SQL, query optimisation, MapReduce, Spark. Serafini'},
-  {code:'COMPSCI 453',name:'Computer Networks',cr:3,area:'networks',prereq:'COMPSCI 230 (or 377) with C or better',note:'⭐ In your plan — Fall 2028. Needs only COMPSCI 230. TCP/IP, sockets, routing, wireless, network security. Bovornkeeratiroj'},
+  {code:'COMPSCI 453',name:'Computer Networks',cr:3,area:'networks',prereq:'COMPSCI 230 (or 377) with C or better',note:'⭐ In your plan — Spring 2029. Needs only COMPSCI 230. TCP/IP, sockets, routing, wireless, network security. Bovornkeeratiroj'},
   {code:'COMPSCI 461',name:'Secure Distributed Systems',cr:3,area:'security',prereq:'COMPSCI 326, 345, 377, 453 or 497P with C or better',note:'Byzantine fault tolerance, Bitcoin and Ethereum internals. CS majors only. Stone'},
   {code:'COMPSCI 485',name:'Applications of NLP',cr:3,area:'ai',prereq:'COMPSCI 220 and 240 with C or better (or LINGUIST 429B)',note:'⭐ In your plan — Spring 2030. Text classification, sentiment, machine translation. O\'Connor'},
   {code:'COMPSCI 491P',name:'Seminar — Philosophy of AI & Consciousness',cr:3,area:'ai',prereq:'COMPSCI 250 and 383 (or 389), both with C or better',note:'Reading seminar, no exams. ~4–8 hrs/week outside class. Weems'},
@@ -1562,7 +1573,7 @@ var REQ_GROUPS = [
   {title:'B. The Upper-Level Eight — 5 must be at UMass',items:[
     {code:'COMPSCI 311',name:'Algorithms — required by name (Fall 2028)',required:true},
     {code:'COMPSCI 445',name:'400+ #1 — Information Systems (Fall 2029)',required:true},
-    {code:'COMPSCI 453',name:'400+ #2 — Computer Networks (Fall 2028)',required:true},
+    {code:'COMPSCI 453',name:'400+ #2 — Computer Networks (Spring 2029)',required:true},
     {code:'COMPSCI 589',name:'400+ #3 — Machine Learning (Fall 2029)',required:true},
     {code:'COMPSCI 320',name:'300+ #1 — Software Engineering (Fall 2028)',required:true},
     {code:'COMPSCI 377',name:'300+ #2 — Operating Systems (Fall 2029)',required:true},
@@ -1581,7 +1592,7 @@ var REQ_GROUPS = [
     {code:'FYS 191MCS26',name:'First-year seminar, 1 cr (Fall 2026)',required:false},
   ]},
   {title:'D. Junior Year Writing + Integrative Experience',items:[
-    {code:'CICS 305',name:'Social Issues in Computing — JYW, at UMass (Spring 2029)',required:true},
+    {code:'CICS 305',name:'Social Issues in Computing — JYW, at UMass (Fall 2028)',required:true},
     {code:'COMPSCI 320',name:'Integrative Experience — junior/senior, at UMass (Fall 2028)',required:true},
   ]},
   {title:'E. Math — 4 courses, 15 cr, all taken for credit',items:[
@@ -1600,34 +1611,36 @@ var REQ_GROUPS = [
     {code:'PHYSICS 151',name:'PS Physical Science — Fall 2026',required:true},
     {code:'PUBHLTH 160',name:'SI Social World + DU Diversity — Fall 2026',required:true},
     {code:'ENGLWRIT 112',name:'CW College Writing — Spring 2027',required:true},
-    {code:'ECON 121',name:'SB Social & Behavioural + DG Diversity — Spring 2027',required:true},
+    {code:'ECON 121',name:'SB Social & Behavioural + DG Diversity — Spring 2027 (alt PSYCH 100, SB only)',required:true},
     {code:'KIN 110',name:'BS Biological Science — Spring 2027',required:true},
-    {code:'HISTORY 116',name:'HS Historical Studies — Fall 2027',required:true},
+    {code:'HISTORY 116',name:'HS Historical Studies — Fall 2027 (alt POLISCI 201)',required:true},
     {code:'PHIL 100',name:'AL Arts & Literature — Spring 2029',required:true},
   ]},
 ];
 
 var SEMESTERS = [
   {id:'s1',name:'Fall 2026',year:1,targetCr:17,courses:[
-    {id:'c-cics110',code:'CICS 110',name:'Foundations of Programming',cr:4,tags:['t-cs'],note:'Enrolled. Satisfies Gen Ed R2 (Analytical Reasoning) — your one permitted CS Gen Ed.',done:false,grade:''},
-    {id:'c-math131',code:'MATH 131',name:'Calculus I',cr:4,tags:['t-math'],note:'Enrolled. Taken for credit — no AP exemption. Satisfies Gen Ed R1 outright, and gates MATH 132 next spring.',done:false,grade:'',placement:'Starting the math sequence from the top — every later math course counts from here'},
-    {id:'c-phys151',code:'PHYSICS 151',name:'General Physics I',cr:4,tags:['t-gen'],note:'Enrolled. Lab science 1 of 2, and satisfies Gen Ed PS.',done:false,grade:''},
-    {id:'c-pubhlth160',code:'PUBHLTH 160',name:'My Body, My Health',cr:4,tags:['t-gen'],note:'Enrolled. Clears Social World (SI), Diversity DU, and the first-year DG/DU rule at once.',done:false,grade:''},
-    {id:'c-fys191',code:'FYS 191MCS26',name:'FYS — Topics in CICS: Bits, Bytes & Modern Computing',cr:1,tags:['t-elec'],note:'Enrolled. Free credit — does not count toward the major.',done:false,grade:''},
+    {id:'c-cics110',locked:true,code:'CICS 110',name:'Foundations of Programming',cr:4,tags:['t-cs'],note:'Enrolled. Satisfies Gen Ed R2 (Analytical Reasoning) — your one permitted CS Gen Ed.',done:false,grade:''},
+    {id:'c-math131',locked:true,code:'MATH 131',name:'Calculus I',cr:4,tags:['t-math'],note:'Enrolled. Taken for credit — no AP exemption. Satisfies Gen Ed R1 outright, and gates MATH 132 next spring.',done:false,grade:'',placement:'Starting the math sequence from the top — every later math course counts from here'},
+    {id:'c-phys151',locked:true,code:'PHYSICS 151',name:'General Physics I',cr:4,tags:['t-gen'],note:'Enrolled. Lab science 1 of 2, and satisfies Gen Ed PS.',done:false,grade:''},
+    {id:'c-pubhlth160',locked:true,code:'PUBHLTH 160',ge:'SI + DU',name:'My Body, My Health',cr:4,tags:['t-gen'],note:'Enrolled. Clears Social World (SI), Diversity DU, and the first-year DG/DU rule at once.',done:false,grade:''},
+    {id:'c-fys191',locked:true,code:'FYS 191MCS26',name:'FYS — Topics in CICS: Bits, Bytes & Modern Computing',cr:1,tags:['t-elec'],note:'Enrolled. Free credit — does not count toward the major.',done:false,grade:''},
   ]},
   {id:'s2',name:'Spring 2027',year:1,targetCr:19,courses:[
-    {id:'c-cics160',code:'CICS 160',name:'Object-Oriented Programming',cr:4,tags:['t-cs'],note:'Locked in. Needs CICS 110 (C or better). Unlocks CICS 210, COMPSCI 198C and COMPSCI 250.',done:false,grade:''},
-    {id:'c-math132',code:'MATH 132',name:'Calculus II',cr:4,tags:['t-math'],note:'Locked in. Needs MATH 131. The load-bearing course of year one — it gates COMPSCI 240, COMPSCI 250, MATH 233 and MATH 235 all at once.',done:false,grade:'',placement:'Moved here from Fall 2026 because MATH 131 comes first'},
-    {id:'c-englwrit112',code:'ENGLWRIT 112',name:'College Writing',cr:3,tags:['t-gen'],note:'Locked in. Gen Ed CW, and a prerequisite for CICS 305 in junior year.',done:false,grade:''},
-    {id:'c-econ121',code:'ECON 121',name:'International Economy',cr:4,tags:['t-gen'],note:'Locked in. Gen Ed SB and DG in one course, so both lines close here. Intro level, no prerequisites.',done:false,grade:'',placement:'Replaces PSYCH 100 for SB, and covers the DG line too'},
-    {id:'c-kin110',code:'KIN 110',name:'Human Performance & Nutrition',cr:4,tags:['t-gen'],note:'Locked in. Gen Ed BS. How diet and exercise affect performance and health, and how to judge fitness claims. Open to all majors; KIN 110H counts too if you join the Honors College.',done:false,grade:''},
+    {id:'c-cics160',locked:true,code:'CICS 160',name:'Object-Oriented Programming',cr:4,tags:['t-cs'],note:'Locked in. Needs CICS 110 (C or better). Unlocks CICS 210, COMPSCI 198C and COMPSCI 250.',done:false,grade:''},
+    {id:'c-math132',locked:true,code:'MATH 132',name:'Calculus II',cr:4,tags:['t-math'],note:'Locked in. Needs MATH 131. The load-bearing course of year one — it gates COMPSCI 240, COMPSCI 250, MATH 233 and MATH 235 all at once.',done:false,grade:'',placement:'Moved here from Fall 2026 because MATH 131 comes first'},
+    {id:'c-englwrit112',locked:true,code:'ENGLWRIT 112',name:'College Writing',cr:3,tags:['t-gen'],note:'Locked in. Gen Ed CW, and a prerequisite for CICS 305 in junior year.',done:false,grade:''},
+    {id:'c-econ121',code:'ECON 121',ge:'SB + DG',name:'International Economy',cr:4,tags:['t-gen'],note:'Locked in. Gen Ed SB and DG in one course, so both lines close here. Intro level, no prerequisites.',done:false,grade:'',
+      alt:{code:'PSYCH 100',name:'Introductory Psychology',ge:'SB',note:'SB only, no DG. If you swap to this, keep HISTORY 116 so DG is still covered.'}},
+    {id:'c-kin110',code:'KIN 110',ge:'BS',name:'Human Performance & Nutrition',cr:4,tags:['t-gen'],note:'Locked in. Gen Ed BS. How diet and exercise affect performance and health, and how to judge fitness claims. Open to all majors; KIN 110H counts too if you join the Honors College.',done:false,grade:''},
   ]},
   {id:'s3',name:'Fall 2027',year:2,targetCr:18,courses:[
-    {id:'c-cics210',code:'CICS 210',name:'Data Structures',cr:4,tags:['t-cs'],note:'Needs CICS 160. The gateway — almost every 200+ CS course waits on this, including CICS 256 next spring.',done:false,grade:''},
-    {id:'c-cs198c',code:'COMPSCI 198C',name:'Intro to the C Programming Language',cr:1,tags:['t-core'],note:'One credit, easy to forget, and COMPSCI 230 is locked without it.',done:false,grade:''},
+    {id:'c-cics210',locked:true,code:'CICS 210',name:'Data Structures',cr:4,tags:['t-cs'],note:'Needs CICS 160. The gateway — almost every 200+ CS course waits on this, including CICS 256 next spring.',done:false,grade:''},
+    {id:'c-cs198c',locked:true,code:'COMPSCI 198C',name:'Intro to the C Programming Language',cr:1,tags:['t-core'],note:'One credit, easy to forget, and COMPSCI 230 is locked without it.',done:false,grade:''},
     {id:'c-cs250',code:'COMPSCI 250',name:'Introduction to Computation',cr:4,tags:['t-core'],note:'Its real prerequisites are CICS 160 and MATH 132 — both finished last spring — so it runs beside CICS 210 and lets COMPSCI 311 move up to junior fall.',done:false,grade:'',placement:'The single move that absorbs the MATH 131 delay'},
     {id:'c-math233',code:'MATH 233',name:'Multivariate Calculus',cr:4,tags:['t-math'],note:'Needs MATH 132. STATISTC 315 is the ARR-accepted alternative, but keep MATH 233: a B+ here and in MATH 235 waives the MATH 545 prerequisite on COMPSCI 589.',done:false,grade:''},
-    {id:'c-hist116',code:'HISTORY 116',name:'History of Japan',cr:4,tags:['t-gen'],note:'Gen Ed HS. It also carries DG, which ECON 121 already covers, so any HS course could take this slot.',done:false,grade:'',placement:'Moved into sophomore fall to front-load the degree'},
+    {id:'c-hist116',code:'HISTORY 116',ge:'HS + DG',name:'History of Japan',cr:4,tags:['t-gen'],note:'Gen Ed HS. It also carries DG, which ECON 121 already covers, so any HS course could take this slot.',done:false,grade:'',placement:'Moved into sophomore fall to front-load the degree',
+      alt:{code:'POLISCI 201',name:'American Politics Through Film',ge:'HS',note:'HS only, no DG. Fine as long as you keep ECON 121 for DG.'}},
     {id:'c-cics291c',code:'CICS 291C',name:'Seminar — Find Your Strengths, Design Your Career',cr:1,tags:['t-elec'],note:'One credit of internship and job-search prep, right before the summer 2028 internship season. Free elective.',done:false,grade:''},
   ]},
   {id:'s4',name:'Spring 2028',year:2,targetCr:19,courses:[
@@ -1641,13 +1654,13 @@ var SEMESTERS = [
     {id:'c-cs320',code:'COMPSCI 320',name:'Software Engineering',cr:4,tags:['t-elec','t-gen'],note:'Needs COMPSCI 220. Counts twice: Integrative Experience AND a 300+ elective. Junior year or later — this is the earliest it is allowed.',done:false,grade:''},
     {id:'c-cs311',code:'COMPSCI 311',name:'Introduction to Algorithms',cr:4,tags:['t-elec'],note:'Needs CICS 210 + COMPSCI 250, both done in Fall 2027. Required by name — no substitutes.',done:false,grade:'',placement:'Moved up from Spring 2029'},
     {id:'c-cs345',code:'COMPSCI 345',name:'Practice & Applications of Data Management',cr:3,tags:['t-elec'],note:'Needs CICS 210. In the plan because COMPSCI 445 will not let you enrol without it. It may also fill ARR line 13a — ask an advisor.',done:false,grade:''},
-    {id:'c-cs453',code:'COMPSCI 453',name:'Computer Networks',cr:3,tags:['t-elec'],note:'Needs only COMPSCI 230, finished last spring. 400+ elective.',done:false,grade:'',placement:'Moved up from Spring 2029 to balance junior year'},
+    {id:'c-cics305',locked:true,code:'CICS 305',name:'Social Issues in Computing (JYW)',cr:3,tags:['t-gen'],note:'Needs ENGLWRIT 112 + COMPSCI 220, 230 and 240 — all finished by Spring 2028. Must be taken at UMass. Required, but does NOT count as an elective.',done:false,grade:'',placement:'Moved up from Spring 2029 to junior fall'},
   ]},
   {id:'s6',name:'Spring 2029',year:3,targetCr:14,courses:[
     {id:'c-cs383',code:'COMPSCI 383',name:'Artificial Intelligence',cr:3,tags:['t-elec'],note:'Needs CICS 210 + COMPSCI 240. 300+ elective.',done:false,grade:''},
-    {id:'c-cics305',code:'CICS 305',name:'Social Issues in Computing (JYW)',cr:3,tags:['t-gen'],note:'Needs ENGLWRIT 112 + COMPSCI 220, 230 and 240 — all finished by Spring 2028. Must be taken at UMass. Required, but does NOT count as an elective.',done:false,grade:'',placement:'Junior spring keeps senior fall light'},
     {id:'c-phil100',code:'PHIL 100',name:'Introduction to Philosophy',cr:4,tags:['t-gen'],note:'Gen Ed AL — your last Gen Ed line. No prerequisites, offered every semester. No DG or DU tag needed, since PUBHLTH 160 and ECON 121 cover diversity.',done:false,grade:''},
     {id:'c-cs326',code:'COMPSCI 326',name:'Web Programming',cr:4,tags:['t-elec'],note:'Needs COMPSCI 220. Full-stack web work: HTTP, JavaScript, databases — practical portfolio material. Also counts for the IE, a backup if 320 falls through.',done:false,grade:''},
+    {id:'c-cs453',code:'COMPSCI 453',name:'Computer Networks',cr:3,tags:['t-elec'],note:'Needs only COMPSCI 230, finished in Spring 2028. 400+ elective.',done:false,grade:'',placement:'Moved to junior spring to make room for CICS 305 in the fall'},
   ]},
   {id:'s7',name:'Fall 2029',year:4,targetCr:13,courses:[
     {id:'c-cs377',code:'COMPSCI 377',name:'Operating Systems',cr:4,tags:['t-elec'],note:'Needs COMPSCI 230. 300+ elective, and a prerequisite for COMPSCI 532.',done:false,grade:''},
@@ -1713,7 +1726,7 @@ var CREDIT_BREAKDOWN = [
     ]
   },
   {
-    key:'cb-gen',cls:'cb-gen',title:'General Education',required:26,note:'CW, SB, DG and BS all close in Spring 2027. HS in Fall 2027; AL and JYW in Spring 2029. R1, R2, PS, SI and DU were covered in Fall 2026.',
+    key:'cb-gen',cls:'cb-gen',title:'General Education',required:26,note:'CW, SB, DG and BS all close in Spring 2027. HS in Fall 2027; JYW in Fall 2028; AL in Spring 2029. R1, R2, PS, SI and DU were covered in Fall 2026.',
     items:[
       {name:'PUBHLTH 160 — SI + DU',cr:4,tag:'t-gen'},
       {name:'ENGLWRIT 112 — CW',cr:3,tag:'t-gen'},
@@ -1746,8 +1759,8 @@ var ROADMAP = [
     label:'Foundations · 36 cr',
     status:'active',
     courses:{
-      fall:['CICS 110 — Foundations of Programming','MATH 131 — Calculus I','PHYSICS 151 — General Physics I','PUBHLTH 160 — My Body, My Health','FYS 191MCS26 — Topics in CICS'],
-      spring:['CICS 160 — Object-Oriented Programming','MATH 132 — Calculus II','ENGLWRIT 112 — College Writing','ECON 121 — International Economy (SB + DG)','KIN 110 — Human Performance & Nutrition (BS)'],
+      fall:['CICS 110 — Foundations of Programming','MATH 131 — Calculus I','PHYSICS 151 — General Physics I','PUBHLTH 160 — My Body, My Health (SI + DU)','FYS 191MCS26 — Topics in CICS'],
+      spring:['CICS 160 — Object-Oriented Programming','MATH 132 — Calculus II','ENGLWRIT 112 — College Writing','ECON 121 — International Economy (SB + DG) · alt PSYCH 100 (SB)','KIN 110 — Human Performance & Nutrition (BS)'],
     },
     priorities:['Spring 2027 is locked at 19 credits, the UMass maximum. Only CICS 160 and MATH 132 are heavy; the other three are intro Gen Eds','Registration and the Override Request Form both open Mon 9 Nov — have backup sections ready in case one fills','Business minor: not selected in the fall lottery. Enter the spring lottery, which is free; the paid University+ route is skipped','Want more than 19 credits? Petition after fall grades post — 3.0 GPA for 20 credits, 3.5 for 22 — before add/drop ends','Apply to the CICS Early Research Scholars Program (ERSP) this spring','By the end of the year, nine Gen Ed lines are done: R1, R2, PS, SI and DU in fall; CW, SB, DG and BS in spring'],
     gpaGoal:'Bank a strong GPA now — it decides overloads, honors and grad school',
@@ -1759,7 +1772,7 @@ var ROADMAP = [
     label:'Core CS · 37 cr',
     status:'future',
     courses:{
-      fall:['CICS 210 — Data Structures','COMPSCI 198C — Intro to C','COMPSCI 250 — Introduction to Computation','MATH 233 — Multivariate Calculus','HISTORY 116 — History of Japan (HS)','CICS 291C — Career seminar (1 cr)'],
+      fall:['CICS 210 — Data Structures','COMPSCI 198C — Intro to C','COMPSCI 250 — Introduction to Computation','MATH 233 — Multivariate Calculus','HISTORY 116 — History of Japan (HS + DG) · alt POLISCI 201 (HS)','CICS 291C — Career seminar (1 cr)'],
       spring:['COMPSCI 220 — Programming Methodology','COMPSCI 230 — Computer Systems Principles','COMPSCI 240 — Reasoning Under Uncertainty','CICS 256 — Make: Physical Computing','MATH 235 — Linear Algebra'],
     },
     priorities:['Sophomore year is front-loaded on purpose: 18 + 19 credits, so junior and senior terms drop to 13–15','COMPSCI 198C is one credit and gates COMPSCI 230 — register for it the moment CICS 210 is confirmed','Register for CICS 256 the moment Spring 2028 enrollment opens. Freshmen and sophomores get first pick; juniors only get leftover seats. Backup: PHYSICS 152','Spring 2028 is the heaviest term of the degree: three core CS courses, CICS 256 and MATH 235. If it gets to be too much, MATH 235 is the piece to move to Fall 2028','Chase B+ in COMPSCI 240, MATH 233 and MATH 235 — together they waive both COMPSCI 589 prerequisites'],
@@ -1772,8 +1785,8 @@ var ROADMAP = [
     label:'Upper-Level Opens · 28 cr',
     status:'future',
     courses:{
-      fall:['COMPSCI 320 — Software Engineering (IE)','COMPSCI 311 — Introduction to Algorithms','COMPSCI 345 — Data Management','COMPSCI 453 — Computer Networks'],
-      spring:['COMPSCI 383 — Artificial Intelligence','CICS 305 — Social Issues in Computing (JYW)','PHIL 100 — Introduction to Philosophy (AL)','COMPSCI 326 — Web Programming'],
+      fall:['COMPSCI 320 — Software Engineering (IE)','COMPSCI 311 — Introduction to Algorithms','COMPSCI 345 — Data Management','CICS 305 — Social Issues in Computing (JYW)'],
+      spring:['COMPSCI 383 — Artificial Intelligence','PHIL 100 — Introduction to Philosophy (AL)','COMPSCI 326 — Web Programming','COMPSCI 453 — Computer Networks'],
     },
     priorities:['COMPSCI 320 is the earliest the IE requirement is allowed — junior year, at UMass','COMPSCI 311 moved up to fall: it needs only CICS 210 and COMPSCI 250, both done in Fall 2027','With 311 and 345 both done this fall, COMPSCI 445 is open for senior fall','PHIL 100 closes your last Gen Ed line (AL), so every Gen Ed is done by the end of junior year','Two 14-credit terms leave room for an internship search, research or a part-time job'],
     gpaGoal:'Protect the GPA here above everywhere else',
@@ -1802,13 +1815,13 @@ var GENED = [
   {code:'SI',name:'Social World',status:'ok',course:'PUBHLTH 160',term:'Fall 2026',note:'One course, three lines: SI, DU, and the first-year diversity rule.'},
   {code:'DU',name:'Diversity — United States',status:'ok',course:'PUBHLTH 160',term:'Fall 2026',note:''},
   {code:'CW',name:'College Writing',status:'plan',course:'ENGLWRIT 112',term:'Spring 2027',note:'Locked in. Also a prerequisite for CICS 305.'},
-  {code:'SB',name:'Social & Behavioural Science',status:'plan',course:'ECON 121',term:'Spring 2027',note:'Locked in. Carries SB + DG, so one course closes two lines.'},
+  {code:'SB',name:'Social & Behavioural Science',status:'plan',course:'ECON 121',term:'Spring 2027',note:'Locked in. Carries SB + DG, so one course closes two lines. Alt: PSYCH 100 (SB only, no DG).'},
   {code:'DG',name:'Diversity — Global',status:'plan',course:'ECON 121',term:'Spring 2027',note:'With DU from PUBHLTH 160, your diversity requirement is complete.'},
   {code:'BS',name:'Biological Science',status:'plan',course:'KIN 110',term:'Spring 2027',note:'Locked in. Open to all majors; KIN 110H also counts if you join the Honors College.'},
-  {code:'HS',name:'Historical Studies',status:'plan',course:'HISTORY 116',term:'Fall 2027',note:'Any HS course works now that ECON 121 covers DG.'},
+  {code:'HS',name:'Historical Studies',status:'plan',course:'HISTORY 116',term:'Fall 2027',note:'Any HS course works now that ECON 121 covers DG. Alt: POLISCI 201 (HS only).'},
   {code:'AL',name:'Arts & Literature',status:'plan',course:'PHIL 100',term:'Spring 2029',note:'Introduction to Philosophy, 4 credits — meets the 4-unit AL minimum. No DG or DU tag needed.'},
   {code:'IE',name:'Integrative Experience',status:'plan',course:'COMPSCI 320',term:'Fall 2028',note:'Junior or senior year only, and must be at UMass. COMPSCI 326 in Spring 2029 also qualifies as a backup.'},
-  {code:'JYW',name:'Junior Year Writing',status:'plan',course:'CICS 305',term:'Spring 2029',note:'Must be at UMass. Does not count as a CS elective.'},
+  {code:'JYW',name:'Junior Year Writing',status:'plan',course:'CICS 305',term:'Fall 2028',note:'Must be at UMass. Does not count as a CS elective.'},
 ];
 
 var CHAINS = [
@@ -1849,9 +1862,9 @@ var CHAINS = [
   },
   {
     name:'Networks',
-    desc:'A short branch off systems. COMPSCI 453 needs only 230, so it sits in junior fall beside Algorithms.',
+    desc:'A short branch off systems. COMPSCI 453 needs only 230, so it can sit in either junior term. It is in junior spring to leave room for CICS 305 in the fall.',
     nodes:[
-      {c:'COMPSCI 230',t:'Spring 2028',k:'start'},{a:1},{c:'COMPSCI 453',t:'Fall 2028',k:'goal'},
+      {c:'COMPSCI 230',t:'Spring 2028',k:'start'},{a:1},{c:'COMPSCI 453',t:'Spring 2029',k:'goal'},
     ],
   },
   {
@@ -1898,11 +1911,11 @@ var CHAINS = [
   },
   {
     name:'Junior Year Writing',
-    desc:'CICS 305 has the widest prerequisite set of any single course in the degree — four courses spread across two years. All four finish in Spring 2028, which is what lets it sit in junior spring.',
+    desc:'CICS 305 has the widest prerequisite set of any single course in the degree — four courses spread across two years. All four finish in Spring 2028, which is what lets it sit in junior fall.',
     nodes:[
       {c:'ENGLWRIT 112',t:'Spring 2027',k:'start'},{p:1},{c:'COMPSCI 220',t:'Spring 2028'},{p:1},
       {c:'COMPSCI 230',t:'Spring 2028'},{p:1},{c:'COMPSCI 240',t:'Spring 2028'},{a:1},
-      {c:'CICS 305',t:'Spring 2029'},
+      {c:'CICS 305',t:'Fall 2028'},
     ],
   },
 ];
@@ -2261,7 +2274,7 @@ var STORE_KEY='courseflow_v5';
 var LEGACY_KEYS=['courseflow_v4'];
 /* Bump PLAN_VERSION whenever the default plan changes. A save from an older
    version then loads the new plan while keeping grades, checkmarks and theme. */
-var PLAN_VERSION='2026-11-05b';
+var PLAN_VERSION='2026-11-05d';
 var MIGRATED=false;
 var CUSTOM_TAGS={};
 var FLAGS={showIssues:true,showNotes:true,hideDone:false};
@@ -2487,9 +2500,14 @@ function buildCourseRow(semId,c,issues){
       '<path d="M1 4l2.5 2.5L9 1" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'+
     '<div class="course-info">'+
       '<span class="course-code">'+escHtml(c.code)+'</span>'+
-      '<span class="course-name">'+escHtml(c.name)+'</span>'+
+      (c.ge?'<span class="ge-pill" title="Gen Ed designations">'+escHtml(c.ge)+'</span>':'')+
+      '<span class="course-name">'+(c.locked?'<span class="lock-mark" title="Locked in">🔒</span>':'')+escHtml(c.name)+'</span>'+
       (FLAGS.showNotes&&c.note?'<div class="course-note">'+escHtml(c.note)+'</div>':'')+
       (c.placement?'<div class="place-note">↳ '+escHtml(c.placement)+'</div>':'')+
+      (c.alt?'<div class="alt-note"><span class="alt-label">Alt</span>'+
+        '<span class="alt-code">'+escHtml(c.alt.code)+'</span>'+escHtml(c.alt.name)+
+        (c.alt.ge?'<span class="ge-pill sm">'+escHtml(c.alt.ge)+'</span>':'')+
+        (FLAGS.showNotes&&c.alt.note?'<span class="alt-sub">'+escHtml(c.alt.note)+'</span>':'')+'</div>':'')+
       issueHtml+
       '<div class="course-tags">'+tagHtml+'</div>'+
     '</div>'+
@@ -3199,7 +3217,9 @@ function printSheet(){
   SEMESTERS.forEach(function(s){
     html+='<div><div class="ps-sec">'+escHtml(s.name)+' — '+semTotal(s)+' cr</div><table class="ps-table">';
     s.courses.forEach(function(c){
-      html+='<tr><td style="width:34%">'+escHtml(c.code)+'</td><td>'+escHtml(c.name)+
+      html+='<tr><td style="width:34%">'+escHtml(c.code)+'</td><td>'+(c.locked?'🔒 ':'')+escHtml(c.name)+
+        (c.ge?' ('+escHtml(c.ge)+')':'')+
+        (c.alt?'<br><em>or '+escHtml(c.alt.code)+' — '+escHtml(c.alt.name)+(c.alt.ge?' ('+escHtml(c.alt.ge)+')':'')+'</em>':'')+
         '</td><td style="width:12%;text-align:right">'+c.cr+'</td></tr>';});
     if(!s.courses.length)html+='<tr><td colspan="3"><em>empty</em></td></tr>';
     html+='</table></div>';
